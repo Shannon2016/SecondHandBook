@@ -15,9 +15,9 @@ App({
             url: 'https://api.weixin.qq.com/sns/jscode2session',
             data: {
               //小程序唯一标识
-              appid: 'wx0804bb250eb2a991',
+              appid: 'wx75221c8ecddbf3d2',
               //小程序的 app secret
-              secret: 'e2e51de816a65ace8e6fb33e36eab3fe',
+              secret: '856aea8a54f6b06b10f13af88ddc8364',
               grant_type: 'authorization_code',
               js_code: res.code
             },
@@ -33,9 +33,9 @@ App({
                   success: function (data) {
                     // 自定义操作
                     // 绑定数据，渲染页面
-                    that.setData({
+                    // that.setData({
 
-                    });
+                    // });
                   },
                   fail: function (failData) {
                     console.info("用户拒绝授权");
