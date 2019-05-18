@@ -1,6 +1,7 @@
 {
     "pages": [
         "pages/mall/mall",
+        "pages/reward-list/reward-list",
         "pages/index/index",
         "pages/logs/logs"
     ],
@@ -28,7 +29,7 @@
             {
                 "selectedIconPath": "image/question-selected.png",
                 "iconPath": "image/question.png",
-                "pagePath": "pages/mall/mall",
+                "pagePath": "pages/reward-list/reward-list",
                 "text": "悬赏图书"
             },
             {
