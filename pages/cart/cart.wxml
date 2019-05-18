@@ -7,7 +7,7 @@
   <checkbox-group bindchange="checkboxChange" >
     <view class="cartListItem" wx:for="{{cartInfoList}}">
       <view class="checkBtnContainer">
-        <checkbox value="{{index}}"></checkbox>
+        <checkbox value="{{index}}"  checked="{{checkFlag}}"></checkbox>
       </view>
 
       <view class="picContainer">
@@ -31,4 +31,15 @@
       </view>
     </view>
   </checkbox-group>
+  <view style="height:100rpx;"></view>
+  <view id="bottomBar">
+      <view id="checkAll">
+        <checkbox value="{{index}}" bindtap="checkAll"></checkbox>
+      </view>
+    <view id="totalPrice" class="fontPrice">
+      <view><text decode="{{true}}">总计:￥&ensp;</text></view>
+      <view>{{totalPrice}}</view>
+    </view>
+    <view style="position:absolute;right:0;"><button id="confirm" bindtap="goOrder">去付款</button></view>
+  </view>
 </view>

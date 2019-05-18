@@ -1,0 +1,62 @@
+<!--pages/order/order.wxml-->
+<view class="fontTitle" style="padding-left: 65rpx;margin-top:20rpx;">请填写收货人信息</view>
+<view id="orderInfo">
+  <view class="orderInfoItem">
+    <view class="orderInfoItemTitle">
+      <text class="fontTitle">姓名</text>
+    </view>
+    <view class="orderInfoItemInput">
+      <input />
+    </view>
+  </view>
+  <view class="orderInfoItem">
+    <view class="orderInfoItemTitle">
+      <text class="fontTitle">手机号</text>
+    </view>
+    <view class="orderInfoItemInput">
+      <input type="number" />
+    </view>
+  </view>
+  <view class="orderInfoItem">
+    <view class="orderInfoItemTitle">
+      <text class="fontTitle">地址</text>
+    </view>
+    <view class="orderInfoItemInput">
+      <input />
+    </view>
+  </view>
+</view>
+<view class="fontTitle" 
+style="padding-left: 65rpx;padding-bottom:30rpx;margin-top:40rpx;border-bottom: 2rpx solid #DCDFE6;">
+请确认您的书籍
+</view>
+<!-->list<-->
+<view class="orderListItem" wx:for="{{orderInfoList}}">
+  <view class="picContainer">
+    <image src="{{item.picSrc}}" mode="scaleToFill" class="pictures" />
+  </view>
+
+  <view class="infoContainer">
+    <view class="infoNameContainer fontTitle">{{item.bookName}}</view>
+    <view class="infoAuthorContainer fontItemDetail">
+      <view>作者：</view>
+      <view>{{item.author}}</view>
+    </view>
+    <view class="infoPressContainer fontItemDetail">
+      <view>出版社：</view>
+      <view>{{item.press}}</view>
+    </view>
+    <view class="infoPriceContainer fontPrice">
+      <view><text decode="{{true}}">￥&ensp;</text></view>
+      <view>{{item.price}}</view>
+    </view>
+  </view>
+</view>
+<view style="height:100rpx;"></view>
+<view id="bottomBar">
+  <view id="totalPrice" class="fontPrice">
+    <view><text decode="{{true}}">总计:￥&ensp;</text></view>
+    <view>{{totalPrice}}</view>
+  </view>
+  <view style="position:absolute;right:0;"><button id="confirm">确认支付</button></view>
+</view>
