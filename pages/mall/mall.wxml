@@ -57,7 +57,7 @@
 <!-- 显示列表 -->
 <view class='books'>
     <block wx:for='{{books}}'>
-        <view class='book-detail'>
+        <view class='book-detail' catchtap='showBookDetail' data-book-index='{{index}}'>
             <view class='book-detail-picture'>
                 <image src='{{item.picSrc}}'></image>
             </view>
