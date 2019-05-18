@@ -1,0 +1,21 @@
+<!--pages/personcenter/personcenter.wxml-->
+<!-- 用户信息 -->
+<view class="userinfo">
+  <text>用户头像</text>
+  <text>用户昵称</text>
+</view>
+
+<!-- 我的订单部分 -->
+<view class='myorder'>
+  <text>我的订单</text>
+</view>
+
+<!-- 我的悬赏部分 -->
+<view class='myreward'>
+  <text>我的悬赏</text>
+</view>
+
+<!-- 我的售卖部分 -->
+<view class='mysale'>
+  <text>我的售卖</text>
+</view>

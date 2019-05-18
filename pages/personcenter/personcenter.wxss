@@ -1,0 +1,54 @@
+/* pages/personcenter/personcenter.wxss */
+/*
+用户信息
+*/
+
+.userinfo {
+    display: flex;
+    width: 100%;
+    height: 286rpx;
+    position: fixed;
+    z-index: 1;
+}
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+/*
+我的订单
+*/
+.myorder{
+    display: flex;
+    width: 100%;
+    height: 286rpx;
+    position: fixed;
+    margin-top: 286rpx;
+    z-index: 1;
+}
+
+/*
+我的悬赏
+*/
+.myreward{
+    display: flex;
+    width: 100%;
+    height: 286rpx;
+    position: fixed;
+    margin-top: 586rpx;
+    z-index: 1;  
+}
+
+/*
+我的售卖
+*/
+.mysale{
+    display: flex;
+    width: 100%;
+    height: 286rpx;
+    position: fixed;
+    margin-top: 486rpx;
+    z-index: 1;    
+}

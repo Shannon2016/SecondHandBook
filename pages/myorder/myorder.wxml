@@ -1,0 +1,30 @@
+<!--pages/myorder/myorder.wxml-->
+<!-- 搜索框部分 -->
+<view class='userinfo'>
+    <text>用户头像</text>
+    <text>用户昵称</text>
+</view>
+
+
+<!-- 显示列表 -->
+<view class='orders'>
+    <block wx:for='{{orders}}'>
+        <view class='order-detail'>
+            <view class='order-detail-picture'>
+                <image src='{{item.picSrc}}'></image>
+            </view>
+
+            <view class='order-detail-item'>
+                <text class='order-detail-name'>{{item.name}}</text>
+                <view class='order-detail-info'>
+                    <text>{{"收货人："+item.consignee}}</text>
+                    <text>{{"收获地址："+item.adress}}</text>
+                </view>
+                <text class='order-detail-price'
+             decode='true'>{{"实付价格&nbsp;"+item.price}}</text>
+            </view>
+
+        </view>
+ 
+    </block>
+</view>
