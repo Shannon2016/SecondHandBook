@@ -3,6 +3,8 @@
         "pages/mall/mall",
         "pages/reward-list/reward-list",
         "pages/mall/book-detail/book-detail",
+        "pages/personcenter/personcenter",
+        "pages/personcenter/myorder/myorder",
         "pages/index/index",
         "pages/logs/logs"
     ],
@@ -48,7 +50,7 @@
             {
                 "selectedIconPath": "image/personal-center-selected.png",
                 "iconPath": "image/personal-center.png",
-                "pagePath": "pages/mall/mall",
+                "pagePath": "pages/personcenter/personcenter",
                 "text": "个人中心"
             }
         ]
