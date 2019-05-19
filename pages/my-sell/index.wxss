@@ -1,0 +1,125 @@
+/**index.wxss**/
+
+/*
+    背景图片
+*/
+.background {
+    display: flex;
+    width: 100%;
+    height: 286rpx;
+    position: fixed;
+    z-index: 1;
+}
+
+.background image {
+    width: 100%;
+    height: 100%;
+}
+
+
+/*
+    显示列表
+*/
+
+.books {
+    width: 100%;
+    position: absolute;
+    margin-top: 286rpx;
+}
+
+.book-detail {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 260rpx;
+    margin-bottom: 5rpx;
+    border-top: 2rpx solid #bbb;
+}
+
+.book-detail-picture {
+    display: flex;
+    align-items: center;
+    width: 220rpx;
+    height: 100%;
+}
+
+.book-detail-picture image {
+    width: 100%;
+    height: 240rpx;
+    margin: 0 4rpx;
+}
+
+.book-detail-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    margin-left: 20rpx;
+}
+
+.book-detail-name {
+    margin: 20rpx 0;
+    font-size: 36rpx;
+    font-weight: bold;
+}
+.book-detail-state {
+    color: white;
+    font-size: 14px;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 140rpx;
+    height: 45rpx;
+    background-color: #07a2a4;
+    border-radius: 40rpx;
+    border: 2rpx solid #bbb;
+    right: 48rpx;
+    margin-top: 15rpx;
+}
+
+.book-detail-info {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+    height: 100%;
+    font-size: 28rpx;
+    color: #757575;
+}
+
+.book-detail-sell {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    height: 54rpx;
+    margin-bottom: 42rpx;
+}
+
+.book-detail-price {
+    font-size: 28rpx;
+    color: #e51c23;
+    margin-bottom: 20rpx;
+}
+
+.book-detail-sell {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 175rpx;
+    height: 54rpx;
+    background-color: #07a2a4;
+    border-radius: 10rpx;
+    border: 2rpx solid #bbb;
+    right: 48rpx;
+    margin-top: 195rpx;
+}
+
+.book-detail-sell text {
+    margin: 0;
+    text-align: center;
+    line-height: 40rpx;
+    font-size: 28rpx;
+    color: #fff;
+}

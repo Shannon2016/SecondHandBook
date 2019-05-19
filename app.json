@@ -1,12 +1,12 @@
 {
   "pages": [
-    "pages/index/index",
-    "pages/logs/logs"
+    "pages/my-sell/index",
+    "pages/my-reward/my-reward"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarTitleText": "姚亚军",
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json"
