@@ -11,6 +11,21 @@
     z-index: 1;
 }
 
+.userinfo-avatar{
+  width: 200rpx;
+  height: 200rpx;
+  margin-left: 70rpx;
+  margin-top: 50rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname{
+  display: flex;
+  justify-content: center;
+  margin-left: 70rpx;
+  margin-top: 80rpx;
+}
+
 
 /*
     显示列表
@@ -19,29 +34,30 @@
 .orders {
     width: 100%;
     position: absolute;
-    margin-top: 286rpx;
+    margin-top: 350rpx;
 }
 
 .order-detail {
     display: flex;
     flex-direction: row;
     width: 100%;
-    height: 260rpx;
-    margin-bottom: 5rpx;
-    border-top: 2rpx solid #bbb;
+    height: 250rpx;
+    margin-bottom: 10rpx;
+    border-bottom: 2rpx solid #DCDFE6;
 }
 
 .order-detail-picture {
-    display: flex;
-    align-items: center;
-    width: 220rpx;
-    height: 100%;
+  width:30%;
+  height: 100%;
+  /* background-color: #00FF00; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .order-detail-picture image {
-    width: 100%;
-    height: 240rpx;
-    margin: 0 4rpx;
+  height:calc(100% - 30rpx); 
+  width: 100%;
 }
 
 .order-detail-item {

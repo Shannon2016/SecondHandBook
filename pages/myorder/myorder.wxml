@@ -1,8 +1,8 @@
 <!--pages/myorder/myorder.wxml-->
-<!-- 搜索框部分 -->
+<!-- 用户数据 -->
 <view class='userinfo'>
-    <text>用户头像</text>
-    <text>用户昵称</text>
+    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}"></image>
+    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
 </view>
 
 
@@ -15,13 +15,13 @@
             </view>
 
             <view class='order-detail-item'>
-                <text class='order-detail-name'>{{item.name}}</text>
-                <view class='order-detail-info'>
+                <text class='order-detail-name fontTitle'>{{item.name}}</text>
+                <view class='order-detail-info fontItemDetail'>
                     <text>{{"收货人："+item.consignee}}</text>
                     <text>{{"收获地址："+item.adress}}</text>
                 </view>
-                <text class='order-detail-price'
-             decode='true'>{{"实付价格&nbsp;"+item.price}}</text>
+                <text class='order-detail-price fontPrice'
+             decode='true'>{{"实付价格:&nbsp;"+item.price}}</text>
             </view>
 
         </view>

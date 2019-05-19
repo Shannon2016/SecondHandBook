@@ -1,21 +1,26 @@
 <!--pages/personcenter/personcenter.wxml-->
 <!-- 用户信息 -->
-<view class="userinfo">
-  <text>用户头像</text>
-  <text>用户昵称</text>
+<view class='userinfo'>
+    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}"></image>
+    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
 </view>
 
 <!-- 我的订单部分 -->
-<view class='myorder'>
-  <text>我的订单</text>
-</view>
+
+<navigator class="myorder" url="../myorder/myorder">
+  <text class="text-left">我的订单</text>
+  <text class="text-right">全部订单 ></text>
+</navigator>
+
 
 <!-- 我的悬赏部分 -->
-<view class='myreward'>
-  <text>我的悬赏</text>
-</view>
+<navigator class="myreward" url="../myorder/myorder">
+  <text class="text-left">我的悬赏</text>
+  <text class="text-right">悬赏列表 ></text>
+</navigator>
 
 <!-- 我的售卖部分 -->
-<view class='mysale'>
-  <text>我的售卖</text>
-</view>
+<navigator class="mysale" url="../myorder/myorder">
+  <text class="text-left">我的售卖</text>
+  <text class="text-right">售卖列表 ></text>
+</navigator>

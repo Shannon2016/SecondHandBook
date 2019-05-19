@@ -1,4 +1,9 @@
 /* pages/personcenter/personcenter.wxss */
+
+page{
+  background: #F9F8F8;
+}
+
 /*
 用户信息
 */
@@ -10,34 +15,45 @@
     position: fixed;
     z-index: 1;
 }
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
+
+.userinfo-avatar{
+  width: 200rpx;
+  height: 200rpx;
+  margin-left: 70rpx;
+  margin-top: 50rpx;
   border-radius: 50%;
+}
+
+.userinfo-nickname{
+  display: flex;
+  justify-content: center;
+  margin-left: 70rpx;
+  margin-top: 80rpx;
 }
 
 /*
 我的订单
 */
 .myorder{
+    background: #FFFFFF;
     display: flex;
     width: 100%;
-    height: 286rpx;
+    height: 80rpx;
     position: fixed;
-    margin-top: 286rpx;
-    z-index: 1;
+    margin-top: 325rpx;
+    z-index: 2;
 }
 
 /*
 我的悬赏
 */
 .myreward{
+    background: #FFFFFF;
     display: flex;
     width: 100%;
-    height: 286rpx;
+    height: 80rpx;
     position: fixed;
-    margin-top: 586rpx;
+    margin-top: 470rpx;
     z-index: 1;  
 }
 
@@ -45,10 +61,34 @@
 我的售卖
 */
 .mysale{
+    background: #FFFFFF;
     display: flex;
     width: 100%;
-    height: 286rpx;
+    height: 80rpx;
     position: fixed;
-    margin-top: 486rpx;
+    margin-top: 615rpx;
     z-index: 1;    
+}
+
+/*
+文字设置
+*/
+
+.text-left{
+  display: flex;
+  justify-content: center;
+  margin-top: 15rpx;
+  margin-left: 30rpx;
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #303133;
+}
+
+.text-right{
+  display: flex;
+  justify-content: center;
+  font-size: 28rpx;
+  color: #606266;
+  margin-top: 20rpx;
+  margin-left: 400rpx;  
 }

@@ -1,10 +1,12 @@
 // pages/myorder/myorder.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    userInfo: {},
     orders: [
       {
         picSrc: "../../image/book1.png",
@@ -28,6 +30,14 @@ Page({
    */
   onLoad: function (options) {
 
+    var that = this
+
+    console.log('onLoad')
+    app.getUserInfo(function(userInfo){
+      that.setData({
+        userInfo: userInfo
+      })
+    })
   },
 
   /**

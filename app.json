@@ -1,12 +1,11 @@
 {
   "pages": [
-    "pages/myorder/myorder",
+    "pages/personcenter/personcenter",
     "pages/mall/mall",
     "pages/reward-list/reward-list",
     "pages/index/index",
     "pages/logs/logs",
-    "pages/personcenter/personcenter"
-
+    "pages/myorder/myorder"
   ],
   "window": {
     "backgroundTextStyle": "light",
