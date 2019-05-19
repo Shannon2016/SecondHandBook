@@ -1,0 +1,124 @@
+/*搜索框部分*/
+.search {
+    display: flex;
+    width: 100%;
+    height: 286rpx;
+    position: fixed;
+    z-index: 1;
+}
+
+.search image {
+    width: 100%;
+    height: 100%;
+}
+
+.search-box {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 64rpx;
+    position: absolute;
+    margin-top: 46rpx;
+}
+
+.search-box-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 676rpx;
+    height: 100%;
+    border: 1px solid #bbb;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+}
+
+.search-item {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+}
+
+.search-item image {
+    height: 44rpx;
+    width: 44rpx;
+    align-self: center;
+    margin-left: 40rpx;
+    margin-right: 16rpx;
+}
+
+.search-item input {
+    /* 可以让输入框的输入到末尾 */
+    flex: 1;
+    font-size: 28rpx;
+    line-height: 40rpx;
+}
+
+/*列表*/
+.forum {
+  width: 100%;
+  position: absolute;
+  margin-top: 286rpx;
+}
+
+.forum-detail {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 260rpx;
+  margin-bottom: 5rpx;
+  border-top: 2rpx solid #bbb;
+}
+
+.forum-detail-title {
+    margin: 28rpx 68rpx 10rpx 68rpx;
+    font-size: 36rpx;
+    font-weight: bold;
+}
+
+.forum-detail-info {
+  margin-bottom: 24rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  height: 80rpx;
+}
+
+.forum-detail-info text {
+  width: 622rpx;
+  font-size: 28rpx;
+  color: #757575;
+}
+
+.forum-detail-note {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.forum-detail-date {
+  
+  width: 352rpx;
+  height: 30rpx;
+  font-size: 24rpx;
+  color:rgb(43, 31, 31);
+  margin-left: 68rpx;
+}
+
+.forum-detail-username {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.forum-detail-username image {
+  width: 48rpx;
+  height: 48rpx;
+}
+
+.forum-detail-username text {
+  margin-right: 40rpx;
+  font-size: 28rpx;
+  color: rgb(43, 31, 31);
+}

@@ -1,0 +1,42 @@
+<!-- 搜索框部分 -->
+<view class='search'>
+    <image src='/image/1.png'></image>
+    <view class='search-box'>
+        <view class='search-box-item'>
+            <view class='search-item'>
+                <image src='/image/search.png'></image>
+                <input placeholder='关键词'></input>
+            </view>
+        </view>
+    </view>
+</view>
+
+<!-- 显示列表 -->
+<view class='forum'>
+    <block wx:for='{{forum}}'>
+        <view class='forum-detail'>
+            <view class='forum-detail-item'>
+                <view class='forum-detail-title'>
+                    <text>{{item.title}}</text>
+                </view>
+                <view class='forum-detail-info'>
+                    <text>{{item.content}}</text>
+                </view>
+                <view class='forum-detail-note'>
+                    <text class='forum-detail-date'>{{item.date}}</text>
+                    <view class='forum-detail-username'>
+                        <image src='/image/personal-center.png'></image>
+                        <text>{{item.username}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </block>
+</view>
+
+<!-- 悬浮加号按钮 -->
+<movable-area class='add'>
+    <movable-view class='add-item' direction='all' x='25' y='25'>
+        <image src='/image/add.png'></image>
+    </movable-view>
+</movable-area>
