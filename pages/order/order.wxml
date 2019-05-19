@@ -58,5 +58,5 @@ style="padding-left: 65rpx;padding-bottom:30rpx;margin-top:40rpx;border-bottom: 
     <view><text decode="{{true}}">总计:￥&ensp;</text></view>
     <view>{{totalPrice}}</view>
   </view>
-  <view style="position:absolute;right:0;"><button id="confirm">确认支付</button></view>
+  <view style="position:absolute;right:0;"><button id="confirm" bindtap="onConfirm">确认支付</button></view>
 </view>

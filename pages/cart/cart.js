@@ -13,25 +13,29 @@ Page({
       mode:'scaleToFill',
       src:'../../image/6.jpg'
     },
-    cartInfoList:[{
+    cartInfoList:[]
+  },
+  getCartInfoList: function(){
+    this.setData({
+      cartInfoList: [{
         picSrc: "../../image/book1.png",
         bookName: "共产党宣言",
-        author:"cuteBug",
-        press:"BIT",
-        price:15.5
-      },{
+        author: "cuteBug",
+        press: "BIT",
+        price: 15.5
+      }, {
         picSrc: "../../image/book11.png",
         bookName: "博弈论",
         author: "cuteBug",
         press: "BIT",
         price: 16
-      },{
+      }, {
         picSrc: "../../image/book18.png",
         bookName: "围城",
         author: "cuteBug",
         press: "BIT",
         price: 17
-      },{
+      }, {
         picSrc: "../../image/book4.png",
         bookName: "中国哲学史",
         author: "cuteBug",
@@ -44,10 +48,10 @@ Page({
         press: "BIT",
         price: 18.7
       }
-    ]
+      ]
+    })
   },
-
-  getSum(){
+  getSum: function(){
     var tmp = 0;
     for (var i = 0; i < this.data.chooseItemIndex.length; i++) {
       var index = parseInt(this.data.chooseItemIndex[i]);
@@ -80,19 +84,31 @@ Page({
   },
   checkboxChange: function (e) {
     this.data.chooseItemIndex=e.detail.value;
-    console.log(this.data.chooseItemIndex)
     this.getSum();
   },
   goOrder:function(){
-    wx.navigateTo({
-      url: '../order/order',
-    })
+    if (this.data.chooseItemIndex.length > 0){
+      var tmp = this.data.chooseItemIndex[0];
+      for(var i = 1; i < this.data.chooseItemIndex.length; i ++){
+        tmp += ',' + this.data.chooseItemIndex[i];
+      }
+      wx.navigateTo({
+        url: '../order/order?index=' + tmp + '&total=' + this.data.totalPrice.toString(),
+      })
+    }else{
+      wx.showToast({
+        title: '请选择您的图书',
+        icon: 'none',
+        duration: 2000
+      });
+      // wx.hideToast()
+    }
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-      
+    this.getCartInfoList();
   },
 
   /**
