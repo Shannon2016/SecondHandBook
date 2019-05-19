@@ -1,0 +1,24 @@
+<!-- 用户信息 -->
+<view class='userinfo'>
+    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}"></image>
+    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+</view>
+
+<!-- 我的订单部分 -->
+<view class="myorder" catchtap='catchToMyOrderTap'>
+    <text class="text-left">我的订单</text>
+    <text class="text-right">全部订单 ></text>
+</view>
+
+
+<!-- 我的悬赏部分 -->
+<view class="myreward" catchtap='catchToMyRewardTap'>
+    <text class="text-left">我的悬赏</text>
+    <text class="text-right">悬赏列表 ></text>
+</view>
+
+<!-- 我的售卖部分 -->
+<view class="mysale" catchtap='catchToMySellTap'>
+    <text class="text-left">我的售卖</text>
+    <text class="text-right">售卖列表 ></text>
+</view>
