@@ -17,19 +17,26 @@ Page({
         })
     },
 
+    /**
+     * 页面相关事件处理函数--监听用户下拉动作
+     */
+    onPullDownRefresh: function() {
+        wx.stopPullDownRefresh()
+    },
+
     catchToMyOrderTap: function() {
         wx.navigateTo({
             url: '/pages/person-center/my-order/my-order',
         })
     },
 
-    catchToMyRewardTap: function () {
+    catchToMyRewardTap: function() {
         wx.navigateTo({
             url: '/pages/person-center/my-reward/my-reward',
         })
     },
 
-    catchToMySellTap: function () {
+    catchToMySellTap: function() {
         wx.navigateTo({
             url: '/pages/person-center/my-sell/my-sell',
         })

@@ -41,48 +41,49 @@
     </view>
     <!--书名 -->
     <view class='inputArea'>
-        <view class='fontTile'>售卖图书名</view>
-        <input class='input' maxlength="20" bindinput='getName' auto-focus/>
+        <view class='fontTile to-left'>售卖图书名</view>
+        <input class='input to-right' maxlength="20" bindinput='getName'/>
     </view>
     <!--出版社 -->
     <view class='inputArea'>
-        <view class='fontTile'>出版社</view>
-        <input class='input' maxlength="20" bindinput='getPress' auto-focus/>
+        <view class='fontTile to-left'>出版社</view>
+        <input class='input to-right' maxlength="20" bindinput='getPress'/>
     </view>
     <!--出版日期-->
     <view class='inputArea'>
-        <view class='fontTile'>出版日期</view>
-        <input class='input' maxlength="10" bindinput='getBookDate' placeholder="格式：yyyy-mm-dd" auto-focus/>
+        <view class='fontTile to-left'>出版日期</view>
+        <input class='input to-right' maxlength="10" bindinput='getBookDate' placeholder="格式：2000-01-01"/>
     </view>
     <!--作者-->
     <view class='inputArea'>
-        <view class='fontTile'>作者</view>
-        <input class='input' maxlength="20" bindinput='getAuthor' auto-focus/>
+        <view class='fontTile to-left'>作者</view>
+        <input class='input to-right' maxlength="20" bindinput='getAuthor'/>
     </view>
     <!--图书新旧-->
     <view class='inputArea'>
-        <view class='fontTile'>图书新旧</view>
-        <input class='miniInput' maxlength="2" type='number' bindinput='getDepreciation' placeholder="1~10" auto-focus></input>
-        <text class='fontTile'>成新</text>
+        <view class='fontTile to-left'>图书新旧</view>
+        <view class='to-right'>
+            <input class='miniInput' maxlength="2" type='number' bindinput='getDepreciation' placeholder="1~10"></input>
+            <text class='fontTile' style='margin-left:20rpx;'>成新</text>
+        </view>
     </view>
     <!--ISN图书号-->
     <view class='inputArea'>
-        <view class='fontTile'>ISBN图书号</view>
-        <input class='input' maxlength="13" type='number' bindinput='getISBN' placeholder="ISBN-13位书号" auto-focus/>
+        <view class='fontTile to-left'>ISBN图书号</view>
+        <input class='input to-right' maxlength="13" type='number' bindinput='getISBN' placeholder="ISBN-13位书号"/>
     </view>
     <!--预期价格-->
     <view class='inputArea'>
-        <view class='fontTile'>预期价格</view>
-        <input class='input' type='digit' bindinput='getPrice' maxlength="5" auto-focus/>
+        <view class='fontTile to-left'>预期价格</view>
+        <input class='input to-right' type='digit' bindinput='getPrice' maxlength="5"/>
     </view>
     <!--详情描述-->
     <view class='inputArea'>
-        <view class='fontTile'>详情描述</view>
-        <textarea class='largeInput' bindinput='getDescription' auto-focus/>
+        <view class='fontTile to-left'>详情描述</view>
+        <textarea class='largeInput to-right' bindinput='getDescription'/>
     </view>
     <!-- 提交按钮 -->
     <view class='uploadFinish'>
         <a class="uploadFinishBtn" bindtap='addNewSell'>确认售卖</a>
     </view>
-
 </view>

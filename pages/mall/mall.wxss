@@ -90,13 +90,27 @@
     flex-direction: column;
 }
 
+.classify-type {
+    background: #fff;
+    color: #606266;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 25%;
+    height: 70rpx;
+    padding: 0;
+    text-align: center;
+    font-size: 28rpx;
+    border-radius: 500rpx;
+}
+
 .classify-detail-item {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     align-items: center;
     width: 100%;
-    margin: 12rpx 0;
+    margin: 6rpx 0;
 }
 
 .classify-item {
@@ -161,7 +175,7 @@
     font-weight: bold;
 }
 
-.book-detail-info{
+.book-detail-info {
     display: flex;
     flex-direction: column;
     align-self: flex-start;
@@ -170,7 +184,7 @@
     color: #757575;
 }
 
-.book-detail-price{
+.book-detail-price {
     font-size: 28rpx;
     color: #e51c23;
     margin-bottom: 20rpx;
