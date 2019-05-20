@@ -1,0 +1,197 @@
+.topInfo {
+    position: fixed;
+    display: block;
+    width: 100%;
+    height: 286rpx;
+    margin-top: 0rpx;
+    top: 0;
+    z-index: 100000;
+}
+
+.topInfo image {
+    width: 100%;
+    height: 100%;
+}
+
+.topInfo-title {
+    display: flex;
+    flex-direction: row;
+    /* justify-content: center; */
+    height: 80rpx;
+    width: 100%;
+    border-bottom: 2rpx solid #dcdfe6;
+}
+
+.topInfo-title text {
+    line-height: 80rpx;
+    /* height: 52rpx; */
+    margin-left: 68rpx;
+    /* font-size: 36rpx;
+    font-weight: bold; */
+}
+
+.landlord {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 266rpx;
+    position: absolute;
+    margin-top: 75rpx;
+}
+
+.landlord-detail-note {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 54rpx;
+    width: 622rpx;
+}
+
+.landlord-detail-username {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 60rpx;
+    margin-top: 34rpx;
+}
+
+.landlord-detail-username image {
+    width: 48rpx;
+    height: 48rpx;
+    margin-right: 4rpx;
+}
+
+.landlord-detail-username text {
+    margin-right: 40rpx;
+    font-size: 28rpx;
+    color: rgb(43, 31, 31);
+}
+
+.landlord-button {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: 554rpx;
+    right: 42rpx;
+    top: 26rpx;
+    width: 154rpx;
+    height: 54rpx;
+    background-color: #07a2a4;
+    border-radius: 30rpx;
+    border: 2rpx solid #bbb;
+}
+
+.landlord-button text {
+    align-items: center;
+    font-size: 28rpx;
+}
+
+.landlord-detail-Info {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-size: 28rpx;
+    color: #757575;
+    margin-top: 32rpx;
+}
+
+.landlord-detail-Info text {
+    align-items: center;
+    width: 582rpx;
+    font-size: 28rpx;
+}
+
+.landlord-detail-date {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    margin-top: 34rpx;
+}
+
+.landlord-detail-date text {
+    width: 350rpx;
+    height: 30rpx;
+    font-size: 24rpx;
+    color: rgb(43, 31, 31);
+}
+
+.subforum {
+    width: 100%;
+    margin-top: 600rpx;
+    z-index: -1;
+}
+
+.subforum-detail-item {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 260rpx;
+    border-bottom: 2rpx solid #dcdfe6;
+    position: relative;
+    padding: 28rpx 68rpx 0rpx 68rpx;
+}
+
+.subforum-detail-username {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    margin-right: 68rpx;
+}
+
+.subforum-detail-username image {
+    width: 48rpx;
+    height: 48rpx;
+    margin-right: 4rpx;
+}
+
+.subforum-detail-date {
+    position: absolute;
+    bottom: 20rpx;
+    /* align-self: bottom; */
+}
+
+.subforum-detail-content {
+    margin-top: 10rpx;
+}
+
+.subforum-detail-level {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    width: 50rpx;
+    height: 50rpx;
+    margin-left: 25rpx;
+}
+
+.subforum-detail-level image {
+    position: absolute;
+    z-index: 0;
+}
+
+.subforum-detail-level text {
+    position: absolute;
+    text-align: center;
+    line-height: 40rpx;
+    z-index: 1;
+}
+
+.master {
+    position: absolute;
+    right: 50rpx;
+    width: 130rpx;
+    background-color: #07a2a4;
+    color: #fff;
+    font-size: 30rpx;
+    font-weight: bolder;
+    border: 2rpx solid #fff;
+    border-radius: 40rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

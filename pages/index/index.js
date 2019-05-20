@@ -9,17 +9,14 @@ Page({
         hasUserInfo: false,
         canIUse: wx.canIUse('button.open-type.getUserInfo')
     },
-
     //事件处理函数
     bindViewTap: function () {
-        wx.setStorageSync('userInfo', this.data.userInfo)
-        // TODO 返回前一个页面
+        wx.setStorageSync('userInfo',this.data.userInfo)
 
         wx.switchTab({
             url: '/pages/mall/mall',
         })
     },
-
     onLoad: function () {
         if (app.globalData.userInfo) {
             this.setData({
@@ -48,7 +45,6 @@ Page({
             })
         }
     },
-
     getUserInfo: function (e) {
         console.log(e)
         app.globalData.userInfo = e.detail.userInfo
