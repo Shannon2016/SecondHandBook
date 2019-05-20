@@ -3,6 +3,8 @@
         "pages/mall/mall",
         "pages/reward-list/reward-list",
         "pages/mall/book-detail/book-detail",
+        "pages/cart/cart",
+        "pages/order/order",
         "pages/personcenter/personcenter",
         "pages/personcenter/myorder/myorder",
         "pages/index/index",
