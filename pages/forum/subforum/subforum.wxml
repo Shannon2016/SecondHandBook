@@ -1,23 +1,28 @@
 <view class='topInfo'>
     <image src='/image/1.png'></image>
-    <view class='topInfo-title'>
-        <text>我是标题我是标题</text>
-    </view>
 </view >
-    <view>
-      <view class='subforum-detail-item' wx:for='{{subforum}}'>
-          <view class='subforum-detail-username'>
-              <image src='/image/personal-center.png'></image>
-              <text>{{item.username}}</text>
+
+<view style="position:absolute; top:290rpx;width:100%;">
+  <view class='topInfo-title'>
+  <text class='fontTitle'>我是标题我是标题</text>
+  </view>
+  <view class='subforum-detail-item' wx:for='{{subforum}}'>
+      <view class='subforum-detail-username'>
+          <image src='/image/personal-center.png'></image>
+          <text class='fontNickname'>{{item.username}}</text>
+          <view class="subforum-detail-level">
+            <text>1</text>
           </view>
-          <view class='subforum-detail-Info fontItemDetail'>
-              <text>{{item.Info}}</text>
-          </view>
-          <view class='subforum-detail-date'>
-              <text>{{item.date}}</text>
-          </view>
+          <view wx:if="{{item.ifMyself}}" class="master"><text>楼主</text></view>
       </view>
-    </view>
+      <view class='subforum-detail-content fontItemDetail'>
+          <text>{{item.content}}</text>
+      </view>
+      <view class='subforum-detail-date fontDate'>
+          <text>{{item.date}}</text>
+      </view>
+  </view>
+</view>
     <!-->
     <view class='landlord'>
           <view class='landlord-detail-note'>

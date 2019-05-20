@@ -16,15 +16,15 @@
     <block wx:for='{{forum}}'>
         <view class='forum-detail' catchtap='showForumDetail' data-forum-index='{{index}}'>
             <view class='forum-detail-item'>
-                <view class='forum-detail-title'>
+                <view class='forum-detail-title fontTitle'>
                     <text>{{item.title}}</text>
                 </view>
-                <view class='forum-detail-info'>
+                <view class='forum-detail-info fontItemDetail'>
                     <text>{{item.content}}</text>
                 </view>
                 <view class='forum-detail-note'>
-                    <text class='forum-detail-date'>{{item.date}}</text>
-                    <view class='forum-detail-username'>
+                    <text class='forum-detail-date fontDate'>{{item.date}}</text>
+                    <view class='forum-detail-username fontNickname'>
                         <image src='/image/personal-center.png'></image>
                         <text>{{item.username}}</text>
                     </view>

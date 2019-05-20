@@ -16,19 +16,18 @@
 .topInfo-title {
     display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    height: 104rpx;
+    /* justify-content: center; */
+    height: 80rpx;
     width: 100%;
-    position: absolute;
-    margin-top: 0rpx;
+    border-bottom: 2rpx solid #DCDFE6;
 }
 
 .topInfo-title text {
-    height: 52rpx;
-    margin: 24rpx, 0rpx, 28rpx, 26rpx;
-    font-size: 36rpx;
-    font-weight: bold;
+  line-height: 80rpx;
+    /* height: 52rpx; */
+    margin-left: 68rpx;
+    /* font-size: 36rpx;
+    font-weight: bold; */
 }
 
 .landlord {
@@ -133,18 +132,18 @@
     flex-direction: column;
     width: 100%;
     height: 260rpx;
-    margin-bottom: 5rpx;
-    border-top: 2rpx solid #bbb;
+    border-bottom: 2rpx solid #DCDFE6;
     position: relative;
+    padding:28rpx 68rpx 0rpx 68rpx;
 }
 
 .subforum-detail-username {
     display: flex;
     flex-direction: row;
     align-items: center;
-    /* justify-content: center; */
-    /* margin-left: 60rpx; */
-    /* margin-top: 34rpx; */
+    position: relative;
+    margin-right: 68rpx;
+    
 }
 
 .subforum-detail-username image {
@@ -155,5 +154,34 @@
 
 .subforum-detail-date {
     position:absolute;
-    bottom: 20rpx;
+    bottom: 20rpx; 
+    /* align-self: bottom; */
+}
+
+.subforum-detail-content{
+  margin-top: 10rpx;
+}
+
+.subforum-detail-level{
+ background-color: #FF0000;/*wxss无法解析本地图片做background-image，需放在服务器上*/
+ text-align: center;
+ line-height: 50rpx;
+ width: 50rpx;
+ height:50rpx;
+ margin-left: 25rpx;
+}
+
+.master{
+  position:absolute;
+  right:50rpx;
+  width: 130rpx; 
+  background-color: #07A2A4;
+  color:#FFFFFF;
+  font-size: 30rpx;
+  font-weight: bolder;
+  border: 2rpx solid #FFFFFF;
+  border-radius: 40rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

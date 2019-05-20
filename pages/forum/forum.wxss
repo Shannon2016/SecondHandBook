@@ -71,12 +71,11 @@
 
 .forum-detail-title {
     margin: 28rpx 68rpx 10rpx 68rpx;
-    font-size: 36rpx;
-    font-weight: bold;
 }
 
 .forum-detail-info {
-    margin-bottom: 24rpx;
+    margin-bottom: 20rpx;
+    margin-top: 10rpx;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -86,8 +85,6 @@
 
 .forum-detail-info text {
     width: 622rpx;
-    font-size: 28rpx;
-    color: #757575;
 }
 
 .forum-detail-note {
@@ -100,8 +97,6 @@
 .forum-detail-date { 
     width: 352rpx;
     height: 30rpx;
-    font-size: 24rpx;
-    color:rgb(43, 31, 31);
     margin-left: 68rpx;
 }
 
@@ -118,7 +113,5 @@
 
 .forum-detail-username text {
     margin-right: 40rpx;
-    font-size: 28rpx;
-    color: rgb(43, 31, 31);
 }
 

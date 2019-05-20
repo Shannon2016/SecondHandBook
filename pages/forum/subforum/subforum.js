@@ -9,27 +9,32 @@ Page({
       {
         username: '我是昵称',
         content: '我是内容我是内容我是内容我是内容',
-        date: 'YYYY-MM-DD-HH:MM:SS'
+        date: 'YYYY-MM-DD-HH:MM:SS',
+        ifMyself:true
       },
       {
         username: '我是昵称',
         content: '我是内容我是内容我是内容我是内容',
-        date: 'YYYY-MM-DD-HH:MM:SS'
+        date: 'YYYY-MM-DD-HH:MM:SS',
+        ifMyself: false
       },
       {
         username: '我是昵称',
         content: '我是内容我是内容我是内容我是内容',
-        date: 'YYYY-MM-DD-HH:MM:SS'
+        date: 'YYYY-MM-DD-HH:MM:SS',
+        ifMyself: false
       },
       {
         username: '我是昵称',
         content: '我是内容我是内容我是内容我是内容',
-        date: 'YYYY-MM-DD-HH:MM:SS'
+        date: 'YYYY-MM-DD-HH:MM:SS',
+        ifMyself: false
       },
       {
         username: '我是昵称',
         content: '我是内容我是内容我是内容我是内容',
-        date: 'YYYY-MM-DD-HH:MM:SS'
+        date: 'YYYY-MM-DD-HH:MM:SS',
+        ifMyself: false
       }
     ]
   },

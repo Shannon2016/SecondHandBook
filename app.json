@@ -1,7 +1,5 @@
 {
   "pages": [
-    "pages/cart/cart",
-    "pages/order/order",
     "pages/mall/mall",
     "pages/reward-list/reward-list",
     "pages/mall/book-detail/book-detail",
@@ -9,7 +7,9 @@
     "pages/logs/logs",
     "pages/forum/forum",
     "pages/forum/subforum/subforum",
-    "pages/forum/newtopic/newtopic"
+    "pages/forum/newtopic/newtopic",
+    "pages/cart/cart",
+    "pages/order/order"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -47,7 +47,7 @@
       {
         "selectedIconPath": "image/shopping-cart-selected.png",
         "iconPath": "image/shopping-cart.png",
-        "pagePath": "pages/mall/mall",
+        "pagePath": "pages/cart/cart",
         "text": "购物车"
       },
       {
