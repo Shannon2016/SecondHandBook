@@ -55,18 +55,18 @@
 
 /*列表*/
 .forum {
-  width: 100%;
-  position: absolute;
-  margin-top: 286rpx;
+    width: 100%;
+    position: absolute;
+    margin-top: 286rpx;
 }
 
 .forum-detail {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 260rpx;
-  margin-bottom: 5rpx;
-  border-top: 2rpx solid #bbb;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 260rpx;
+    margin-bottom: 5rpx;
+    border-top: 2rpx solid #bbb;
 }
 
 .forum-detail-title {
@@ -76,49 +76,49 @@
 }
 
 .forum-detail-info {
-  margin-bottom: 24rpx;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  width: 100%;
-  height: 80rpx;
+    margin-bottom: 24rpx;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    height: 80rpx;
 }
 
 .forum-detail-info text {
-  width: 622rpx;
-  font-size: 28rpx;
-  color: #757575;
+    width: 622rpx;
+    font-size: 28rpx;
+    color: #757575;
 }
 
 .forum-detail-note {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.forum-detail-date {
-  
-  width: 352rpx;
-  height: 30rpx;
-  font-size: 24rpx;
-  color:rgb(43, 31, 31);
-  margin-left: 68rpx;
+.forum-detail-date { 
+    width: 352rpx;
+    height: 30rpx;
+    font-size: 24rpx;
+    color:rgb(43, 31, 31);
+    margin-left: 68rpx;
 }
 
 .forum-detail-username {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .forum-detail-username image {
-  width: 48rpx;
-  height: 48rpx;
+    width: 48rpx;
+    height: 48rpx;
 }
 
 .forum-detail-username text {
-  margin-right: 40rpx;
-  font-size: 28rpx;
-  color: rgb(43, 31, 31);
+    margin-right: 40rpx;
+    font-size: 28rpx;
+    color: rgb(43, 31, 31);
 }
+

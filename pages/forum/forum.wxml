@@ -5,7 +5,7 @@
         <view class='search-box-item'>
             <view class='search-item'>
                 <image src='/image/search.png'></image>
-                <input placeholder='关键词'></input>
+                <input placeholder='搜索相关论坛'></input>
             </view>
         </view>
     </view>
@@ -14,7 +14,7 @@
 <!-- 显示列表 -->
 <view class='forum'>
     <block wx:for='{{forum}}'>
-        <view class='forum-detail'>
+        <view class='forum-detail' catchtap='showForumDetail' data-forum-index='{{index}}'>
             <view class='forum-detail-item'>
                 <view class='forum-detail-title'>
                     <text>{{item.title}}</text>
@@ -36,7 +36,7 @@
 
 <!-- 悬浮加号按钮 -->
 <movable-area class='add'>
-    <movable-view class='add-item' direction='all' x='25' y='25'>
+    <movable-view class='add-item' catchtap='addNewTopic' direction='all' x='25' y='25'>
         <image src='/image/add.png'></image>
     </movable-view>
 </movable-area>

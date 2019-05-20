@@ -6,7 +6,8 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/forum/forum",
-    "pages/forum/subforum/subforum"
+    "pages/forum/subforum/subforum",
+    "pages/forum/newtopic/newtopic"
   ],
   "window": {
     "backgroundTextStyle": "light",
