@@ -13,25 +13,22 @@
 
 <!-- 显示列表 -->
 <view class='forum'>
-    <block wx:for='{{forum}}'>
-        <view class='forum-detail' catchtap='showForumDetail' data-forum-index='{{index}}'>
-            <view class='forum-detail-item'>
-                <view class='forum-detail-title fontTitle'>
-                    <text>{{item.title}}</text>
-                </view>
-                <view class='forum-detail-info fontItemDetail'>
-                    <text>{{item.content}}</text>
-                </view>
-                <view class='forum-detail-note'>
-                    <text class='forum-detail-date fontDate'>{{item.date}}</text>
-                    <view class='forum-detail-username fontNickname'>
-                        <image src='/image/personal-center.png'></image>
-                        <text>{{item.username}}</text>
-                    </view>
-                </view>
+    <view wx:for='{{forum}}' class='forum-detail-item' catchtap='showForumDetail' data-forum-index='{{index}}'>
+        <view class='forum-detail-username'>
+            <image src='/image/personal-center.png'></image>
+            <text class='fontNickname'>{{item.username}}</text>
+            <view class="forum-detail-level">
+                <image src='/image/diamond.png'></image>
+                <text>1</text>
             </view>
         </view>
-    </block>
+        <view class='forum-detail-title fontTitle'>
+            <text>{{item.title}}</text>
+        </view>
+        <view class='forum-detail-date fontDate'>
+            <text>{{item.date}}</text>
+        </view>
+    </view>
 </view>
 
 <!-- 悬浮加号按钮 -->
