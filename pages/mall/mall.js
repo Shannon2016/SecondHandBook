@@ -39,6 +39,16 @@ Page({
         ]
     },
 
+    onLoad: function() {
+        var userInfo = wx.getStorageSync('userInfo')
+
+        if (!userInfo) {
+            wx.redirectTo({
+                url: '/pages/index/index',
+            })
+        }
+    },
+
     showBookDetail: function(event) {
         var bookIndex = event.currentTarget.dataset.bookIndex
         var bookDetail = JSON.stringify(this.data.books[bookIndex])

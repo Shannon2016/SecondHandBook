@@ -46,7 +46,7 @@
             {
                 "selectedIconPath": "image/shopping-cart-selected.png",
                 "iconPath": "image/shopping-cart.png",
-                "pagePath": "pages/mall/mall",
+                "pagePath": "pages/cart/cart",
                 "text": "购物车"
             },
             {

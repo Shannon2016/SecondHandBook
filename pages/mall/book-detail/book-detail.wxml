@@ -26,14 +26,14 @@
 
 <!-- 购买部分 -->
 <view class='buy'>
-    <view class='buy-cart'>
+    <view class='buy-cart' catchtap='catchToCartTap'>
         <image src='/image/shopping-cart.png'></image>
         <text>购物车</text>
     </view>
-    <view class='buy-add'>
+    <view class='buy-add' catchtap='catchAddCartTap'>
         <text class='buy-text'>加入购物车</text>
     </view>
-    <view class='buy-current'>
+    <view class='buy-current' catchtap='catchBuy'>
         <text class='buy-text'>立即购买</text>
     </view>
 </view>
