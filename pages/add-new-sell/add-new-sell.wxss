@@ -1,0 +1,234 @@
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 30rpx;
+    box-sizing: border-box;
+}
+
+.inputArea {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30rpx;
+    box-sizing: border-box;
+    margin: 10rpx;
+}
+
+/*画廊*/
+
+.gallery {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    background: #fff;
+}
+
+/*每张图片所占容器*/
+
+.item-ot {
+    margin: 20rpx;
+    width: 100%;
+    height: 100%;
+}
+
+.item {
+    position: relative;
+    margin: 0 auto;
+    width: 280rpx;
+    height: 300rpx;
+    background: #eee;
+    border: 2rpx solid rgb(202, 197, 197);
+}
+
+.itemImg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.itemImg image {
+    width: 100%;
+    height: 100%;
+}
+
+/*添加按钮*/
+
+.addIcon {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    line-height: 300rpx;
+    font-size: 30rpx;
+    background: #fff;
+    color: #999;
+    z-index: 2;
+}
+
+/*删除按钮*/
+
+.delete {
+    position: absolute;
+    right: 0;
+    top: 0;
+    opacity: 1;
+    height: 36rpx;
+    font-size: 22rpx;
+    font-weight: 700;
+    padding: 0 8rpx 0 10rpx;
+    color: rgb(24, 23, 23);
+}
+
+.itemTxt {
+    text-align: center;
+    font-size: 30rpx;
+    color: #999;
+    margin-top: 50rpx;
+    margin-bottom: 70rpx;
+    font-weight: 700;
+}
+
+.uploadFinish {
+    width: 100%;
+    height: 100%;
+    padding: 0 30rpx;
+    box-sizing: border-box;
+}
+
+.uploadFinishBtn {
+    background: rgb(75, 199, 168);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 25%;
+    height: 70rpx;
+    padding: 0;
+    text-align: center;
+    font-size: 30rpx;
+    border-radius: 10rpx;
+    margin: 0 0 0 255rpx;
+}
+
+.typeBtn {
+    background: #fff;
+    color: #606266;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 25%;
+    height: 70rpx;
+    padding: 0;
+    text-align: center;
+    font-size: 28rpx;
+}
+
+.typeBtn:hover {
+    background: rgb(75, 199, 168);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 25%;
+    height: 70rpx;
+    padding: 0;
+    text-align: center;
+    font-size: 30rpx;
+    border-radius: 500rpx;
+}
+
+.boxStyle {
+    width: 300rpx;
+    height: 100rpx;
+    position: absolute;
+    bottom: -1rpx;
+    border-radius: 50%;
+    box-shadow: 0rpx 10rpx 100rpx #fff;
+    margin-left: 35rpx;
+}
+
+.fontTitle {
+    font-size: 32rpx;
+    font-weight: 600;
+    color: #303133;
+}
+
+.fontItemDetail, .fontClass {
+    font-size: 28rpx;
+    color: #606266;
+}
+
+.fontDetail {
+    font-size: 30rpx;
+    color: #303133;
+}
+
+.fontPrice {
+    color: #f00;
+    font-size: 32rpx;
+}
+
+.fontDate, .fontNickname {
+    color: #303133;
+    font-size: 26rpx;
+}
+
+.input {
+    background-color: #fff;
+    border-radius: 4px;
+    border: 1px solid #dcdfe6;
+    box-sizing: border-box;
+    color: #606266;
+    font-size: 28rpx;
+    padding: 0 15px;
+    height: 65rpx;
+}
+
+.miniInput {
+    background-color: #fff;
+    border-radius: 4px;
+    border: 1px solid #dcdfe6;
+    box-sizing: border-box;
+    color: #606266;
+    font-size: 28rpx;
+    padding: 0 15px;
+    height: 65rpx;
+    width: 210rpx;
+}
+
+.largeInput {
+    background-color: #fff;
+    border-radius: 4px;
+    border: 1px solid #dcdfe6;
+    box-sizing: border-box;
+    color: #606266;
+    font-size: 28rpx;
+    padding: 0 10px;
+    height: 260rpx;
+    width: 65%;
+}
+
+.typeSelect {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    line-height: 300rpx;
+    font-size: 30rpx;
+    background: #fff;
+    color: rgb(34, 33, 33);
+}

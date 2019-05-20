@@ -8,10 +8,12 @@
     "pages/forum/newtopic/newtopic",
     "pages/cart/cart",
     "pages/order/order",
-    "pages/personcenter/personcenter",
-    "pages/personcenter/myorder/myorder",
-    "pages/personcenter/my-reward/my-reward",
-    "pages/personcenter/my-sell/my-sell",
+    "pages/person-center/person-center",
+    "pages/person-center/my-order/my-order",
+    "pages/person-center/my-reward/my-reward",
+    "pages/person-center/my-sell/my-sell",
+    "pages/add-new-sell/add-new-sell",
+    "pages/add-reward/add-reward",
     "pages/index/index",
     "pages/logs/logs"
   ],
@@ -57,7 +59,7 @@
       {
         "selectedIconPath": "image/personal-center-selected.png",
         "iconPath": "image/personal-center.png",
-        "pagePath": "pages/personcenter/personcenter",
+        "pagePath": "pages/person-center/person-center",
         "text": "个人中心"
       }
     ]

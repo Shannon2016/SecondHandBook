@@ -19,19 +19,19 @@ Page({
 
     catchToMyOrderTap: function() {
         wx.navigateTo({
-            url: '/pages/personcenter/myorder/myorder',
+            url: '/pages/person-center/my-order/my-order',
         })
     },
 
     catchToMyRewardTap: function () {
         wx.navigateTo({
-            url: '/pages/personcenter/my-reward/my-reward',
+            url: '/pages/person-center/my-reward/my-reward',
         })
     },
 
     catchToMySellTap: function () {
         wx.navigateTo({
-            url: '/pages/personcenter/my-sell/my-sell',
+            url: '/pages/person-center/my-sell/my-sell',
         })
     },
 })

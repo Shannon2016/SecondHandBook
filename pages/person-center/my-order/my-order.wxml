@@ -17,11 +17,10 @@
                     <text>{{"收货人："+item.consignee}}</text>
                     <text>{{"收获地址："+item.adress}}</text>
                 </view>
-                <text class='order-detail-price fontPrice'
-             decode='true'>{{"实付价格:&nbsp;"+item.price}}</text>
+                <text class='order-detail-price fontPrice' decode='true'>{{"实付价格:&nbsp;"+item.price}}</text>
             </view>
 
         </view>
- 
+
     </block>
 </view>

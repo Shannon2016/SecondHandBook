@@ -98,5 +98,11 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+
+    catchAddNewSellTap:function(){
+        wx.navigateTo({
+            url: '/pages/add-new-sell/add-new-sell',
+        })
+    }
 })

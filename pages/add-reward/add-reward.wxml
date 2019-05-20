@@ -42,7 +42,7 @@
   </view>
   <!--书名 -->
   <view class='inputArea'>
-    <view class='fontTile'>售卖图书名</view>
+    <view class='fontTile'>悬赏图书名</view>
     <input class='input' maxlength="20" bindinput='getName' auto-focus/>
   </view>
   <!--出版社 -->
@@ -83,7 +83,7 @@
   </view>
   <!-- 提交按钮 -->
   <view class='uploadFinish'>
-    <a class="uploadFinishBtn" bindtap='addNewSell'>确认售卖</a>
+    <a class="uploadFinishBtn" bindtap='addReward'>发布悬赏</a>
   </view>
 
 </view>
