@@ -7,6 +7,8 @@
         "pages/order/order",
         "pages/personcenter/personcenter",
         "pages/personcenter/myorder/myorder",
+        "pages/personcenter/my-reward/my-reward",
+        "pages/personcenter/my-sell/my-sell",
         "pages/index/index",
         "pages/logs/logs"
     ],

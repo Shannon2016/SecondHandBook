@@ -1,0 +1,47 @@
+<!--pages/my-reward/my-reward.wxml-->
+<!-- 背景图片 -->
+<view class='background'>
+  <image src='/image/4.jpg'></image>
+
+</view>
+
+<!-- 显示列表 -->
+<view class='books'>
+    <block wx:for='{{books}}'>
+        <view class='book-detail'>
+            <view class='book-detail-picture'>
+                <image src='{{item.picSrc}}'></image>
+            </view>
+
+            <view class='book-detail-item'>
+                <text class='book-detail-name'>{{item.name}}</text>
+                <view class='book-detail-info'>
+                    <text>{{"作者："+item.author}}</text>
+                    <text>{{"出版社："+item.press}}</text>
+                </view>
+                <text class='book-detail-price' decode='true'>{{"￥&nbsp;"+item.price}}</text>
+            </view>
+
+            <view>
+              <text class='book-del_reward-text'>我已有书</text>
+              <image src='/image/hand-point-right.png' class='book-del_reward-image'></image>
+              <button class='book-detail-sell'>
+                <text>取消悬赏</text>
+              </button>
+            </view>
+        </view>
+
+
+    </block>
+
+
+
+
+</view>
+
+<!-- 悬浮加号按钮 -->
+<movable-area class='add'>
+    <movable-view class='add-item' direction='all' x='25' y='25'>
+        <image src='/image/add.png'></image>
+    </movable-view>
+</movable-area>

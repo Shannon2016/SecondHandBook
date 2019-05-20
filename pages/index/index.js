@@ -14,6 +14,10 @@ Page({
     bindViewTap: function () {
         wx.setStorageSync('userInfo', this.data.userInfo)
         // TODO 返回前一个页面
+
+        wx.switchTab({
+            url: '/pages/mall/mall',
+        })
     },
 
     onLoad: function () {

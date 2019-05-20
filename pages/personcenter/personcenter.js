@@ -25,13 +25,13 @@ Page({
 
     catchToMyRewardTap: function () {
         wx.navigateTo({
-            url: '',
+            url: '/pages/personcenter/my-reward/my-reward',
         })
     },
 
     catchToMySellTap: function () {
         wx.navigateTo({
-            url: '',
+            url: '/pages/personcenter/my-sell/my-sell',
         })
     },
 })
