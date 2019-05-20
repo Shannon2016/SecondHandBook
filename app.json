@@ -2,8 +2,14 @@
   "pages": [
     "pages/cart/cart",
     "pages/order/order",
+    "pages/mall/mall",
+    "pages/reward-list/reward-list",
+    "pages/mall/book-detail/book-detail",
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/forum/forum",
+    "pages/forum/subforum/subforum",
+    "pages/forum/newtopic/newtopic"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -11,5 +17,45 @@
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle": "black"
   },
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "requiredBackgroundModes": [
+    "audio"
+  ],
+  "tabBar": {
+    "color": "#101010",
+    "selectedColor": "#e51c23",
+    "borderStyle": "black",
+    "list": [
+      {
+        "selectedIconPath": "image/shopping-bag-alt-selected.png",
+        "iconPath": "image/shopping-bag-alt.png",
+        "pagePath": "pages/mall/mall",
+        "text": "热卖商城"
+      },
+      {
+        "selectedIconPath": "image/question-selected.png",
+        "iconPath": "image/question.png",
+        "pagePath": "pages/reward-list/reward-list",
+        "text": "悬赏图书"
+      },
+      {
+        "selectedIconPath": "image/discussion-selected.png",
+        "iconPath": "image/discussion.png",
+        "pagePath": "pages/forum/forum",
+        "text": "图书论坛"
+      },
+      {
+        "selectedIconPath": "image/shopping-cart-selected.png",
+        "iconPath": "image/shopping-cart.png",
+        "pagePath": "pages/mall/mall",
+        "text": "购物车"
+      },
+      {
+        "selectedIconPath": "image/personal-center-selected.png",
+        "iconPath": "image/personal-center.png",
+        "pagePath": "pages/mall/mall",
+        "text": "个人中心"
+      }
+    ]
+  }
 }
