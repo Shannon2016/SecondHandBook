@@ -1,0 +1,89 @@
+<!--pages/addReward/addReward.wxml-->
+<view class="gallery">
+  <view class='item-ot'>
+    <view class="item">
+
+      <!-- 添加按钮 -->
+      <view class="addIcon" bindtap="chooseImage" wx:if="{{imgBoolean}}">
+          <view class=''>点击添加图片描述</view>
+      </view>
+
+      <!-- 上传的图 -->
+      <view class='itemImg' >
+       <!--图片-->
+      <image src="{{item}}" data-src="{{item}}" bindtap="previewImage"  mode="aspectFill" />
+
+        <!--图片上的删除按钮 -->
+      <view class="delete" bindtap="deleteImg" data-index="{{index}}">X</view>
+      </view>
+    </view>
+  </view>
+  <view class='uploadFinish'>
+     <text class='fontTile'>图书分类</text> 
+  </view>
+  <!--类型选项栏 -->
+  <view class='container'>
+   <a class="typeBtn" data-classId="1" bindtap="getType">公务员</a>
+   <view class="">|</view>
+   <a class="typeBtn" data-classId="2" bindtap="getType">考研</a>
+   <view class="">|</view>
+   <a class="typeBtn" data-classId="3" bindtap="getType">四六级</a>
+   <view class="">|</view>
+   <a class="typeBtn" data-classId="4" bindtap="getType">考律师</a>
+  </view>
+  <view class='container'>
+   <a class="typeBtn" data-classId="5" bindtap="getType">基础教材</a>
+   <view class="">|</view>
+   <a class="typeBtn" data-classId="6" bindtap="getType">畅销书</a>
+   <view class="">|</view>
+   <a class="typeBtn" data-classId="7" bindtap="getType">会计</a>
+   <view class="">|</view>
+   <a class="typeBtn" data-classId="8" bindtap="getType">其他</a>
+  </view>
+  <!--书名 -->
+  <view class='inputArea'>
+    <view class='fontTile'>售卖图书名</view>
+    <input class='input' maxlength="20" bindinput='getName' auto-focus/>
+  </view>
+  <!--出版社 -->
+  <view class='inputArea'>
+    <view class='fontTile'>出版社</view>
+    <input class='input' maxlength="20" bindinput='getPress' auto-focus/>
+  </view>
+  <!--出版日期-->
+  <view class='inputArea'>
+    <view class='fontTile'>出版日期</view>
+    <input class='input' maxlength="10" bindinput='getBookDate' placeholder="格式：yyyy-mm-dd" auto-focus/>
+  </view>
+  <!--作者-->
+  <view class='inputArea'>
+    <view class='fontTile'>作者</view>
+    <input class='input' maxlength="20" bindinput='getAuthor' auto-focus/>
+  </view>
+  <!--图书新旧-->
+  <view class='inputArea'>
+    <view class='fontTile'>图书新旧</view>
+    <input class='miniInput' maxlength="2" type='number' bindinput='getDepreciation' placeholder="1~10" auto-focus></input>
+    <text class='fontTile'>成新</text>
+  </view>
+  <!--ISN图书号-->
+  <view class='inputArea'>
+    <view class='fontTile'>ISBN图书号</view>
+    <input class='input' maxlength="13" type='number' bindinput='getISBN' placeholder="ISBN-13位书号" auto-focus/>
+  </view>
+  <!--预期价格-->
+  <view class='inputArea'>
+    <view class='fontTile'>预期价格</view>
+    <input class='input' type='digit' bindinput='getPrice' maxlength="5" auto-focus/>
+  </view>
+  <!--详情描述-->
+  <view class='inputArea'>
+    <view class='fontTile'>详情描述</view>
+    <textarea class='largeInput' bindinput='getDescription' auto-focus/>
+  </view>
+  <!-- 提交按钮 -->
+  <view class='uploadFinish'>
+    <a class="uploadFinishBtn" bindtap='addNewSell'>确认售卖</a>
+  </view>
+
+</view>
