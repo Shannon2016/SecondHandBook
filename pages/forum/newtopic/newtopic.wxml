@@ -1,0 +1,19 @@
+<view class='topInfo'>
+    <image src='/image/1.png'></image>
+</view>
+
+<view class='newtopic'>
+    <view class='newtopic-topic'>
+        <text>主题</text>
+        <input placeholder='请输入主题'></input>
+    </view>
+
+    <view class='newtopic-content'>
+        <text>内容</text>
+        <textarea placeholder='请输入内容'></textarea>
+    </view>
+
+    <button class='newtopic-button'>
+        <text>发表</text>
+    </button>
+</view>

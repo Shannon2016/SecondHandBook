@@ -1,0 +1,117 @@
+/*搜索框部分*/
+
+.search {
+    display: flex;
+    width: 100%;
+    height: 286rpx;
+    position: fixed;
+    z-index: 2;
+}
+
+.search image {
+    width: 100%;
+    height: 100%;
+}
+
+.search-box {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 64rpx;
+    position: absolute;
+    margin-top: 46rpx;
+}
+
+.search-box-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 676rpx;
+    height: 100%;
+    border: 1px solid #bbb;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+}
+
+.search-item {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+}
+
+.search-item image {
+    height: 44rpx;
+    width: 44rpx;
+    align-self: center;
+    margin-left: 40rpx;
+    margin-right: 16rpx;
+}
+
+.search-item input {
+    /* 可以让输入框的输入到末尾 */
+    flex: 1;
+    font-size: 28rpx;
+    line-height: 40rpx;
+}
+
+/*列表*/
+
+.forum {
+    width: 100%;
+    position: absolute;
+    margin-top: 286rpx;
+}
+
+.forum-detail-level {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    width: 50rpx;
+    height: 50rpx;
+    margin-left: 25rpx;
+}
+
+.forum-detail-level image{
+    position: absolute;
+    z-index: 0;
+}
+
+.forum-detail-level text{
+    position: absolute;
+    text-align: center;
+    line-height: 40rpx;
+    z-index: 1;
+}
+
+.forum-detail-username {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    margin-right: 68rpx;
+}
+
+.forum-detail-username image {
+    width: 48rpx;
+    height: 48rpx;
+    margin-right: 4rpx;
+}
+
+.forum-detail-date {
+    position: absolute;
+    bottom: 20rpx;
+}
+
+.forum-detail-title {
+    margin-top: 20rpx;
+}
+
+.forum-detail-item {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 260rpx;
+    border-bottom: 2rpx solid #dcdfe6;
+    position: relative;
+    padding: 28rpx 68rpx 0rpx 68rpx;
+}

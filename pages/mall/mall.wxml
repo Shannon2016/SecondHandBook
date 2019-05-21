@@ -1,0 +1,58 @@
+<!-- 搜索框部分 -->
+<view class='search'>
+    <image src='/image/2.jpg'></image>
+    <view class='search-box'>
+        <view class='search-box-item'>
+            <view class='search-item'>
+                <image src='/image/search.png' catchtap='searchBook'></image>
+                <input placeholder='搜索相关图书' bindinput='searchInput' catchconfirm='searchBook'></input>
+            </view>
+        </view>
+    </view>
+</view>
+
+<!-- 分类查询部分 -->
+<view class='classify'>
+    <view class='classify-title'>
+        <text>书单分类</text>
+    </view>
+    <view class='classify-detail'>
+        <view class='classify-detail-item'>
+            <text class='classify-type' catchtap='showClassifyBook' data-type='{{1}}'>公务员</text>
+            <text>|</text>
+            <text class='classify-type' catchtap='showClassifyBook' data-type='{{2}}'>考研</text>
+            <text>|</text>
+            <text class='classify-type' catchtap='showClassifyBook' data-type='{{3}}'>四六级</text>
+            <text>|</text>
+            <text class='classify-type' catchtap='showClassifyBook' data-type='{{4}}'>考律师</text>
+        </view>
+        <view class='classify-detail-item'>
+            <text class='classify-type' catchtap='showClassifyBook' data-type='{{5}}'>基础教材</text>
+            <text>|</text>
+            <text class='classify-type' catchtap='showClassifyBook' data-type='{{6}}'>畅销书</text>
+            <text>|</text>
+            <text class='classify-type' catchtap='showClassifyBook' data-type='{{7}}'>会计</text>
+            <text>|</text>
+            <text class='classify-type' catchtap='showClassifyBook' data-type='{{8}}'>其它</text>
+        </view>
+    </view>
+</view>
+
+<!-- 显示列表 -->
+<view class='books'>
+    <block wx:for='{{books}}'>
+        <view class='book-detail' catchtap='showBookDetail' data-book-index='{{index}}'>
+            <view class='book-detail-picture'>
+                <image src='{{item.picSrc}}' lazy-load='true'></image>
+            </view>
+
+            <view class='book-detail-item'>
+                <text class='book-detail-name'>{{item.name}}</text>
+                <view class='book-detail-info'>
+                    <text>{{"作者："+item.author}}</text>
+                </view>
+                <text class='book-detail-price' decode='true'>{{"￥&nbsp;"+item.price}}</text>
+            </view>
+        </view>
+    </block>
+</view>

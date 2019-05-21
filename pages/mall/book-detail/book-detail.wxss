@@ -1,0 +1,126 @@
+.detail-image-box {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+    width: 100%;
+    height: 620rpx;
+}
+
+.detail-image-box image {
+    width: 600rpx;
+    height: 100%;
+}
+
+.detail-info-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 120rpx;
+    margin: 20rpx 0;
+}
+
+.detail-name-level {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 64rpx;
+}
+
+.detail-name {
+    font-size: 36rpx;
+    font-weight: bold;
+    color: #101010;
+}
+
+.detail-level {
+    font-size: 36rpx;
+    color: #e51c23;
+}
+
+.detail-price {
+    font-size: 32rpx;
+    color: #e51c23;
+    margin-left: 64rpx;
+}
+
+.detail-description-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    border-top: 4rpx solid #bbb;
+}
+
+.detail-description-title {
+    margin: 20rpx 0;
+}
+
+.detail-description-title text {
+    font-size: 36rpx;
+    font-weight: bold;
+    color: #101010;
+}
+
+.detail-description {
+    width: 600rpx;
+}
+
+.detail-description text {
+    font-size: 28rpx;
+    color: #101010;
+}
+
+.buy {
+    display: flex;
+    flex-direction: row;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 120rpx;
+}
+
+.buy-cart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 20%;
+    height: 100%;
+    background-color: #fff;
+}
+
+.buy-cart image{
+    width: 48rpx;
+    height: 48rpx;
+}
+
+.buy-cart text{
+    font-size: 28rpx;
+    color: #101010;
+}
+
+.buy-add {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+    height: 100%;
+    background-color: #ff8300;
+}
+
+.buy-current {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+    height: 100%;
+    background-color: #e51c23;
+}
+
+.buy-text{
+    font-size: 28rpx;
+    color: #fff;
+    font-family: Arial;
+}

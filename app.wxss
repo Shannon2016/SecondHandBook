@@ -1,13 +1,101 @@
 /**app.wxss**/
 
 .container {
-    height: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+} 
+
+.fontTitle{
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #303133;
+}
+
+.fontItemDetail, .fontClass{
+  font-size: 28rpx;
+  color: #606266;
+}
+
+.fontDetail{
+  font-size: 30rpx;
+  color: #303133;
+}
+
+.fontPrice{
+  color: #FF0000;
+  font-size: 32rpx;
+}
+
+.fontDate, .fontNickname{
+  color: #303133;
+  font-size: 28rpx;
+}
+
+/*
+    悬浮加号按钮
+*/
+.add{
+    position: fixed;
+    width: 160rpx;
+    height: 160rpx;
+    right: 50rpx;
+    bottom: 80rpx;
+}
+
+.add-item{
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    padding: 200rpx 0;
-    box-sizing: border-box;
-    font-family: 'Microsoft Yahei';
-    font-size: 24rpx;
+    justify-content: center;
+    width: 64rpx;
+    height: 64rpx;
+    border-radius: 100rpx;
+    border: 2rpx solid #bbb;
+    background-color: rgba(215,214,214,0.5);
+}
+
+.add-item image{
+    width: 100%;
+    height: 100%;
+}
+
+input{
+  background-color: #fff;
+  border-radius: 4px;
+  border: 1px solid #dcdfe6;
+  box-sizing: border-box;
+  color: #606266;
+  font-size: 28rpx;
+  padding: 0 15px;
+  height:65rpx;
+}
+/*
+    悬浮加号按钮
+*/
+.add{
+    position: fixed;
+    width: 160rpx;
+    height: 160rpx;
+    right: 50rpx;
+    bottom: 80rpx;
+}
+
+.add-item{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64rpx;
+    height: 64rpx;
+    border-radius: 100rpx;
+    border: 2rpx solid #bbb;
+    background-color: rgba(215,214,214,0.5);
+}
+
+.add-item image{
+    width: 100%;
+    height: 100%;
 }

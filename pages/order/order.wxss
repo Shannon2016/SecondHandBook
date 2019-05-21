@@ -1,0 +1,114 @@
+/* pages/order/order.wxss */
+#orderInfo{
+  display: flex;
+  flex-direction: column;
+}
+
+.orderInfoItem{
+  display: flex;
+  flex-direction: row;
+  margin-top: 20rpx;
+}
+
+.orderInfoItemTitle{
+  width:30%;
+  padding-left: 65rpx;
+  display: flex;
+  align-items: center;
+}
+
+.orderInfoItemInput{
+  width:85%;
+  padding-right: 60rpx;
+}
+/*list*/
+.orderListItem{
+  display: flex;
+  flex-direction:row;
+  width: 100%;
+  height:250rpx;
+  border-bottom: 2rpx solid #DCDFE6;
+  margin-bottom: 10rpx;
+}
+
+
+.picContainer{
+  width:30%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.infoContainer{
+  width:70%;
+  height:100%;
+  display: flex;
+  flex-direction:column;
+  font-size: 30rpx!important;
+  padding-left: 30rpx;
+  position: relative;
+}
+
+.pictures{
+  height:calc(100% - 30rpx); 
+  width: 100%;
+}
+
+.infoAuthorContainer{
+  display: flex;
+  flex-direction:row;
+  margin-top: 10rpx;
+}
+
+.infoPressContainer{
+  display: flex;
+  flex-direction:row;
+  margin-top: 5rpx;
+}
+
+.infoPriceContainer{
+  display: flex;
+  flex-direction:row;
+  margin-bottom: 5rpx;
+  position: absolute;
+  bottom: 20rpx;
+}
+
+.infoNameContainer{
+  margin-top: 16rpx;
+}
+
+/*bottomBar*/
+#bottomBar{
+  position:fixed; 
+  bottom:0; 
+  width:100%; 
+  height:100rpx; 
+  z-index:2; 
+  overflow:hidden; 
+  border: 2rpx solid #DCDFE6;
+  background-color: #F7F7F7;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#totalPrice{
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  right: 320rpx;
+}
+
+#confirm{
+  border: 1rpx solid #BBBBBB;
+  background-color: #FF0000;
+  border-radius: 0;
+  color: #FFFFFF;
+  font-weight: bolder;
+  height: 100rpx;
+  width: 280rpx;
+  font-size: 32rpx;
+  line-height: 100rpx;
+}

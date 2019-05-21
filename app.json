@@ -1,18 +1,68 @@
 {
-    "pages": [
-        "pages/index/index",
-        "pages/posts/posts",
-        "pages/posts/posts-detail/posts-detail",
-        "pages/logs/logs"
-    ],
-    "window": {
-        "backgroundTextStyle": "light",
-        "navigationBarBackgroundColor": "#405f80",
-        "navigationBarTitleText": "WeChat",
-        "navigationBarTextStyle": "black"
-    },
-    "sitemapLocation": "sitemap.json",
-    "requiredBackgroundModes": [
-        "audio"
+  "pages": [
+    "pages/mall/mall",
+    "pages/reward-list/reward-list",
+    "pages/mall/book-detail/book-detail",
+    "pages/forum/forum",
+    "pages/forum/subforum/subforum",
+    "pages/forum/newtopic/newtopic",
+    "pages/cart/cart",
+    "pages/order/order",
+    "pages/person-center/person-center",
+    "pages/person-center/my-order/my-order",
+    "pages/person-center/my-reward/my-reward",
+    "pages/person-center/my-sell/my-sell",
+    "pages/add-new-sell/add-new-sell",
+    "pages/add-reward/add-reward",
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true
+  },
+  "sitemapLocation": "sitemap.json",
+  "requiredBackgroundModes": [
+    "audio"
+  ],
+  "tabBar": {
+    "color": "#101010",
+    "selectedColor": "#e51c23",
+    "borderStyle": "black",
+    "list": [
+      {
+        "selectedIconPath": "image/shopping-bag-alt-selected.png",
+        "iconPath": "image/shopping-bag-alt.png",
+        "pagePath": "pages/mall/mall",
+        "text": "热卖商城"
+      },
+      {
+        "selectedIconPath": "image/question-selected.png",
+        "iconPath": "image/question.png",
+        "pagePath": "pages/reward-list/reward-list",
+        "text": "悬赏图书"
+      },
+      {
+        "selectedIconPath": "image/discussion-selected.png",
+        "iconPath": "image/discussion.png",
+        "pagePath": "pages/forum/forum",
+        "text": "图书论坛"
+      },
+      {
+        "selectedIconPath": "image/shopping-cart-selected.png",
+        "iconPath": "image/shopping-cart.png",
+        "pagePath": "pages/cart/cart",
+        "text": "购物车"
+      },
+      {
+        "selectedIconPath": "image/personal-center-selected.png",
+        "iconPath": "image/personal-center.png",
+        "pagePath": "pages/person-center/person-center",
+        "text": "个人中心"
+      }
     ]
+  }
 }
