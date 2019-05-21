@@ -1,3 +1,5 @@
+const app = getApp()
+
 Page({
 
     /**
@@ -42,19 +44,25 @@ Page({
         wx.stopPullDownRefresh()
     },
 
-    searchBook: function() {
-        // TODO getSellsByWord(string keyword)
-        // this.setData({books:books})
-
-        wx.showToast({
-            title: '搜索图书',
+    searchInput: function(event) {
+        this.setData({
+            searchValue: event.detail.value
         })
     },
 
+    searchBook: function() {
+        var str = this.data.searchValue
+        var value = app.inputStrHandle(str)
+        console.log(value)
+    },
+
     catchToSellBookTap: function(event) {
-        var index = event.currentTarget.dataset.index
+        var index = parseInt(event.currentTarget.dataset.index)
         wx.showToast({
             title: '去卖此书' + index.toString(),
+        })
+        wx.switchTab({
+            url: '/pages/mall/mall',
         })
     },
 

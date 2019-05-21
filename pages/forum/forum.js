@@ -1,4 +1,5 @@
-// pages/forum/forum.js
+const app = getApp()
+
 Page({
     /*页面的初始数据*/
     data: {
@@ -38,6 +39,18 @@ Page({
      */
     onPullDownRefresh: function() {
         wx.stopPullDownRefresh()
+    },
+
+    searchInput: function(event) {
+        this.setData({
+            searchValue: event.detail.value
+        })
+    },
+
+    searchComment: function() {
+        var str = this.data.searchValue
+        var value = app.inputStrHandle(str)
+        console.log(value)
     },
 
     showForumDetail: function(event) {

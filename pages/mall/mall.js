@@ -1,3 +1,5 @@
+var app = getApp()
+
 Page({
 
     /**
@@ -40,7 +42,9 @@ Page({
                 level: 3,
                 id: 4,
             },
-        ]
+        ],
+
+        searchValue:''
     },
 
     onLoad: function() {
@@ -60,14 +64,16 @@ Page({
         wx.stopPullDownRefresh()
     },
 
+    searchInput:function(event){
+        this.setData({
+            searchValue:event.detail.value
+        })
+    },
 
     searchBook: function() {
-        // TODO getSellsByWord(string keyword)
-        // this.setData({books:books})
-
-        wx.showToast({
-            title: '搜索图书',
-        })
+        var str = this.data.searchValue
+        var value = app.inputStrHandle(str)
+        console.log(value)
     },
 
     showClassifyBook: function(event) {

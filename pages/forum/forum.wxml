@@ -4,8 +4,8 @@
     <view class='search-box'>
         <view class='search-box-item'>
             <view class='search-item'>
-                <image src='/image/search.png'></image>
-                <input placeholder='搜索相关论坛'></input>
+                <image src='/image/search.png' catchtap='searchComment'></image>
+                <input placeholder='搜索相关论坛' bindinput='searchInput' catchconfirm='searchComment'></input>
             </view>
         </view>
     </view>

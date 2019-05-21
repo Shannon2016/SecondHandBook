@@ -5,7 +5,7 @@
         <view class='search-box-item'>
             <view class='search-item'>
                 <image src='/image/search.png' catchtap='searchBook'></image>
-                <input placeholder='搜索相关图书' catchconfirm='searchBook'></input>
+                <input placeholder='搜索相关图书' bindinput='searchInput' catchconfirm='searchBook'></input>
             </view>
         </view>
     </view>
