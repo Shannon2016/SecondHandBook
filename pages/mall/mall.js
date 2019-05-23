@@ -57,12 +57,12 @@ Page({
             },
             method: 'GET',
             success(res) {
+                console.log(res.data.data)
                 for (var i = 0; i < res.data.data.length; i++) {
                     res.data.data[i].picSrc = res.data.data[i].imagePath;
                     console.log(res.data.data[i].picSrc);
                     res.data.data[i].name = res.data.data[i].bookName;
                     res.data.data[i].level = res.data.data[i].depreciation;
-                    res.data.data[i].id = i + 1;
 
                 }
                 that.setData({
@@ -80,7 +80,10 @@ Page({
                 url: '/pages/index/index',
             })
         }
-        this.getBookList();
+    },
+
+    onShow: function(){
+        this.getBookList()
     },
 
     /**

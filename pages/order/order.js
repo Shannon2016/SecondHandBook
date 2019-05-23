@@ -1,6 +1,6 @@
 // pages/order/order.js
 
-var app;
+var app = getApp();
 
 Page({
 
@@ -40,22 +40,22 @@ Page({
             success(res) {
                 if (res.confirm) {
                     console.log(that.data);
-                    wx.request({
-                      url: app.globalData.URLPREFIX + 'orders/add',
-                      method:'POST',
-                      header:{
-                          Cookie:app.globalData.cookie
-                      },
-                      data:{
-                          bookId:1,
-                          buyerName:that.data.inputName,
-                          phoneNumber:that.data.inputPhone,
-                          address:that.data.inputAddress
-                      },
-                      success(res){
-                        console.log(res)
-                      }
-                    })
+                    for(var i of that.data.orderInfoList){
+                        wx.request({
+                        url: app.globalData.URLPREFIX + 'orders/add',
+                        method:'POST',
+                        header:{
+                            Cookie:app.globalData.cookie
+                        },
+                        data:{
+                            bookId: i.id,
+                            buyerName:that.data.inputName,
+                            phoneNumber:that.data.inputPhone,
+                            address:that.data.inputAddress
+                        },
+                        success:console.log
+                        })
+                    }
                 } else if (res.cancel) {
                     console.log('用户点击取消')
                 }
@@ -63,47 +63,30 @@ Page({
         })
     },
     getOrderInfoList: function() {
-        var tmp = [{
-            picSrc: "../../image/book1.png",
-            bookName: "共产党宣言",
-            author: "cuteBug",
-            press: "BIT",
-            price: 15.5
-        }, {
-            picSrc: "../../image/book11.png",
-            bookName: "博弈论",
-            author: "cuteBug",
-            press: "BIT",
-            price: 16
-        }, {
-            picSrc: "../../image/book18.png",
-            bookName: "围城",
-            author: "cuteBug",
-            press: "BIT",
-            price: 17
-        }, {
-            picSrc: "../../image/book4.png",
-            bookName: "中国哲学史",
-            author: "cuteBug",
-            press: "BIT",
-            price: 18.7
-        }, {
-            picSrc: "../../image/book4.png",
-            bookName: "图书4",
-            author: "cuteBug",
-            press: "BIT",
-            price: 18.7
-        }]; //购物车列表
+        var tmp = []; //购物车列表
 
-        
+        var that = this;
+        console.log(app.globalData.URLPREFIX);
+        wx.request({
+            url: app.globalData.URLPREFIX + 'shoppingcart/getMy',
+            method: 'GET',
+            header: {
+                Cookie: app.globalData.cookie
+            },
+            success(res) {
+                console.log(res);
+                for (var i of res.data.data) {
+                    i.picSrc = i.imagePath;
+                }
+                console.log(res.data.data);
+                for(i of that.data.orderIndex){
+                    tmp.push(res.data.data[parseInt(i)])
+                }
 
-        var tmp2 = [];
-        for (var i = 0; i < this.data.orderIndex.length; i++) {
-            tmp2.push(tmp[parseInt(this.data.orderIndex[i])]);
-        }
-
-        this.setData({
-            orderInfoList: tmp2
+                that.setData({
+                    orderInfoList: tmp
+                })
+            }
         })
     },
     /**
@@ -114,8 +97,9 @@ Page({
             totalPrice: parseFloat(options.total).toFixed(2),
             orderIndex: options.index.split(',')
         })
+    },
+    onShow: function(){
         this.getOrderInfoList();
-        app = getApp();
     },
 
     /**
