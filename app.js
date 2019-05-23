@@ -6,8 +6,6 @@ App({
         logs.unshift(Date.now())
         wx.setStorageSync('logs', logs)
 
-
-
         // 登录
         wx.login({
             success: res => {
@@ -62,7 +60,7 @@ App({
     },
     globalData: {
         userInfo: null,
-        URLPREFIX: 'http://192.168.43.124:5000/api/',
+        URLPREFIX: 'http://39.96.4.235:5000/api/',
         cookie: 'abc'
     },
 
