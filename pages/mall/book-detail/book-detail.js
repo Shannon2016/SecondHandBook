@@ -31,7 +31,8 @@ Page({
     },
 
     catchAddCartTap: function () {
-        //我又动手了
+        var bookId = this.data.bookDetail.id;
+
         var app = getApp();
         wx.request({
             url: app.globalData.URLPREFIX + 'shoppingcart/add',
@@ -40,7 +41,7 @@ Page({
             },
             method: 'POST',
             data: {
-                bookId: 1,
+                bookId: bookId,
                 number: 1
             },
             success(res) {
