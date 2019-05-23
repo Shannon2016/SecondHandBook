@@ -19,7 +19,7 @@ Page({
         bookDescription: "",
     },
     //书的类型
-    getType: function(e) {
+    getType: function (e) {
         var that = this;
         var a = parseInt(e.target.dataset.classid)
         that.setData({
@@ -28,7 +28,7 @@ Page({
         console.log(that.data.bookType);
     },
     //书的名字
-    getName: function(e) {
+    getName: function (e) {
         var that = this;
         var a = e.detail.value;
         that.setData({
@@ -37,7 +37,7 @@ Page({
         console.log(that.data.bookName);
     },
     //书的出版社
-    getPress: function(e) {
+    getPress: function (e) {
         var that = this;
         var a = e.detail.value;
         that.setData({
@@ -46,7 +46,7 @@ Page({
         console.log(that.data.bookPress);
     },
     //书的出版日期
-    getBookDate: function(e) {
+    getBookDate: function (e) {
         var that = this;
         var a = e.detail.value;
         var date = new Date(a);
@@ -56,7 +56,7 @@ Page({
         console.log(that.data.bookDate);
     },
     //书的作者
-    getAuthor: function(e) {
+    getAuthor: function (e) {
         var that = this;
         var a = e.detail.value;
         that.setData({
@@ -65,7 +65,7 @@ Page({
         console.log(that.data.bookAuthor);
     },
     //书的新旧
-    getDepreciation: function(e) {
+    getDepreciation: function (e) {
         var that = this;
         var a = parseInt(e.detail.value);
         if (a >= 1 && a <= 10)
@@ -77,7 +77,7 @@ Page({
         console.log(that.data.bookDepreciation);
     },
     //书的ISBN
-    getISBN: function(e) {
+    getISBN: function (e) {
         var that = this;
         var a = e.detail.value;
         that.setData({
@@ -86,7 +86,7 @@ Page({
         console.log(that.data.bookISBN);
     },
     //书的价格
-    getPrice: function(e) {
+    getPrice: function (e) {
         var that = this;
         var a = parseFloat(e.detail.value);
         that.setData({
@@ -95,7 +95,7 @@ Page({
         console.log(that.data.bookPrice);
     },
     //详细描述
-    getDescription: function(e) {
+    getDescription: function (e) {
         var that = this;
         var a = e.detail.value;
         that.setData({
@@ -105,7 +105,7 @@ Page({
     },
 
     //提交
-    addNewSell: function(userId, picFilePath, classId, name,
+    addNewSell: function (userId, picFilePath, classId, name,
         press, date, author, level, ISBN, price, description) {
         var that = this;
         //获取用户名
@@ -122,24 +122,51 @@ Page({
         description = that.data.bookDescription;
         console.log(date);
         console.log(description);
+
+        //for test
+        var app = getApp();
+        wx.request({
+            url: app.globalData.URLPREFIX + 'sells/add',
+            header: {
+                Cookie: app.globalData.cookie
+            },
+            method: 'POST',
+            data: {
+                bookName: name,
+                remaining: 1,
+                category: classId,
+                imageURL: picFilePath,
+                press: press,
+                author: author,
+                publishedDate: date,
+                depreciation: level,
+                ISBN: ISBN,
+                price: price,
+                description: description
+            },
+            success(res) {
+                console.log(res);
+            }
+        })
+
     },
 
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
-    onPullDownRefresh: function() {
+    onPullDownRefresh: function () {
         wx.stopPullDownRefresh()
     },
 
     //选择图片
-    chooseImage: function() {
+    chooseImage: function () {
         var that = this;
         // 选择图片
         wx.chooseImage({
             count: 1, //只能选1张图片
             sizeType: 'compressed', // 上传后压缩
             sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机
-            success: function(res) {
+            success: function (res) {
                 // 返回选定照片的本地文件路径列表
                 var tempFilePaths = res.tempFilePaths //tempFilePath作为img标签的src属性显示图片
                 that.setData({
@@ -152,7 +179,7 @@ Page({
         })
     },
     // 图片预览
-    previewImage: function(e) {
+    previewImage: function (e) {
         var current = e.target.dataset.src
         wx.previewImage({
             current: current,
@@ -160,7 +187,7 @@ Page({
         })
     },
     //删除图片
-    deleteImg: function(e) {
+    deleteImg: function (e) {
         var that = this;
         var images = that.data.uploadedImages;
         that.setData({

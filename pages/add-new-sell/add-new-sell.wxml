@@ -84,6 +84,6 @@
     </view>
     <!-- 提交按钮 -->
     <view class='uploadFinish'>
-        <a class="uploadFinishBtn" bindtap='addNewSell'>确认售卖</a>
+        <button class="uploadFinishBtn" bindtap='addNewSell'>确认售卖</button>
     </view>
 </view>

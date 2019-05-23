@@ -1,4 +1,5 @@
 // pages/cart/cart.js
+var app;
 
 Page({
 
@@ -15,7 +16,16 @@ Page({
         },
         cartInfoList: []
     },
-    getCartInfoList: function() {
+    getCartInfoList: function () {
+        var tmp = [];
+        // console.log(app.globalData.URLPREFIX);
+        wx.request({
+            url: app.globalData.URLPREFIX + 'shoppingcart/getMy?openId=openid',
+            success(res) {
+                console.log(res);
+            }
+        })
+
         this.setData({
             cartInfoList: [{
                 picSrc: "../../image/book1.png",
@@ -50,7 +60,7 @@ Page({
             }]
         })
     },
-    getSum: function() {
+    getSum: function () {
         var tmp = 0;
         for (var i = 0; i < this.data.chooseItemIndex.length; i++) {
             var index = parseInt(this.data.chooseItemIndex[i]);
@@ -61,7 +71,7 @@ Page({
             totalPrice: tmp
         })
     },
-    checkAll: function() {
+    checkAll: function () {
         if (this.data.checkFlag === false) {
             this.setData({
                 checkFlag: true
@@ -81,11 +91,11 @@ Page({
             })
         }
     },
-    checkboxChange: function(e) {
+    checkboxChange: function (e) {
         this.data.chooseItemIndex = e.detail.value;
         this.getSum();
     },
-    goOrder: function() {
+    goOrder: function () {
         if (this.data.chooseItemIndex.length > 0) {
             var tmp = this.data.chooseItemIndex[0];
             for (var i = 1; i < this.data.chooseItemIndex.length; i++) {
@@ -104,14 +114,15 @@ Page({
         }
     },
 
-    onLoad: function(options) {
+    onLoad: function (options) {
+        app = getApp();
         this.getCartInfoList()
     },
 
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
-    onPullDownRefresh: function() {
+    onPullDownRefresh: function () {
         wx.stopPullDownRefresh()
     }
 })
