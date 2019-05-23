@@ -1,10 +1,10 @@
 .topInfo {
-    position:fixed;
+    position: fixed;
     display: block;
     width: 100%;
     height: 286rpx;
     margin-top: 0rpx;
-    top:0;
+    top: 0;
     z-index: 100000;
 }
 
@@ -19,11 +19,11 @@
     /* justify-content: center; */
     height: 80rpx;
     width: 100%;
-    border-bottom: 2rpx solid #DCDFE6;
+    border-bottom: 2rpx solid #dcdfe6;
 }
 
 .topInfo-title text {
-  line-height: 80rpx;
+    line-height: 80rpx;
     /* height: 52rpx; */
     margin-left: 68rpx;
     /* font-size: 36rpx;
@@ -57,7 +57,7 @@
 
 .landlord-detail-username image {
     width: 48rpx;
-    height:48rpx;
+    height: 48rpx;
     margin-right: 4rpx;
 }
 
@@ -111,7 +111,6 @@
     justify-content: flex-end;
     width: 100%;
     margin-top: 34rpx;
-    
 }
 
 .landlord-detail-date text {
@@ -132,9 +131,9 @@
     flex-direction: column;
     width: 100%;
     height: 260rpx;
-    border-bottom: 2rpx solid #DCDFE6;
+    border-bottom: 2rpx solid #dcdfe6;
     position: relative;
-    padding:28rpx 68rpx 0rpx 68rpx;
+    padding: 28rpx 68rpx 0rpx 68rpx;
 }
 
 .subforum-detail-username {
@@ -143,7 +142,6 @@
     align-items: center;
     position: relative;
     margin-right: 68rpx;
-    
 }
 
 .subforum-detail-username image {
@@ -153,35 +151,47 @@
 }
 
 .subforum-detail-date {
-    position:absolute;
-    bottom: 20rpx; 
+    position: absolute;
+    bottom: 20rpx;
     /* align-self: bottom; */
 }
 
-.subforum-detail-content{
-  margin-top: 10rpx;
+.subforum-detail-content {
+    margin-top: 10rpx;
 }
 
-.subforum-detail-level{
- background-color: #FF0000;/*wxss无法解析本地图片做background-image，需放在服务器上*/
- text-align: center;
- line-height: 50rpx;
- width: 50rpx;
- height:50rpx;
- margin-left: 25rpx;
+.subforum-detail-level {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    width: 50rpx;
+    height: 50rpx;
+    margin-left: 25rpx;
 }
 
-.master{
-  position:absolute;
-  right:50rpx;
-  width: 130rpx; 
-  background-color: #07A2A4;
-  color:#FFFFFF;
-  font-size: 30rpx;
-  font-weight: bolder;
-  border: 2rpx solid #FFFFFF;
-  border-radius: 40rpx;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.subforum-detail-level image {
+    position: absolute;
+    z-index: 0;
+}
+
+.subforum-detail-level text {
+    position: absolute;
+    text-align: center;
+    line-height: 40rpx;
+    z-index: 1;
+}
+
+.master {
+    position: absolute;
+    right: 50rpx;
+    width: 130rpx;
+    background-color: #07a2a4;
+    color: #fff;
+    font-size: 30rpx;
+    font-weight: bolder;
+    border: 2rpx solid #fff;
+    border-radius: 40rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

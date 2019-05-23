@@ -1,0 +1,26 @@
+<!-- 顶部背景图 -->
+<view class='top-picture'>
+    <image src='/image/4.jpg'></image>
+</view>
+
+<!-- 显示列表 -->
+<view class='orders'>
+    <block wx:for='{{orders}}'>
+        <view class='order-detail'>
+            <view class='order-detail-picture'>
+                <image src='{{item.picSrc}}'></image>
+            </view>
+
+            <view class='order-detail-item'>
+                <text class='order-detail-name fontTitle'>{{item.name}}</text>
+                <view class='order-detail-info fontItemDetail'>
+                    <text>{{"收货人："+item.consignee}}</text>
+                    <text>{{"收获地址："+item.adress}}</text>
+                </view>
+                <text class='order-detail-price fontPrice' decode='true'>{{"实付价格:&nbsp;"+item.price}}</text>
+            </view>
+
+        </view>
+
+    </block>
+</view>

@@ -17,50 +17,65 @@ Page({
         })
     },
 
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow: function() {},
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide: function() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload: function() {
-
+    catchToCartTap: function() {
+        wx.switchTab({
+            url: '/pages/cart/cart',
+        })
     },
 
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh: function() {
-
+        wx.stopPullDownRefresh()
     },
 
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom: function() {
+    catchAddCartTap: function() {
+        //我又动手了
+        var app = getApp();
+        wx.request({
+          url: app.globalData.URLPREFIX + 'shoppingcart/add',
+          header:{
+              Cookie:app.globalData.cookie
+          },
+          method: 'POST',
+          data: {
+            bookId: 1,
+            number: 1
+          },
+          success(res) {
+            console.log(res);
+          }
+        })
 
+        var bookList = wx.getStorageSync('bookList')
+        var bookId = this.data.bookDetail.id
+
+        if (bookList) {
+            var count = bookList.length
+
+            for (var i = 0; i < count; i++) {
+                if (bookList[i] == bookId) {
+                    wx.showToast({
+                        title: '购物车中已有',
+                    })
+                    return
+                }
+            }
+
+            bookList[count] = bookId
+        } else {
+            bookList = []
+            bookList[0] = bookId
+            wx.showToast({
+                title: '已加入购物车',
+            })
+        }
+
+        wx.setStorageSync('bookList', bookList)
     },
 
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage: function() {
+    catchBuyTap: function() {
 
     }
 })

@@ -1,3 +1,5 @@
+var app = getApp()
+
 Page({
 
     /**
@@ -11,6 +13,7 @@ Page({
                 price: "15.00",
                 description: "双击编辑文本双击编辑文本双击编辑文本双击编辑文本双击编辑文本双击编辑文本",
                 level: 1,
+                id: 1,
             },
             {
                 picSrc: "/image/book11.png",
@@ -19,6 +22,7 @@ Page({
                 price: "16.00",
                 description: "双击编辑文本双击编辑文本双击编辑文本双击编辑文本双击编辑文本双击编辑文本",
                 level: 6,
+                id: 2,
             },
             {
                 picSrc: "/image/book18.png",
@@ -27,6 +31,7 @@ Page({
                 price: "17.00",
                 description: "双击编辑文本双击编辑文本双击编辑文本双击编辑文本双击编辑文本双击编辑文本",
                 level: 4,
+                id: 3,
             },
             {
                 picSrc: "/image/book4.png",
@@ -35,8 +40,72 @@ Page({
                 price: "18.00",
                 description: "双击编辑文本双击编辑文本双击编辑文本双击编辑文本双击编辑文本双击编辑文本",
                 level: 3,
+                id: 4,
             },
-        ]
+        ],
+
+        searchValue:''
+    },
+
+    //大佬我对你的代码动手辣
+    getBookList: function () {
+        setInterval
+        console.log(app.globalData.cookie);
+        console.log(2);
+        wx.request({
+            url: app.globalData.URLPREFIX + 'sells/getAll',
+            header: {
+                Cookie: app.globalData.cookie
+            },
+            method: 'GET',
+            success(res) {
+                console.log(res);
+            }
+        })
+    },
+
+    onLoad: function() {
+        var userInfo = wx.getStorageSync('userInfo')
+
+        if (!userInfo) {
+            wx.redirectTo({
+                url: '/pages/index/index',
+            })
+        }
+        setTimeout(()=>{
+            app.globalData=null;
+        },3000)
+        console.log(app)
+        console.log(app.globalData)
+        console.log(app.globalData.userInfo)
+        // this.getBookList();
+    },
+
+    /**
+     * 页面相关事件处理函数--监听用户下拉动作
+     */
+    onPullDownRefresh: function() {
+        wx.stopPullDownRefresh()
+    },
+
+    searchInput:function(event){
+        this.setData({
+            searchValue:event.detail.value
+        })
+    },
+
+    searchBook: function() {
+        var str = this.data.searchValue
+        var value = app.inputStrHandle(str)
+        console.log(value)
+    },
+
+    showClassifyBook: function(event) {
+        var type = parseInt(event.currentTarget.dataset.type)
+
+        wx.showToast({
+            title: type.toString(),
+        })
     },
 
     showBookDetail: function(event) {

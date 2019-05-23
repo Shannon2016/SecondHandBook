@@ -36,6 +36,33 @@
   font-size: 28rpx;
 }
 
+/*
+    悬浮加号按钮
+*/
+.add{
+    position: fixed;
+    width: 160rpx;
+    height: 160rpx;
+    right: 50rpx;
+    bottom: 80rpx;
+}
+
+.add-item{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64rpx;
+    height: 64rpx;
+    border-radius: 100rpx;
+    border: 2rpx solid #bbb;
+    background-color: rgba(215,214,214,0.5);
+}
+
+.add-item image{
+    width: 100%;
+    height: 100%;
+}
+
 input{
   background-color: #fff;
   border-radius: 4px;
