@@ -57,11 +57,14 @@ Page({
             },
             method: 'GET',
             success(res) {
-                for (var i = 0; i < res.data.data.length; i++)
-                    res.data.data.picSrc = res.data.data.imagePath;
-                res.data.data.name = res.data.data.bookName;
-                res.data.data.level = res.data.data.depreciation;
-                res.data.data.id = i + 1;
+                for (var i = 0; i < res.data.data.length; i++) {
+                    res.data.data[i].picSrc = res.data.data[i].imagePath;
+                    console.log(res.data.data[i].picSrc);
+                    res.data.data[i].name = res.data.data[i].bookName;
+                    res.data.data[i].level = res.data.data[i].depreciation;
+                    res.data.data[i].id = i + 1;
+
+                }
                 that.setData({
                     books: res.data.data
                 })

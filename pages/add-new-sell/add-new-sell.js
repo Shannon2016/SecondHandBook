@@ -1,4 +1,5 @@
 var util = require('../../utils/util.js')
+var app = getApp();
 Page({
     /**
      * 页面的初始数据
@@ -123,8 +124,6 @@ Page({
         console.log(date);
         console.log(description);
 
-        //for test
-        var app = getApp();
         wx.request({
             url: app.globalData.URLPREFIX + 'sells/add',
             header: {
@@ -145,7 +144,17 @@ Page({
                 description: description
             },
             success(res) {
-                console.log(res);
+                console.log(picFilePath);
+                wx.uploadFile({
+                    url: app.globalData.URLPREFIX,
+                    filePath: picFilePath,
+                    name: picFilePath,
+                    fail(res) {
+                        wx.showToast({
+                            title: '出错了',
+                        })
+                    }
+                })
             }
         })
 
