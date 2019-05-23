@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/index/index",
     "pages/mall/mall",
     "pages/reward-list/reward-list",
     "pages/mall/book-detail/book-detail",
@@ -14,7 +15,6 @@
     "pages/person-center/my-sell/my-sell",
     "pages/add-new-sell/add-new-sell",
     "pages/add-reward/add-reward",
-    "pages/index/index",
     "pages/logs/logs"
   ],
   "window": {

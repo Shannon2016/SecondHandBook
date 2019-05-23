@@ -49,9 +49,7 @@ Page({
 
     //大佬我对你的代码动手辣
     getBookList: function () {
-        setInterval
-        console.log(app.globalData.cookie);
-        console.log(2);
+        var that = this;
         wx.request({
             url: app.globalData.URLPREFIX + 'sells/getAll',
             header: {
@@ -59,7 +57,14 @@ Page({
             },
             method: 'GET',
             success(res) {
-                console.log(res);
+                for(var i = 0; i < res.data.data.length; i ++)
+                res.data.data.picSrc = res.data.data.imagePath;
+                res.data.data.name = res.data.data.bookName;
+                res.data.data.level = res.data.data.depreciation;
+                res.data.data.id = i+1;
+                that.setData({
+                    books:res.data.data
+                })
             }
         })
     },
@@ -72,13 +77,7 @@ Page({
                 url: '/pages/index/index',
             })
         }
-        setTimeout(()=>{
-            app.globalData=null;
-        },3000)
-        console.log(app)
-        console.log(app.globalData)
-        console.log(app.globalData.userInfo)
-        // this.getBookList();
+        this.getBookList();
     },
 
     /**
