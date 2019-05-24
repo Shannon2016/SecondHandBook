@@ -56,20 +56,15 @@ Page({
             },
             method: 'GET',
             success(res) {
-                console.log(res.data.data)
                 for (var i = 0; i < res.data.data.length; i++) {
                     res.data.data[i].picSrc = res.data.data[i].imagePath
-                    console.log(res.data.data[i].picSrc)
                     res.data.data[i].name = res.data.data[i].bookName
                     res.data.data[i].level = res.data.data[i].depreciation
-                    res.data.data[i].id = res.data.data[i].Id
                 }
+                console.log(res.data.data)
                 that.setData({
                     books: res.data.data
                 })
-
-                console.log("输出 res.data.data 信息")
-                console.log(res.data.data)
             }
         })
     },
@@ -129,17 +124,13 @@ Page({
             success(res) {
                 for (var i = 0; i < res.data.data.length; i++) {
                     res.data.data[i].picSrc = res.data.data[i].imagePath
-                    console.log(res.data.data[i].picSrc)
                     res.data.data[i].name = res.data.data[i].bookName
                     res.data.data[i].level = res.data.data[i].depreciation
-                    res.data.data[i].id = res.data.data[i].Id
                 }
                 that.setData({
                     books: res.data.data
                 })
 
-                console.log("输出 res.data.data 信息")
-                console.log(res.data.data)
             }
         })
     },

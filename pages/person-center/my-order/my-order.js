@@ -1,3 +1,4 @@
+const app = getApp();
 Page({
 
     data: {
@@ -39,10 +40,10 @@ Page({
             method: 'GET',
             success(res) {
                 for (var i = 0; i < res.data.data.length; i++) {
-                    res.data.data[i].picSrc = res.data.data[i].imagePath
+                    res.data.data[i].picSrc = res.data.data[i].imageURL
                     res.data.data[i].name = res.data.data[i].bookName
                     res.data.data[i].consignee = res.data.data[i].buyerName
-                    res.data.data[i].price = res.data.data[i].price
+                    res.data.data[i].price = res.data.data[i].cost
                 }
                 that.setData({
                     orders: res.data.data

@@ -30,22 +30,23 @@ Page({
         wx.stopPullDownRefresh()
     },
 
-    catchAddCartTap: function() {
+    catchAddCartTap: function () {
         //我又动手了
+        console.log(this.data.bookDetail)
         var app = getApp();
         wx.request({
-          url: app.globalData.URLPREFIX + 'shoppingcart/add',
-          header:{
-              Cookie:app.globalData.cookie
-          },
-          method: 'POST',
-          data: {
-            bookId: this.data.bookDetail.id,
-            number: 1
-          },
-          success(res) {
-            console.log(res);
-          }
+            url: app.globalData.URLPREFIX + 'shoppingcart/add',
+            header: {
+                Cookie: app.globalData.cookie
+            },
+            method: 'POST',
+            data: {
+                bookId: this.data.bookDetail.id,
+                number: 1
+            },
+            success(res) {
+                console.log(res);
+            }
         })
 
         var bookList = wx.getStorageSync('bookList')

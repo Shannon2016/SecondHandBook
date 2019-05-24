@@ -28,7 +28,6 @@ App({
                                             imageURL: this.globalData.userInfo.avatarUrl
                                         },
                                         success: r => {
-                                            console.log(r);
                                             this.globalData.cookie = r.header["Set-Cookie"];
                                             console.log(this.globalData)
 
@@ -50,7 +49,6 @@ App({
                         }
                     }
                 })
-                console.log(1);
 
             }
         })
@@ -59,7 +57,7 @@ App({
     },
     globalData: {
         userInfo: null,
-        URLPREFIX: 'http://39.96.4.235:5000/api/',
+        URLPREFIX: 'http://192.168.43.124:5000/api/',
         cookie: 'abc'
     },
 
