@@ -15,7 +15,7 @@
                 <text class='order-detail-name fontTitle'>{{item.name}}</text>
                 <view class='order-detail-info fontItemDetail'>
                     <text>{{"收货人："+item.consignee}}</text>
-                    <text>{{"收获地址："+item.adress}}</text>
+                    <text>{{"收获地址："+item.address}}</text>
                 </view>
                 <text class='order-detail-price fontPrice' decode='true'>{{"实付价格:&nbsp;"+item.price}}</text>
             </view>
