@@ -56,6 +56,7 @@ Page({
             },
             method: 'GET',
             success(res) {
+                console.log(res)
                 for (var i = 0; i < res.data.data.length; i++) {
                     res.data.data[i].picSrc = res.data.data[i].imagePath
                     res.data.data[i].name = res.data.data[i].bookName

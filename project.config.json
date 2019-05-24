@@ -13,7 +13,7 @@
 		"checkInvalidKey": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.0.4",
+	"libVersion": "2.5.0",
 	"appid": "wx75221c8ecddbf3d2",
 	"projectname": "MiniTestNoCloud",
 	"debugOptions": {

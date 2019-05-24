@@ -245,3 +245,7 @@
     align-items: center;
     width: 60%;
 }
+/*vant*/
+.van-button--small{
+    width:100%;
+}

@@ -1,3 +1,5 @@
+const app = getApp();
+
 Page({
 
     /**
@@ -34,7 +36,29 @@ Page({
             },
         ]
     },
-
+    getRewardList:function(){
+        var that = this;
+        wx.request({
+            url: app.globalData.URLPREFIX + 'rewards/getMy',
+            method:'GET',
+            header:{
+                Cookie:app.globalData.cookie
+            },
+            success(res){
+                console.log(res);
+                for(var i of res.data.data){
+                    i.picSrc = i.imagePath
+                    i.name = i.bookName
+                }
+                that.setData({
+                    books:res.data.data
+                })
+            }
+        })
+    },
+    onShow:function(){
+        this.getRewardList()
+    },
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */

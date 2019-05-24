@@ -3,6 +3,7 @@
 #topImg {
     height: 300rpx;
     width: 100%;
+    position:fixed;
 }
 
 .cartListItem {
@@ -10,8 +11,6 @@
     flex-direction: row;
     width: 100%;
     height: 250rpx;
-    border-bottom: 2rpx solid #dcdfe6;
-    margin-bottom: 10rpx;
 }
 
 .checkBtnContainer {
@@ -106,6 +105,7 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
 
 .infoNameContainer {
     margin-top: 16rpx;
+    text-align: left;
 }
 
 /*bottomBar*/
@@ -146,4 +146,21 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
 #checkAll {
     position: absolute;
     left: 40rpx;
+}
+
+/*vant*/
+
+.van-cell{
+    padding:0 !important;
+}
+
+.rightBlock{
+    height:100%;
+    width:65px;
+    background-color:#FF0000; 
+    color:white;
+    text-align:center;
+    justify-content: center;
+    font-size: 36rpx;
+    line-height: 125px;
 }

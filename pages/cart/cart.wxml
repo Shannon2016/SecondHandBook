@@ -1,41 +1,44 @@
 <!--pages/Cart/Cart.wxml-->
-<van-swipe-cell id="swipe-cell" right-width="{{ 65 }}" left-width="{{ 65 }}" async-close bind:close="onClose">
-  <van-cell-group>
-    <van-cell title="单元格" value="内容" />
-  </van-cell-group>
-  <view slot="right" style='height:100%; width:65px;background-color:#FF0000; color:white;'>删除</view>
-</van-swipe-cell>
-<view style='font-size:0;'>
+<view style='font-size:0;position:relative'>
     <image mode="{{topImg.mode}}" src="{{topImg.src}}" id="topImg" />
-    <checkbox-group bindchange="checkboxChange">
-        <view class="cartListItem" wx:for="{{cartInfoList}}">
-            <view class="checkBtnContainer">
-                <checkbox value="{{index}}" checked="{{checkFlag}}"></checkbox>
-            </view>
+    <view style='position:absolute;top:286rpx;width:100%;'>
+        <checkbox-group bindchange="checkboxChange">
+            <van-swipe-cell id="swipe-cell" right-width="{{ 65 }}" left-width="{{0.0001}}" async-close bind:close="onClose" wx:for="{{cartInfoList}}">
+                <van-cell-group>
+                    <van-cell>
+                    <view class="cartListItem">
+                        <view class="checkBtnContainer">
+                            <checkbox value="{{index}}" checked="{{checkFlag}}"></checkbox>
+                        </view>
 
-            <view class="picContainer">
-                <image src="{{item.picSrc}}" mode="scaleToFill" class="pictures" />
-            </view>
+                        <view class="picContainer">
+                            <image src="{{item.picSrc}}" mode="scaleToFill" class="pictures" />
+                        </view>
 
-            <view class="infoContainer">
-                <view class="infoNameContainer fontTitle">{{item.bookName}}</view>
-                <view class="infoAuthorContainer fontItemDetail">
-                    <view>作者：</view>
-                    <view>{{item.author}}</view>
-                </view>
-                <view class="infoPressContainer fontItemDetail">
-                    <view>出版社：</view>
-                    <view>{{item.press}}</view>
-                </view>
-                <view class="infoPriceContainer fontPrice">
-                    <view>
-                        <text decode="{{true}}">￥&ensp;</text>
-                    </view>
-                    <view>{{item.price}}</view>
-                </view>
-            </view>
-        </view>
-    </checkbox-group>
+                        <view class="infoContainer">
+                            <view class="infoNameContainer fontTitle">{{item.bookName}}</view>
+                            <view class="infoAuthorContainer fontItemDetail">
+                                <view>作者：</view>
+                                <view>{{item.author}}</view>
+                            </view>
+                            <view class="infoPressContainer fontItemDetail">
+                                <view>出版社：</view>
+                                <view>{{item.press}}</view>
+                            </view>
+                            <view class="infoPriceContainer fontPrice">
+                                <view>
+                                    <text decode="{{true}}">￥&ensp;</text>
+                                </view>
+                                <view>{{item.price}}</view>
+                            </view>
+                        </view>
+                        </view>
+                    </van-cell>
+                </van-cell-group>
+                <view slot="right"  class='rightBlock'>删除</view>
+            </van-swipe-cell>
+        </checkbox-group>
+    </view>
     <view style="height:100rpx;"></view>
     <view id="bottomBar">
         <view id="checkAll">

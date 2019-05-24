@@ -5,6 +5,17 @@ Page({
      * 页面的初始数据
      */
     data: {
+        flag:0,
+        show:false,
+        currentDate: new Date().getTime(),
+        formatter(type, value) {
+        if (type === 'year') {
+            return `${value}年`;
+        } else if (type === 'month') {
+            return `${value}月`;
+        }
+        return value;
+        },
         uploadedImages: [],
         imgBoolean: true,
 
@@ -12,12 +23,29 @@ Page({
         bookType: 0,
         bookName: "",
         bookPress: "",
-        bookDate: "",
+        bookDate: "选择日期",
         bookAuthor: "",
         bookDepreciation: 0,
         bookISBN: "",
         bookPrice: 0.00,
         bookDescription: "",
+    },
+    confirmCloseTimePicker:function(){
+        this.setData({
+            show: false,
+            flag:this.data.flag+1
+        })
+    },
+    
+    cancelCloseTimePicker:function(){
+        this.setData({
+            show: false
+        })
+    },
+    showTimePicker:function(){
+        this.setData({
+            show:true
+        })
     },
     //书的类型
     getType: function (e) {
@@ -47,14 +75,13 @@ Page({
         console.log(that.data.bookPress);
     },
     //书的出版日期
-    getBookDate: function (e) {
-        var that = this;
-        var a = e.detail.value;
-        var date = new Date(a);
-        that.setData({
-            bookDate: a,
+    getBookDate: function (event) {
+        console.log(event)
+        var date = new Date(event.detail)
+        this.setData({
+            bookDate: (date.getYear()+1900)+'-'+(date.getMonth()+1)+'-'+date.getDate()
         });
-        console.log(that.data.bookDate);
+        console.log(this.data.bookDate);
     },
     //书的作者
     getAuthor: function (e) {
@@ -121,42 +148,51 @@ Page({
         ISBN = that.data.bookISBN;
         price = that.data.bookPrice;
         description = that.data.bookDescription;
-        console.log(date);
-        console.log(description);
-
-        wx.request({
-            url: app.globalData.URLPREFIX + 'sells/add',
-            header: {
-                Cookie: app.globalData.cookie
-            },
-            method: 'POST',
-            data: {
-                bookName: name,
-                remaining: 1,
-                category: classId,
-                imageURL: picFilePath,
-                press: press,
-                author: author,
-                publishedDate: date,
-                depreciation: level,
-                ISBN: ISBN,
-                price: price,
-                description: description
-            },
-            success(res) {
-                console.log(picFilePath);
-                wx.uploadFile({
-                    url: app.globalData.URLPREFIX,
-                    filePath: picFilePath,
-                    name: picFilePath,
-                    fail(res) {
-                        wx.showToast({
-                            title: '出错了',
-                        })
-                    }
-                })
-            }
-        })
+        // console.log(date);
+        // console.log(description);
+        console.log(picFilePath)
+        // wx.uploadFile({
+        //     url: app.globalData.URLPREFIX + 'file/upload',
+        //     filePath: picFilePath,
+        //     name: 'newPic',
+        //     header:{
+        //         Cookie:app.globalData.cookie
+        //     },
+        //     method:'POST',
+        //     success(res) {
+        //         console.log(res);
+        //     },
+        //     fail(res) {
+        //         wx.showToast({
+        //             title: '出错了',
+        //         })
+        //     }
+        // })
+        if(this.judge()){
+            wx.request({
+                url: app.globalData.URLPREFIX + 'sells/add',
+                header: {
+                    Cookie: app.globalData.cookie
+                },
+                method: 'POST',
+                data: {
+                    bookName: name,
+                    remaining: 1,
+                    category: classId,
+                    imageURL: picFilePath,
+                    press: press,
+                    author: author,
+                    publishedDate: date,
+                    depreciation: level,
+                    ISBN: ISBN,
+                    price: price,
+                    description: description
+                },
+                success(res) {
+                    console.log(picFilePath);
+                }
+            })
+        }
 
     },
 
@@ -205,6 +241,98 @@ Page({
             picFilePath: ""
         });
     },
+
+    //判断输入是否正确
+    judge: function () {
+        var that = this;
+        //类型不能为空
+        if (that.data.bookType <= 0) {
+            wx.showToast({
+                title: "请选择书的类型",
+                image: '../../image/tan.png',
+                mask: false,
+            });
+            return false;
+        }
+        //书名不能为空
+        if (that.data.bookName.length <= 0) {
+            wx.showToast({
+                title: "书名不能为空",
+                image: '../../image/tan.png',
+                mask: false,
+            });
+            return false;
+        }
+        //出版社不能为空
+        if (that.data.bookPress.length <= 0) {
+            wx.showToast({
+                title: "出版社不能为空",
+                image: '../../image/tan.png',
+                mask: false,
+            });
+            return false;
+        }
+
+        //出版日期不能为空
+        if (that.data.bookDate) {
+        }else{
+            wx.showToast({
+                title: "日期不能为空",
+                image: '../../image/tan.png',
+                mask: false,
+            });
+        }
+
+
+        //作者不能为空
+        if (that.data.bookAuthor.length <= 0) {
+            wx.showToast({
+                title: "作者不能为空",
+                image: '../../image/tan.png',
+                mask: false,
+            });
+            return false;
+        }
+        //图书新旧范围1——10
+        if (that.data.bookDepreciation <= 0 || that.data.bookDepreciation > 10) {
+            wx.showToast({
+                title: "图书新旧输入错误",
+                image: '../../image/tan.png',
+                mask: false,
+            });
+            return false;
+        }
+
+        //图书号不能为空
+        if (that.data.bookISBN.length <= 0) {
+            wx.showToast({
+                title: "图书号不能为空",
+                image: '../../image/tan.png',
+                mask: false,
+            });
+            return false;
+        }
+        else if (that.data.bookISBN.length < 13) {
+            wx.showToast({
+                title: "图书号格式错误",
+                image: '../../image/tan.png',
+                mask: false,
+            });
+            return false;
+        }
+
+        //价格>0
+        if (that.data.bookPrice <= 0) {
+            wx.showToast({
+                title: "价格输入错误",
+                image: '../../image/tan.png',
+                mask: false,
+            });
+            return false;
+        }
+        return true;
+    }
+
 
 
 })

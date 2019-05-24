@@ -53,7 +53,20 @@
     <!--出版日期-->
     <view class='inputArea'>
         <view class='fontTile to-left'>出版日期</view>
-        <input class='input to-right' maxlength="10" bindinput='getBookDate' placeholder="格式：2000-01-01" />
+        <!-- <input class='input to-right' maxlength="10" bindinput='getBookDate' placeholder="格式：2000-01-01" /> -->
+        <van-button size="small" plain bind:click='showTimePicker' style='width:60%'>{{flag<1?'选择日期':bookDate}}</van-button>
+        <van-popup show="{{ show }}" bind:close="closeTimePicker"
+        position='bottom'>
+            <van-datetime-picker
+            type="date"
+            min-date='{{0}}'
+            bind:input="getBookDate"
+            value="{{ currentDate }}"
+            formatter="{{ formatter }}"
+            bind:cancel='cancelCloseTimePicker'
+            bind:confirm='confirmCloseTimePicker'
+            />
+        </van-popup>
     </view>
     <!--作者-->
     <view class='inputArea'>

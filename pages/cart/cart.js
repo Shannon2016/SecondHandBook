@@ -16,6 +16,21 @@ Page({
         },
         cartInfoList: []
     },
+    onClose(event) {
+        const { position, instance } = event.detail;
+        switch (position) {
+            case 'cell':
+                instance.close();
+                break;
+            case 'right':
+                Dialog.confirm({
+                    message: '确定删除吗？'
+                }).then(() => {
+                    instance.close();
+                });
+                break;
+        }
+    },
     getCartInfoList: function() {
         var that = this;
         wx.request({
@@ -50,13 +65,15 @@ Page({
     },
     checkAll: function () {
         if (this.data.checkFlag === false) {
+            var tmp=[]
             for (var i in this.data.cartInfoList) {
-                this.data.chooseItemIndex.push(i.toString());
+                tmp.push(i.toString());
             }
             this.setData({
                 checkFlag: true,
-                chooseItemIndex :[]
+                chooseItemIndex :tmp
             })
+            console.log(1);
             this.getSum();
         } else {
             this.setData({
