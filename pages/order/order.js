@@ -46,7 +46,7 @@ Page({
                     for(var i of that.data.orderInfoList){
                         // console.log(i);
                         wx.request({
-                            url: app.globalData.URLPREFIX + 'orders/add',
+                            url: app.globalData.URLPREFIX + 'orders/addFromCart',
                             method:'POST',
                             header:{
                                 Cookie:app.globalData.cookie
