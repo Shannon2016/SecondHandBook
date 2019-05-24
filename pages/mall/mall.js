@@ -47,7 +47,8 @@ Page({
         searchValue:''
     },
 
-    getBookList: function() {
+    //大佬我对你的代码动手辣
+    getBookList: function () {
         var that = this;
         wx.request({
             url: app.globalData.URLPREFIX + 'sells/getAll',
@@ -57,12 +58,15 @@ Page({
             method: 'GET',
             success(res) {
                 for (var i = 0; i < res.data.data.length; i++) {
-                    res.data.data[i].picSrc = res.data.data[i].imagePath
-                    res.data.data[i].name = res.data.data[i].bookName
-                    res.data.data[i].level = res.data.data[i].depreciation
+                    res.data.data[i].picSrc = res.data.data[i].imagePath;
+                    console.log(res.data.data[i].picSrc);
+                    res.data.data[i].name = res.data.data[i].bookName;
+                    res.data.data[i].level = res.data.data[i].depreciation;
+                    res.data.data[i].id = i + 1;
+
                 }
                 that.setData({
-                    books: res.data.data
+                    books:res.data.data
                 })
             }
         })
@@ -76,10 +80,7 @@ Page({
                 url: '/pages/index/index',
             })
         }
-    },
-
-    onShow: function(){
-        this.getBookList()
+        this.getBookList();
     },
 
     /**
@@ -87,14 +88,11 @@ Page({
      */
     onPullDownRefresh: function() {
         wx.stopPullDownRefresh()
-
-        // TODO 应使用异步获取
-        this.getBookList()
     },
 
-    searchInput: function(event) {
+    searchInput:function(event){
         this.setData({
-            searchValue: event.detail.value
+            searchValue:event.detail.value
         })
     },
 
@@ -104,39 +102,14 @@ Page({
         console.log(value)
     },
 
-    /**
-     * 根据书单分类来显示
-     */
     showClassifyBook: function(event) {
         var type = parseInt(event.currentTarget.dataset.type)
 
-        var that = this;
-        wx.request({
-            url: app.globalData.URLPREFIX + 'sells/getByCategory',
-            header: {
-                Cookie: app.globalData.cookie
-            },
-            method: 'GET',
-            data:{
-                category:type
-            },
-            success(res) {
-                for (var i = 0; i < res.data.data.length; i++) {
-                    res.data.data[i].picSrc = res.data.data[i].imagePath
-                    res.data.data[i].name = res.data.data[i].bookName
-                    res.data.data[i].level = res.data.data[i].depreciation
-                }
-                that.setData({
-                    books: res.data.data
-                })
-
-            }
+        wx.showToast({
+            title: type.toString(),
         })
     },
 
-    /**
-     * 跳转到图书详情子页面
-     */
     showBookDetail: function(event) {
         var bookIndex = event.currentTarget.dataset.bookIndex
         var bookDetail = JSON.stringify(this.data.books[bookIndex])

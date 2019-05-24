@@ -1,5 +1,5 @@
 // pages/cart/cart.js
-const app = getApp();
+var app;
 
 Page({
 
@@ -17,27 +17,50 @@ Page({
         cartInfoList: []
     },
     getCartInfoList: function() {
-        var that = this;
+        var tmp = [];
+        // console.log(app.globalData.URLPREFIX);
         wx.request({
-          url: app.globalData.URLPREFIX + 'shoppingcart/getMy',
-          method:'GET',
-          header:{
-              Cookie:app.globalData.cookie
-          },
+          url: app.globalData.URLPREFIX + 'shoppingcart/getMy?openId=openid',
           success(res) {
             console.log(res);
-            for(var i of res.data.data){
-                i.picSrc = i.imagePath;
-            }
-            console.log(res.data.data);
-            that.setData({
-                cartInfoList: res.data.data
-            })
           }
         })
 
+        this.setData({
+            cartInfoList: [{
+                picSrc: "../../image/book1.png",
+                bookName: "共产党宣言",
+                author: "cuteBug",
+                press: "BIT",
+                price: 15.5
+            }, {
+                picSrc: "../../image/book11.png",
+                bookName: "博弈论",
+                author: "cuteBug",
+                press: "BIT",
+                price: 16
+            }, {
+                picSrc: "../../image/book18.png",
+                bookName: "围城",
+                author: "cuteBug",
+                press: "BIT",
+                price: 17
+            }, {
+                picSrc: "../../image/book4.png",
+                bookName: "中国哲学史",
+                author: "cuteBug",
+                press: "BIT",
+                price: 18.7
+            }, {
+                picSrc: "../../image/book4.png",
+                bookName: "图书4",
+                author: "cuteBug",
+                press: "BIT",
+                price: 18.7
+            }]
+        })
     },
-    getSum: function () {
+    getSum: function() {
         var tmp = 0;
         for (var i = 0; i < this.data.chooseItemIndex.length; i++) {
             var index = parseInt(this.data.chooseItemIndex[i]);
@@ -48,33 +71,36 @@ Page({
             totalPrice: tmp
         })
     },
-    checkAll: function () {
+    checkAll: function() {
         if (this.data.checkFlag === false) {
-            for (var i in this.data.cartInfoList) {
+            this.setData({
+                checkFlag: true
+            })
+            this.data.chooseItemIndex = [];
+            for (var i = 0; i < this.data.cartInfoList.length; i++) {
                 this.data.chooseItemIndex.push(i.toString());
             }
-            this.setData({
-                checkFlag: true,
-                chooseItemIndex :[]
-            })
             this.getSum();
         } else {
             this.setData({
-                checkFlag: false,
-                totalPrice: 0,
-                chooseItemIndex:[]
+                checkFlag: false
+            })
+            this.data.chooseItemIndex = [];
+            this.setData({
+                totalPrice: 0
             })
         }
     },
     checkboxChange: function(e) {
-        this.setData({
-            chooseItemIndex: e.detail.value
-        })
+        this.data.chooseItemIndex = e.detail.value;
         this.getSum();
     },
-    goOrder: function () {
+    goOrder: function() {
         if (this.data.chooseItemIndex.length > 0) {
-            var tmp = this.data.chooseItemIndex.join();
+            var tmp = this.data.chooseItemIndex[0];
+            for (var i = 1; i < this.data.chooseItemIndex.length; i++) {
+                tmp += ',' + this.data.chooseItemIndex[i];
+            }
             wx.navigateTo({
                 url: '../order/order?index=' + tmp + '&total=' + this.data.totalPrice.toString(),
             })
@@ -89,16 +115,14 @@ Page({
     },
 
     onLoad: function(options) {
-    },
-
-    onShow:function(){
-        this.getCartInfoList();
+        app = getApp();
+        this.getCartInfoList()
     },
 
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
-    onPullDownRefresh: function () {
+    onPullDownRefresh: function() {
         wx.stopPullDownRefresh()
     }
 })
