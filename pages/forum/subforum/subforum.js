@@ -27,7 +27,6 @@ Page({
             forumDetail: forumDetail
         })
 
-        console.log(options)
         this.getAllComments()
     },
 
@@ -48,6 +47,7 @@ Page({
         // 0. 初始化
         var postId = this.data.forumDetail.id;
         var subforum = [{}]
+        var that = this
 
         // 1. 先进行楼主信息赋值
         subforum[0].username = this.data.forumDetail.username
@@ -58,25 +58,28 @@ Page({
 
         // 2. 对子评论赋值
         wx.request({
-            url: app.globalData.URLPREFIX + 'comments/getByPost?postId=' + postId,
+            url: app.globalData.URLPREFIX + 'comments/getByPost?postId=' + postId.toString(),
             header: {
                 Cookie: app.globalData.cookie
             },
             method: 'GET',
             success(res) {
                 for (var i = 0; i < res.data.data.length; i++) {
-                    subforum[i + 1].username = res.data.data[i].username
-                    subforum[i + 1].date = res.data.data[i].date
-                    subforum[i + 1].content = res.data.data[i].content
-                    subforum[i + 1].level = res.data.data[i].level
-                    subforum[i + 1].ifMyself = false;
+                    res.data.data[i].username = res.data.data[i].authorName
+                    res.data.data[i].date = res.data.data[i].timeStamp
+                    res.data.data[i].content = res.data.data[i].content
+                    res.data.data[i].level = res.data.data[i].level
+                    if (res.data.data[i].username == subforum[0].username)
+                        res.data.data[i].ifMyself = true
+                    else
+                        res.data.data[i].ifMyself = false;
+                    subforum.push(res.data.data[i])
                 }
-            }
-        })
 
-        // 3. 重新赋值进行数据更新
-        this.setData({
-            subforum: subforum
+                that.setData({
+                    subforum: subforum
+                })
+            }
         })
     },
 
