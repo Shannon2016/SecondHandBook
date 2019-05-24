@@ -13,7 +13,8 @@ Page({
         orderInfoList: [],
         inputName:'',
         inputAddress:'',
-        inputPhone:''
+        inputPhone:'',
+        flag:-1 // 用于判断是从购物车下单还是直接购买下单
     },
 
     bindInputName: function (e) {
@@ -34,29 +35,67 @@ Page({
 
     onConfirm: function () {
         var that = this;
+        console.log(that.data.orderInfoList);
         wx.showModal({
             title: '提示',
             content: '是否确认支付？',
             success(res) {
                 if (res.confirm) {
                     console.log(that.data);
+                    if(that.data.flag === 2){
                     for(var i of that.data.orderInfoList){
+                        // console.log(i);
                         wx.request({
-                        url: app.globalData.URLPREFIX + 'orders/add',
-                        method:'POST',
-                        header:{
-                            Cookie:app.globalData.cookie
-                        },
-                        data:{
-                            bookId: i.id,
-                            buyerName:that.data.inputName,
-                            phoneNumber:that.data.inputPhone,
-                            address:that.data.inputAddress
-                        },
-                        success:console.log
+                            url: app.globalData.URLPREFIX + 'orders/add',
+                            method:'POST',
+                            header:{
+                                Cookie:app.globalData.cookie
+                            },
+                            data:{
+                                number:i.number,
+                                bookId: i.id,
+                                buyerName:that.data.inputName,
+                                phoneNumber:that.data.inputPhone,
+                                address:that.data.inputAddress
+                            },
+                            success(res){
+                                console.log(res)
+                                if(res.data.code === 0){
+                                    wx.redirectTo({
+                                        url: '/page/percen-center/my-order/my-order',
+                                    })
+                                }
+                            }
                         })
                     }
-                } else if (res.cancel) {
+                }
+                else if(that.data.flag === 1){
+                    console.log(that.data.orderInfoList)
+                        wx.request({
+                            url: app.globalData.URLPREFIX + 'orders/addDirectly',
+                            method: 'POST',
+                            header: {
+                                Cookie: app.globalData.cookie
+                            },
+                            data: {
+                                number: that.data.orderInfoList[0].number,
+                                bookId: that.data.orderInfoList[0].id,
+                                buyerName: that.data.inputName,
+                                phoneNumber: that.data.inputPhone,
+                                address: that.data.inputAddress
+                            },
+                            success(res) {
+                                console.log(res)
+                                if (res.data.code === 0) {
+                                    wx.redirectTo({
+                                        url: '/pages/person-center/my-order/my-order',
+                                    })
+                                }
+                            }
+                        })
+                    }
+                } 
+                else if (res.cancel) {
                     console.log('用户点击取消')
                 }
             }
@@ -66,7 +105,6 @@ Page({
         var tmp = []; //购物车列表
 
         var that = this;
-        console.log(app.globalData.URLPREFIX);
         wx.request({
             url: app.globalData.URLPREFIX + 'shoppingcart/getMy',
             method: 'GET',
@@ -82,10 +120,11 @@ Page({
                 for(i of that.data.orderIndex){
                     tmp.push(res.data.data[parseInt(i)])
                 }
-
-                that.setData({
-                    orderInfoList: tmp
-                })
+                if(tmp.length > 0){
+                    that.setData({
+                        orderInfoList: tmp
+                    }) 
+                }
             }
         })
     },
@@ -93,13 +132,28 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        this.setData({
-            totalPrice: parseFloat(options.total).toFixed(2),
-            orderIndex: options.index.split(',')
-        })
+        if (options.bookName) {
+            var tmp = [];
+            options.number = 1;
+            tmp.push(options)
+            this.setData({
+                orderInfoList: tmp,
+                orderIndex:[],
+                totalPrice:parseFloat(options.price).toFixed(2),
+                flag :1 //直接下订单
+            })
+        }
+        else{
+            this.setData({
+                totalPrice: parseFloat(options.total).toFixed(2),
+                orderIndex: options.index.split(','),
+                flag:2 //购物车
+            })
+        }
     },
-    onShow: function(){
+    onShow: function(options){
         this.getOrderInfoList();
+        console.log(this.data.orderInfoList)
     },
 
     /**

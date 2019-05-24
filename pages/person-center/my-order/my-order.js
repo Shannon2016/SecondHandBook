@@ -23,6 +23,9 @@ Page({
     onLoad:function(){
         this.getMyOrderList()
     },
+    onShow: function(){
+        this.getMyOrderList();
+    },
     
     onPullDownRefresh: function() {
         wx.stopPullDownRefresh()

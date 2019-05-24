@@ -77,6 +77,9 @@ Page({
     },
 
     catchBuyTap: function () {
-
+        var book = this.data.bookDetail;
+        wx.redirectTo({
+            url: '/pages/order/order?price=' + book.price + '&picSrc='+ book.picSrc + '&bookName='+book.name+'&author='+book.author+'&press='+book.press+'&id='+book.id 
+        })
     }
 })

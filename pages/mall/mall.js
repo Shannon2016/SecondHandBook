@@ -61,7 +61,6 @@ Page({
                     res.data.data[i].name = res.data.data[i].bookName
                     res.data.data[i].level = res.data.data[i].depreciation
                 }
-                console.log(res.data.data)
                 that.setData({
                     books: res.data.data
                 })
