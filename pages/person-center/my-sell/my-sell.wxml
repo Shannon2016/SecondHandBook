@@ -14,7 +14,8 @@
 
             <view class='book-detail-item'>
                 <text class='book-detail-name'>{{item.name}}</text>
-                <text style="background-color:{{item.color}};" class='book-detail-state'>{{item.state}}</text>
+                <!-- 由于服务器没有待售已售接口故注释掉了 -->
+                <!-- <text style="background-color:{{item.color}};" class='book-detail-state'>{{item.state}}</text> -->
                 <view class='book-detail-info'>
                     <text>{{"作者："+item.author}}</text>
                     <text>{{"出版社："+item.press}}</text>

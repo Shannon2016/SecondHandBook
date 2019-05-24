@@ -10,14 +10,14 @@ Page({
         canIUse: wx.canIUse('button.open-type.getUserInfo')
     },
     //事件处理函数
-    bindViewTap: function() {
+    bindViewTap: function () {
         wx.setStorageSync('userInfo', this.data.userInfo)
 
         wx.switchTab({
             url: '/pages/mall/mall',
         })
     },
-    onLoad: function() {
+    onLoad: function () {
         if (app.globalData.userInfo) {
             this.setData({
                 userInfo: app.globalData.userInfo,
@@ -49,11 +49,11 @@ Page({
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
-    onPullDownRefresh: function() {
+    onPullDownRefresh: function () {
         wx.stopPullDownRefresh()
     },
 
-    getUserInfo: function(e) {
+    getUserInfo: function (e) {
         console.log(e)
         app.globalData.userInfo = e.detail.userInfo
         this.setData({

@@ -37,7 +37,7 @@ Page({
         })
 
     },
-    getSum: function() {
+    getSum: function () {
         var tmp = 0;
         for (var i = 0; i < this.data.chooseItemIndex.length; i++) {
             var index = parseInt(this.data.chooseItemIndex[i]);
@@ -48,7 +48,7 @@ Page({
             totalPrice: tmp
         })
     },
-    checkAll: function() {
+    checkAll: function () {
         if (this.data.checkFlag === false) {
             for (var i in this.data.cartInfoList) {
                 this.data.chooseItemIndex.push(i.toString());
@@ -72,7 +72,7 @@ Page({
         })
         this.getSum();
     },
-    goOrder: function() {
+    goOrder: function () {
         if (this.data.chooseItemIndex.length > 0) {
             var tmp = this.data.chooseItemIndex.join();
             wx.navigateTo({
@@ -98,7 +98,7 @@ Page({
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
-    onPullDownRefresh: function() {
+    onPullDownRefresh: function () {
         wx.stopPullDownRefresh()
     }
 })

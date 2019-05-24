@@ -10,14 +10,14 @@ Page({
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function(options) {
+    onLoad: function (options) {
         var bookDetail = JSON.parse(unescape(options.bookDetail))
         this.setData({
             bookDetail: bookDetail
         })
     },
 
-    catchToCartTap: function() {
+    catchToCartTap: function () {
         wx.switchTab({
             url: '/pages/cart/cart',
         })
@@ -26,13 +26,12 @@ Page({
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
-    onPullDownRefresh: function() {
+    onPullDownRefresh: function () {
         wx.stopPullDownRefresh()
     },
 
     catchAddCartTap: function() {
         //我又动手了
-        console.log(this.data.bookDetail)
         var app = getApp();
         wx.request({
           url: app.globalData.URLPREFIX + 'shoppingcart/add',
@@ -76,7 +75,7 @@ Page({
         wx.setStorageSync('bookList', bookList)
     },
 
-    catchBuyTap: function() {
+    catchBuyTap: function () {
 
     }
 })

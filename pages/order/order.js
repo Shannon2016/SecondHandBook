@@ -16,23 +16,23 @@ Page({
         inputPhone:''
     },
 
-    bindInputName:function(e){
-      this.setData({
-        inputName:e.detail.value
-      })
+    bindInputName: function (e) {
+        this.setData({
+            inputName: e.detail.value
+        })
     },
-    bindInputPhone:function(e){
-      this.setData({
-        inputPhone:e.detail.value
-      })
+    bindInputPhone: function (e) {
+        this.setData({
+            inputPhone: e.detail.value
+        })
     },
-    bindInputAddress:function(e){
-      this.setData({
-        inputAddress: e.detail.value
-      })
+    bindInputAddress: function (e) {
+        this.setData({
+            inputAddress: e.detail.value
+        })
     },
 
-    onConfirm: function() {
+    onConfirm: function () {
         var that = this;
         wx.showModal({
             title: '提示',
@@ -92,7 +92,7 @@ Page({
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function(options) {
+    onLoad: function (options) {
         this.setData({
             totalPrice: parseFloat(options.total).toFixed(2),
             orderIndex: options.index.split(',')
@@ -105,7 +105,7 @@ Page({
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
-    onPullDownRefresh: function() {
+    onPullDownRefresh: function () {
         wx.stopPullDownRefresh()
     }
 })
