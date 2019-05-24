@@ -41,7 +41,6 @@ Page({
                     forum[i].content = res.data.data[i].content
                     forum[i].level = res.data.data[i].level
                 }
-
                 that.setData({
                     forum: forum
                 })

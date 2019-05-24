@@ -1,4 +1,5 @@
 // pages/forum/subforum/subforum.js
+const app = getApp();
 Page({
 
     /* * 页面的初始数据 */
@@ -26,6 +27,7 @@ Page({
             forumDetail: forumDetail
         })
 
+        console.log(options)
         this.getAllComments()
     },
 
@@ -45,7 +47,7 @@ Page({
     getAllComments: function() {
         // 0. 初始化
         var postId = this.data.forumDetail.id;
-        var subforum = []
+        var subforum = [{}]
 
         // 1. 先进行楼主信息赋值
         subforum[0].username = this.data.forumDetail.username
