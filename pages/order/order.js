@@ -11,28 +11,28 @@ Page({
         orderIndex: [],
         totalPrice: 0,
         orderInfoList: [],
-        inputName:'',
-        inputAddress:'',
-        inputPhone:''
+        inputName: '',
+        inputAddress: '',
+        inputPhone: ''
     },
 
-    bindInputName:function(e){
-      this.setData({
-        inputName:e.detail.value
-      })
+    bindInputName: function (e) {
+        this.setData({
+            inputName: e.detail.value
+        })
     },
-    bindInputPhone:function(e){
-      this.setData({
-        inputPhone:e.detail.value
-      })
+    bindInputPhone: function (e) {
+        this.setData({
+            inputPhone: e.detail.value
+        })
     },
-    bindInputAddress:function(e){
-      this.setData({
-        inputAddress: e.detail.value
-      })
+    bindInputAddress: function (e) {
+        this.setData({
+            inputAddress: e.detail.value
+        })
     },
 
-    onConfirm: function() {
+    onConfirm: function () {
         var that = this;
         wx.showModal({
             title: '提示',
@@ -40,29 +40,66 @@ Page({
             success(res) {
                 if (res.confirm) {
                     console.log(that.data);
-                    wx.request({
-                      url: app.globalData.URLPREFIX + 'orders/add',
-                      method:'POST',
-                      header:{
-                          Cookie:app.globalData.cookie
-                      },
-                      data:{
-                          bookId:1,
-                          buyerName:that.data.inputName,
-                          phoneNumber:that.data.inputPhone,
-                          address:that.data.inputAddress
-                      },
-                      success(res){
-                        console.log(res)
-                      }
-                    })
-                } else if (res.cancel) {
+                    if (that.data.flag === 2) {
+                        for (var i of that.data.orderInfoList) {
+                            // console.log(i);
+                            wx.request({
+                                url: app.globalData.URLPREFIX + 'orders/addFromCart',
+                                method: 'POST',
+                                header: {
+                                    Cookie: app.globalData.cookie
+                                },
+                                data: {
+                                    number: i.number,
+                                    bookId: i.id,
+                                    buyerName: that.data.inputName,
+                                    phoneNumber: that.data.inputPhone,
+                                    address: that.data.inputAddress
+                                },
+                                success(res) {
+                                    console.log(res)
+                                    if (res.data.code === 0) {
+                                        wx.redirectTo({
+                                            url: '/page/percen-center/my-order/my-order',
+                                        })
+                                    }
+                                }
+                            })
+                        }
+                    }
+                    else if (that.data.flag === 1) {
+                        console.log(that.data.orderInfoList)
+                        wx.request({
+                            url: app.globalData.URLPREFIX + 'orders/addDirectly',
+                            method: 'POST',
+                            header: {
+                                Cookie: app.globalData.cookie
+                            },
+                            data: {
+                                number: that.data.orderInfoList[0].number,
+                                bookId: that.data.orderInfoList[0].id,
+                                buyerName: that.data.inputName,
+                                phoneNumber: that.data.inputPhone,
+                                address: that.data.inputAddress
+                            },
+                            success(res) {
+                                console.log(res)
+                                if (res.data.code === 0) {
+                                    wx.redirectTo({
+                                        url: '/pages/person-center/my-order/my-order',
+                                    })
+                                }
+                            }
+                        })
+                    }
+                }
+                else if (res.cancel) {
                     console.log('用户点击取消')
                 }
             }
         })
     },
-    getOrderInfoList: function() {
+    getOrderInfoList: function () {
         var tmp = [{
             picSrc: "../../image/book1.png",
             bookName: "共产党宣言",
@@ -95,7 +132,7 @@ Page({
             price: 18.7
         }]; //购物车列表
 
-        
+
 
         var tmp2 = [];
         for (var i = 0; i < this.data.orderIndex.length; i++) {
@@ -109,7 +146,7 @@ Page({
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function(options) {
+    onLoad: function (options) {
         this.setData({
             totalPrice: parseFloat(options.total).toFixed(2),
             orderIndex: options.index.split(',')
@@ -121,7 +158,7 @@ Page({
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
-    onPullDownRefresh: function() {
+    onPullDownRefresh: function () {
         wx.stopPullDownRefresh()
     }
 })
