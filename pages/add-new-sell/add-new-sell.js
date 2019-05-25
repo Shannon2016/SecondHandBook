@@ -148,50 +148,53 @@ Page({
         ISBN = that.data.bookISBN;
         price = that.data.bookPrice;
         description = that.data.bookDescription;
-        // console.log(date);
-        // console.log(description);
-        console.log(picFilePath)
-        // wx.uploadFile({
-        //     url: app.globalData.URLPREFIX + 'file/upload',
-        //     filePath: picFilePath,
-        //     name: 'newPic',
-        //     header:{
-        //         Cookie:app.globalData.cookie
-        //     },
-        //     method:'POST',
-        //     success(res) {
-        //         console.log(res);
-        //     },
-        //     fail(res) {
-        //         wx.showToast({
-        //             title: '出错了',
-        //         })
-        //     }
-        // })
+  
         if(this.judge()){
-            wx.request({
-                url: app.globalData.URLPREFIX + 'sells/add',
-                header: {
-                    Cookie: app.globalData.cookie
+            wx.uploadFile({
+                url: app.globalData.URLPREFIX + 'files/upload',
+                filePath: picFilePath,
+                name: 'newPic',
+                header:{
+                    Cookie:app.globalData.cookie
                 },
-                method: 'POST',
-                data: {
-                    bookName: name,
-                    remaining: 1,
-                    category: classId,
-                    imageURL: picFilePath,
-                    press: press,
-                    author: author,
-                    publishedDate: date,
-                    depreciation: level,
-                    ISBN: ISBN,
-                    price: price,
-                    description: description
+                method:'POST',
+                success(res){
+                    res.data = JSON.parse(res.data);
+                    console.log(res.data.data[0])
+
+                    wx.request({
+                        url: app.globalData.URLPREFIX + 'sells/add',
+                        header: {
+                            Cookie: app.globalData.cookie
+                        },
+                        method: 'POST',
+                        data: {
+                            bookName: name,
+                            remaining: 1,
+                            category: classId,
+                            imageURL: app.globalData.PICPREFIX + res.data.data[0],
+                            press: press,
+                            author: author,
+                            publishedDate: date,
+                            depreciation: level,
+                            ISBN: ISBN,
+                            price: price,
+                            description: description
+                        },
+                        success(res) {
+                            if(res.data.code === 0){
+                                wx.redirectTo({
+                                    url: '/pages/person-center/my-sell/my-sell',
+                                })
+                            }
+                        }
+                    })
                 },
-                success(res) {
-                    console.log(picFilePath);
+                fail(res){
+                    console.log(res);
                 }
             })
+            
         }
 
     },

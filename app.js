@@ -123,7 +123,8 @@ App({
     globalData: {
         userInfo: null,
         URLPREFIX: 'http://39.96.4.235:5000/api/',
-        cookie: 'abc'
+        cookie: 'abc',
+        PICPREFIX:'http://39.96.4.235:5000'
     },
 
     /**
