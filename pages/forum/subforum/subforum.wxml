@@ -19,7 +19,7 @@
             </view>
         </view>
         <view class='subforum-detail-content fontItemDetail'>
-            <text>{{item.content}}</text>
+            {{item.content}}
         </view>
         <view class='subforum-detail-date fontDate'>
             <text>{{item.date}}</text>

@@ -111,6 +111,7 @@ Page({
                 wx.showToast({
                     title: '发送成功',
                 })
+                that.getAllComments()
             },
             fail(res) {
                 wx.showToast({

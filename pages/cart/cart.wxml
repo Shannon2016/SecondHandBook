@@ -38,8 +38,8 @@
                 <view slot="right"  class='rightBlock'>删除</view>
             </van-swipe-cell>
         </checkbox-group>
+        <view style="height:100rpx;"></view>
     </view>
-    <view style="height:100rpx;"></view>
     <view id="bottomBar">
         <view id="checkAll">
             <checkbox value="{{index}}" bindtap="checkAll"></checkbox>

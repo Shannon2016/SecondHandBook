@@ -158,6 +158,8 @@
 
 .subforum-detail-content {
     margin-top: 10rpx;
+    /* width: 100%; */
+    height: 230rpx;
 }
 
 .subforum-detail-level {

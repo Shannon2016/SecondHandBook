@@ -110,7 +110,8 @@ Page({
             data:book,
             method:'POST'
         }).then(res=>{
-            if(res.code === 0){
+            // console.log(res.data.code)
+            if(res.data.code === 0){
                 wx.showToast({
                     title: '售卖成功',
                 })
