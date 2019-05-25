@@ -51,7 +51,7 @@
 }
 
 .pictures{
-  height:calc(100% - 30rpx); 
+  height:calc(100% - 20rpx); 
   width: 100%;
 }
 
