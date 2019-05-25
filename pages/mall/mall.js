@@ -6,45 +6,68 @@ Page({
      * 页面的初始数据
      */
     data: {
-        books: [{
-                picSrc: "/image/book1.png",
-                name: "共产党宣言",
-                author: "马克思 恩格斯",
-                price: "15.00",
-                description: "双击编辑文本双击编辑文本双击编辑文本双击编辑文本双击编辑文本双击编辑文本",
-                level: 1,
-                id: 1,
+        // books: [{
+        //         picSrc: "/image/book1.png",
+        //         name: "共产党宣言",
+        //         author: "马克思 恩格斯",
+        //         price: "15.00",
+        //         description: "双击编辑文本双击编辑文本双击编辑文本双击编辑文本双击编辑文本双击编辑文本",
+        //         level: 1,
+        //         id: 1,
+        //     }
+        // ],
+        classifyStyle: [{
+                bgColor: '#fbfbfb',
+                color: '#606266',
+                fontSize: '28rpx'
             },
             {
-                picSrc: "/image/book11.png",
-                name: "博弈论",
-                author: "让·梯若尔",
-                price: "16.00",
-                description: "双击编辑文本双击编辑文本双击编辑文本双击编辑文本双击编辑文本双击编辑文本",
-                level: 6,
-                id: 2,
+                bgColor: '#fbfbfb',
+                color: '#606266',
+                fontSize: '28rpx'
             },
             {
-                picSrc: "/image/book18.png",
-                name: "围城",
-                author: "钱钟书",
-                price: "17.00",
-                description: "双击编辑文本双击编辑文本双击编辑文本双击编辑文本双击编辑文本双击编辑文本",
-                level: 4,
-                id: 3,
+                bgColor: '#fbfbfb',
+                color: '#606266',
+                fontSize: '28rpx'
             },
             {
-                picSrc: "/image/book4.png",
-                name: "中国哲学史",
-                author: "冯友兰",
-                price: "18.00",
-                description: "双击编辑文本双击编辑文本双击编辑文本双击编辑文本双击编辑文本双击编辑文本",
-                level: 3,
-                id: 4,
+                bgColor: '#fbfbfb',
+                color: '#606266',
+                fontSize: '28rpx'
+            },
+            {
+                bgColor: '#fbfbfb',
+                color: '#606266',
+                fontSize: '28rpx'
+            },
+            {
+                bgColor: '#fbfbfb',
+                color: '#606266',
+                fontSize: '28rpx'
+            },
+            {
+                bgColor: '#fbfbfb',
+                color: '#606266',
+                fontSize: '28rpx'
+            },
+            {
+                bgColor: '#fbfbfb',
+                color: '#606266',
+                fontSize: '28rpx'
+            },
+            {
+                bgColor: '#fbfbfb',
+                color: '#606266',
+                fontSize: '28rpx'
+            },
+            {
+                bgColor: 'rgb(75, 199, 168)',
+                color: '#fff',
+                fontSize: '30rpx'
             },
         ],
-
-        searchValue:''
+        searchValue: ''
     },
 
     getBookList: function() {
@@ -79,7 +102,7 @@ Page({
         }
     },
 
-    onShow: function(){
+    onShow: function() {
         this.getBookList()
     },
 
@@ -88,6 +111,13 @@ Page({
      */
     onPullDownRefresh: function() {
         wx.stopPullDownRefresh()
+
+        var classifyStyle = this.data.classifyStyle
+        for (var i = 1; i < 9; i++)
+            classifyStyle[i] = classifyStyle[0]
+        this.setData({
+            classifyStyle: classifyStyle
+        })
 
         // TODO 应使用异步获取
         this.getBookList()
@@ -111,6 +141,14 @@ Page({
     showClassifyBook: function(event) {
         var type = parseInt(event.currentTarget.dataset.type)
 
+        var classifyStyle = this.data.classifyStyle
+        for (var i = 1; i < 9; i++)
+            classifyStyle[i] = classifyStyle[0]
+        classifyStyle[type] = classifyStyle[9]
+        this.setData({
+            classifyStyle: classifyStyle
+        })
+
         var that = this;
         wx.request({
             url: app.globalData.URLPREFIX + 'sells/getByCategory',
@@ -118,8 +156,8 @@ Page({
                 Cookie: app.globalData.cookie
             },
             method: 'GET',
-            data:{
-                category:type
+            data: {
+                category: type
             },
             success(res) {
                 for (var i = 0; i < res.data.data.length; i++) {

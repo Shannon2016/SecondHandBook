@@ -145,7 +145,7 @@
     width: 100%;
     height: 260rpx;
     margin-bottom: 5rpx;
-    border-top: 2rpx solid #bbb;
+    border-top: 2rpx solid #dcdfe6;
 }
 
 .book-detail-picture {
