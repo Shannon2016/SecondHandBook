@@ -33,73 +33,105 @@ Page({
         })
     },
 
+    judge: function(){
+        if (this.data.inputName.length > 30 || this.data.inputName.length < 1){
+            wx.showToast({
+                title: "请正确填写姓名",
+                image: '../../image/tan.png',
+                mask: false,
+            });
+            return false;
+        }
+
+        if (this.data.inputPhone.length !== 11) {
+            wx.showToast({
+                title: "手机号码11位",
+                image: '../../image/tan.png',
+                mask: false,
+            });
+            return false;
+        }
+
+        if (this.data.inputAddress.length > 250 || this.data.inputAddress.length < 1){
+            wx.showToast({
+                title: "请正确填写地址",
+                image: '../../image/tan.png',
+                mask: false,
+            });
+            return false;
+        }
+        return true;
+    },
+
     onConfirm: function () {
-        var that = this;
-        console.log(that.data.orderInfoList);
-        wx.showModal({
-            title: '提示',
-            content: '是否确认支付？',
-            success(res) {
-                if (res.confirm) {
-                    console.log(that.data);
-                    if(that.data.flag === 2){
-                    for(var i of that.data.orderInfoList){
-                        // console.log(i);
-                        wx.request({
-                            url: app.globalData.URLPREFIX + 'orders/addFromCart',
-                            method:'POST',
-                            header:{
-                                Cookie:app.globalData.cookie
-                            },
-                            data:{
-                                number:i.number,
-                                bookId: i.id,
-                                buyerName:that.data.inputName,
-                                phoneNumber:that.data.inputPhone,
-                                address:that.data.inputAddress
-                            },
-                            success(res){
-                                console.log(res)
-                                if(res.data.code === 0){
-                                    wx.redirectTo({
-                                        url: '/page/percen-center/my-order/my-order',
-                                    })
+        if(this.judge()){
+            var that = this;
+            console.log(that.data.orderInfoList);
+            wx.showModal({
+                title: '提示',
+                content: '是否确认支付？',
+                success(res) {
+                    if (res.confirm) {
+                        console.log(that.data);
+                        if(that.data.flag === 2){
+                        for(var i of that.data.orderInfoList){
+                            // console.log(i);
+                            wx.request({
+                                url: app.globalData.URLPREFIX + 'orders/addFromCart',
+                                method:'POST',
+                                header:{
+                                    Cookie:app.globalData.cookie
+                                },
+                                data:{
+                                    number:i.number,
+                                    bookId: i.id,
+                                    buyerName:that.data.inputName,
+                                    phoneNumber:that.data.inputPhone,
+                                    address:that.data.inputAddress
+                                },
+                                success(res){
+                                    console.log(res)
+                                    if(res.data.code === 0){
+                                        wx.redirectTo({
+                                            url: '/page/percen-center/my-order/my-order',
+                                        })
+                                    }
                                 }
-                            }
-                        })
+                            })
+                        }
+                    }
+                    else if(that.data.flag === 1){
+                        console.log(that.data.orderInfoList)
+                            wx.request({
+                                url: app.globalData.URLPREFIX + 'orders/addDirectly',
+                                method: 'POST',
+                                header: {
+                                    Cookie: app.globalData.cookie
+                                },
+                                data: {
+                                    number: that.data.orderInfoList[0].number,
+                                    bookId: that.data.orderInfoList[0].id,
+                                    buyerName: that.data.inputName,
+                                    phoneNumber: that.data.inputPhone,
+                                    address: that.data.inputAddress
+                                },
+                                success(res) {
+                                    console.log(res)
+                                    if (res.data.code === 0) {
+                                        wx.redirectTo({
+                                            url: '/pages/person-center/my-order/my-order',
+                                        })
+                                    }
+                                }
+                            })
+                        }
+                    } 
+                    else if (res.cancel) {
+                        console.log('用户点击取消')
                     }
                 }
-                else if(that.data.flag === 1){
-                    console.log(that.data.orderInfoList)
-                        wx.request({
-                            url: app.globalData.URLPREFIX + 'orders/addDirectly',
-                            method: 'POST',
-                            header: {
-                                Cookie: app.globalData.cookie
-                            },
-                            data: {
-                                number: that.data.orderInfoList[0].number,
-                                bookId: that.data.orderInfoList[0].id,
-                                buyerName: that.data.inputName,
-                                phoneNumber: that.data.inputPhone,
-                                address: that.data.inputAddress
-                            },
-                            success(res) {
-                                console.log(res)
-                                if (res.data.code === 0) {
-                                    wx.redirectTo({
-                                        url: '/pages/person-center/my-order/my-order',
-                                    })
-                                }
-                            }
-                        })
-                    }
-                } 
-                else if (res.cancel) {
-                    console.log('用户点击取消')
-                }
-            }
-        })
+            })
+        }
     },
     getOrderInfoList: function() {
         var tmp = []; //购物车列表
