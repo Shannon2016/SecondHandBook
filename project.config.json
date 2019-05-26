@@ -4,16 +4,18 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
-		"autoAudits": false
+		"autoAudits": false,
+		"uglifyFileName": true,
+		"checkInvalidKey": true
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.7.0",
-	"appid": "wx75221c8ecddbf3d2",
+	"appid": "wxa70613bf240e681b",
 	"projectname": "SecondHandBook",
 	"debugOptions": {
 		"hidedInDevtools": []

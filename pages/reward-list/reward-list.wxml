@@ -1,0 +1,46 @@
+<!-- 搜索框部分 -->
+<view class='search'>
+    <image src='/image/3.jpg'></image>
+    <view class='search-box'>
+        <view class='search-box-item'>
+            <view class='search-item'>
+                <image src='/image/search.png' catchtap='searchBook'></image>
+                <input placeholder='关键词' bindinput='searchInput' catchconfirm='searchBook'></input>
+            </view>
+        </view>
+    </view>
+</view>
+
+
+<!-- 显示列表 -->
+<view class='books'>
+    <block wx:for='{{books}}'>
+        <view class='book-detail'>
+            <view class='book-detail-picture'>
+                <image src='{{item.picSrc}}'></image>
+            </view>
+
+            <view class='book-detail-item'>
+                <text class='book-detail-name'>{{item.name}}</text>
+                <view class='book-detail-info'>
+                    <text>{{"作者："+item.author}}</text>
+                    <text>{{"出版社："+item.press}}</text>
+                </view>
+                <text class='book-detail-price' decode='true'>{{"￥&nbsp;"+item.price}}</text>
+            </view>
+
+            <button class='book-detail-sell' catchtap='catchToSellBookTap' data-index='{{index}}'>
+                <text>去卖此书</text>
+            </button>
+        </view>
+
+
+    </block>
+</view>
+
+<!-- 悬浮加号按钮 -->
+<movable-area class='add'>
+    <movable-view class='add-item' direction='all' x='25' y='25' catchtap='catchAddRewardTap'>
+        <image src='/image/add.png'></image>
+    </movable-view>
+</movable-area>

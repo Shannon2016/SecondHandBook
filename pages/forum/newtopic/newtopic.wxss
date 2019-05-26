@@ -1,0 +1,95 @@
+.topInfo {
+    display: flex;
+    width: 100%;
+    height: 286rpx;
+    position: fixed;
+    z-index: 1
+}
+
+.topInfo image {
+    width: 100%;
+    height: 100%;
+}
+
+.newtopic {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-items: center;
+    height: 620rpx;
+    width: 100%;
+    position: absolute;
+    margin-top: 286rpx;
+}
+
+.newtopic-topic {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 72rpx;
+    width: 658rpx;
+}
+
+.newtopic-topic text {
+    font-size: 36rpx;
+    font-weight: bond;
+    margin-top: 94rpx;
+    margin-right: 46rpx;
+    margin-left: 46rpx;
+}
+
+.newtopic-topic input {
+    flex: 1;
+    font-size: 28rpx;
+    line-height: 40rpx;
+    margin-top: 104rpx;
+    height: 72rpx;
+    background-color: #f0f0f0;
+}
+
+.newtopic-content {
+    display: flex;
+    flex-direction: row;
+    height: 72rpx;
+    width: 658rpx;
+}
+
+.newtopic-content text {
+    font-size: 36rpx;
+    font-weight: bond;
+    margin-top: 94rpx;
+    margin-right: 46rpx;
+    margin-left: 46rpx;
+}
+
+.newtopic-content textarea {
+    flex: 1;
+    font-size: 28rpx;
+    line-height: 40rpx;
+    margin-top: 102rpx;
+    height: 420rpx;
+    background-color: #f0f0f0;
+}
+
+.newtopic-button {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 180rpx;
+    height: 80rpx;
+    background-color: #07a2a4;
+    border-radius: 10rpx;
+    border: 2rpx solid #bbb;
+    top: 664rpx;
+    right: 310rpx;
+    left: 260rpx;
+}
+
+.newtopic-button text {
+    margin: 0;
+    text-align: center;
+    line-height: 40rpx;
+    font-size: 28rpx;
+    color: #fff;
+}
