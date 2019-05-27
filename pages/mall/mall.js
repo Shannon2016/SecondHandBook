@@ -104,6 +104,7 @@ Page({
 
     onShow: function() {
         this.getBookList()
+        
     },
 
     /**
