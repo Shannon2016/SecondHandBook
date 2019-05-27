@@ -94,7 +94,7 @@ Page({
 
     onLoad: function() {
         var userInfo = wx.getStorageSync('userInfo')
-
+        console.log(userInfo)
         if (!userInfo) {
             wx.redirectTo({
                 url: '/pages/index/index',
