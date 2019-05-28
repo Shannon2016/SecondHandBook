@@ -7,7 +7,8 @@ Page({
         motto: '登录中，请稍等',
         userInfo: {},
         hasUserInfo: false,
-        canIUse: wx.canIUse('button.open-type.getUserInfo')
+        canIUse: wx.canIUse('button.open-type.getUserInfo'),
+        ifAuthorize:false
     },
     //事件处理函数
     bindViewTap: function () {
@@ -18,6 +19,31 @@ Page({
         })
     },
 
+    onGotUserInfo: function (e) {
+        console.log(0)
+        
+        if (e.detail.userInfo) {
+            //用户按了允许授权按钮
+            this.setData({
+                motto:'登录中，请稍等'
+            })
+            new Promise((resolve, reject) => {
+                wx.getUserInfo({
+                    success: resolve,
+                    fail: reject
+                })
+            }).then(this.onLoad)
+        } else {
+            //用户按了拒绝按钮
+            wx.showToast({
+                title: '您拒绝了请求',
+            })
+            return null;
+        }
+
+        
+    },
+
     onLoad: function () {
 
         // 展示本地存储能力
@@ -26,6 +52,7 @@ Page({
         wx.setStorageSync('logs', logs)
         // 登录
         var loginCode = null;
+        console.log("xxx")
         new Promise((resolve, reject) => {
             wx.login({
                 success: resolve,
@@ -42,6 +69,32 @@ Page({
                 })
             })
         }).then(res => {
+            if (!res.authSetting['scope.userInfo']) {
+                this.setData({
+                    ifAuthorize: true,
+                    motto: '请允许授权'
+                })
+                // var promise = this.onGotUserInfo(e)
+                // if(promise) return promise
+                // wx.authorize({
+                //     scope: 'scope.userInfo',
+                //     success() {
+                //         return new Promise((resolve, reject) => {
+                //             wx.getUserInfo({
+                //                 success: resolve,
+                //                 fail: reject
+                //             })
+                //         })
+                //     },
+                //     fail() {
+                //         wx.showToast({
+                //             title: '您拒绝了请求',
+                //         })
+                //         return null;
+                //     }
+                // })
+            }
+            // console.log(res)
             if (res.authSetting['scope.userInfo']) {
                 // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
                 return new Promise((resolve, reject) => {
@@ -51,9 +104,8 @@ Page({
                     })
                 })
             }
-            reject('系统崩溃');
+            // reject('系统崩溃');
         }).then(res => {
-            console.log(res.userInfo)
             // 可以将 res 发送给后台解码出 unionId
             app.globalData.userInfo = res.userInfo
 

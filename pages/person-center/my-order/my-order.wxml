@@ -8,7 +8,7 @@
     <block wx:for='{{orders}}'>
         <view class='order-detail'>
             <view class='order-detail-picture'>
-                <image src='{{item.picSrc}}'></image>
+                <image class='order-detail-picture image' src='{{item.picSrc}}'></image>
             </view>
 
             <view class='order-detail-item'>
