@@ -5,7 +5,7 @@
         <view class='search-box-item'>
             <view class='search-item'>
                 <image src='/image/search.png' catchtap='searchBook'></image>
-                <input placeholder='搜索相关图书' bindinput='searchInput' catchconfirm='searchBook'></input>
+                <input placeholder='搜索相关图书' bindinput='searchInput' catchconfirm='searchBook' value='{{inputText}}'></input>
             </view>
         </view>
     </view>
@@ -40,7 +40,7 @@
 
 <!-- 显示列表 -->
 <view class='books'>
-    <block wx:for='{{books}}'>
+    <block wx:for-items='{{books}}' wx:key='item'>
         <view class='book-detail' catchtap='showBookDetail' data-book-index='{{index}}'>
             <view class='book-detail-picture'>
                 <image src='{{item.picSrc}}' lazy-load='true'></image>

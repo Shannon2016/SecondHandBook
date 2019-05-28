@@ -6,7 +6,7 @@
     <view class='topInfo-title'>
         <text class='fontTitle'>{{subforum[0].title}}</text>
     </view>
-    <view class='subforum-detail-item' wx:for='{{subforum}}'>
+    <view class='subforum-detail-item' wx:for-items='{{subforum}}' wx:key='item'>
         <view class='subforum-detail-username'>
             <image src='/image/personal-center.png'></image>
             <text class='fontNickname'>{{item.username}}</text>

@@ -45,9 +45,21 @@ Page({
                 content: that.data.contentValue
             },
             success(res) {
+                if (res.data.code !== 0) {
+                    wx.showToast({
+                        title: '网络连接错误',
+                        icon: 'none'
+                    })
+                    return
+                }
+                
                 wx.showToast({
                     title: '发表成功',
                 })
+
+                setTimeout(() => {
+                    wx.navigateBack()
+                }, 2000)
             },
             fail(res) {
                 wx.showToast({

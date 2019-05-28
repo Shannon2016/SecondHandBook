@@ -50,6 +50,7 @@ Page({
         var that = this
 
         // 1. 先进行楼主信息赋值
+        subforum[0].title = this.data.forumDetail.title
         subforum[0].username = this.data.forumDetail.username
         subforum[0].content = this.data.forumDetail.content
         subforum[0].date = this.data.forumDetail.date
@@ -64,6 +65,14 @@ Page({
             },
             method: 'GET',
             success(res) {
+                if (res.data.code !== 0) {
+                    wx.showToast({
+                        title: '网络连接错误',
+                        icon: 'none'
+                    })
+                    return
+                }
+
                 for (var i = 0; i < res.data.data.length; i++) {
                     res.data.data[i].username = res.data.data[i].authorName
                     res.data.data[i].date = res.data.data[i].timeStamp
@@ -108,6 +117,14 @@ Page({
                 content: that.data.commentValue
             },
             success(res) {
+                if (res.data.code !== 0) {
+                    wx.showToast({
+                        title: '网络连接错误',
+                        icon: 'none'
+                    })
+                    return
+                }
+
                 wx.showToast({
                     title: '发送成功',
                 })
