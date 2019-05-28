@@ -2,7 +2,7 @@
 <view class="container">
   <view class="userinfo">
     <block>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="../../image/loading.png" mode="cover"></image>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="../../image/loading.gif" mode="cover"></image>
     </block>
   </view>
   <view class="usermotto">
