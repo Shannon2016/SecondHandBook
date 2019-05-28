@@ -191,6 +191,7 @@ Page({
                             }else{
                                 wx.showToast({
                                     title: '网络连接错误',
+                                    icon: 'none'
                                 })
                             }
                         }
@@ -200,6 +201,7 @@ Page({
                     console.log(res)
                     wx.showToast({
                         title: '网络连接错误',
+                        icon: 'none'
                     })
                 }
             })

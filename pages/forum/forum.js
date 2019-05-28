@@ -45,16 +45,21 @@ Page({
                     return
                 }
 
-                var forum = [{}]
-                for (var i = 0; i < res.data.data.length; i++) {
-                    forum[i].id = res.data.data[i].id
-                    forum[i].title = res.data.data[i].title
-                    forum[i].username = res.data.data[i].authorName
-                    forum[i].date = res.data.data[i].timeStamp
-                    forum[i].content = res.data.data[i].content
-                    forum[i].level = res.data.data[i].level
+                console.log(res)
+                var forum = []
+                for (var i of res.data.data) {
+                    i.username = i.authorName
+                    i.date = i.timeStamp
+                    
+                    forum.push(i);
+                    // forum[i].id = res.data.data[i].id
+                    // forum[i].title = res.data.data[i].title
+                    // forum[i].username = res.data.data[i].authorName
+                    // forum[i].date = res.data.data[i].timeStamp
+                    // forum[i].content = res.data.data[i].content
+                    // forum[i].level = res.data.data[i].level
                 }
-                console.log("forum count:" + forum.length)
+                console.log(forum)
                 that.setData({
                     forum: forum
                 })

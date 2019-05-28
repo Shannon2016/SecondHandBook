@@ -15,8 +15,8 @@
 <view class='forum'>
     <view wx:for-items='{{forum}}' wx:key='item' class='forum-detail-item' catchtap='showForumDetail' data-forum-index='{{index}}'>
         <view class='forum-detail-username'>
-            <image src='/image/personal-center.png'></image>
-            <text class='fontNickname'>{{item.username}}</text>
+            <image src='{{item.imageURL}}' style='border-radius:50%;'></image>
+            <text class='fontNickname' style='margin-left:10rpx;'>{{item.username}}</text>
             <view class="forum-detail-level">
                 <image src='/image/diamond.png'></image>
                 <text>{{item.level}}</text>

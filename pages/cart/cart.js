@@ -30,6 +30,7 @@ Page({
             if (res.data.code !== 0) {
                 wx.showToast({
                     title: '网络连接错误',
+                    icon: 'none'
                 })
                 return;
             }
@@ -44,6 +45,7 @@ Page({
           fail(res){
               wx.showToast({
                   title: '网络连接错误',
+                  icon: 'none'
               })
           }
         })
@@ -78,6 +80,7 @@ Page({
                                     if(res.data.code !== 0){
                                         wx.showToast({
                                             title: '网络连接错误',
+                                            icon: 'none'
                                         })
                                         return
                                     }
