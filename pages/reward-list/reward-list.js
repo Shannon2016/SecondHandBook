@@ -2,8 +2,8 @@ const app = getApp()
 
 function myRequest({
     url,
-    data=null,
-    method='get'
+    data = null,
+    method = 'get'
 }) {
     return new Promise((success, fail) => {
         wx.request({
@@ -26,58 +26,40 @@ Page({
      * 页面的初始数据
      */
     data: {
-        books: [{
-                picSrc: "../../image/book1.png",
-                name: "共产党宣言",
-                author: "马克思 恩格斯",
-                press: "xxx",
-                price: "15.00"
-            },
-            {
-                picSrc: "../../image/book11.png",
-                name: "博弈论",
-                author: "让·梯若尔",
-                press: "xxx",
-                price: "16.00"
-            },
-            {
-                picSrc: "../../image/book18.png",
-                name: "围城",
-                author: "钱钟书",
-                press: "xxx",
-                price: "17.00"
-            },
-            {
-                picSrc: "../../image/book4.png",
-                name: "中国哲学史",
-                author: "冯友兰",
-                press: "xxx",
-                price: "18.00"
-            },
-        ]
+        // books: [{
+        //         picSrc: "../../image/book1.png",
+        //         name: "共产党宣言",
+        //         author: "马克思 恩格斯",
+        //         press: "xxx",
+        //         price: "15.00"
+        //     },
+        // ]
+        inputText: ''
     },
-    getRewardList: function () {
+
+    getRewardList: function() {
         var that = this;
         wx.request({
             url: app.globalData.URLPREFIX + 'rewards/getAll',
-            header:{
-                Cookie:app.globalData.cookie
+            header: {
+                Cookie: app.globalData.cookie
             },
-            method:'GET',
-            success(res){
-                console.log(res)
+            method: 'GET',
+            success(res) {
                 if (res.data.code !== 0) {
                     wx.showToast({
                         title: '网络连接错误',
                     })
-                    return;
+                    return
                 }
-                for(var i of res.data.data){
+
+                for (var i of res.data.data) {
                     i.name = i.bookName;
                     i.picSrc = i.imagePath
                 }
+
                 that.setData({
-                    books:res.data.data
+                    books: res.data.data
                 })
             },
             fail(res){
@@ -89,7 +71,7 @@ Page({
         })
     },
 
-    onShow(){
+    onShow() {
         this.getRewardList();
     },
     /**
@@ -97,6 +79,10 @@ Page({
      */
     onPullDownRefresh: function() {
         wx.stopPullDownRefresh()
+
+        this.setData({
+            inputText: ''
+        })
     },
 
     searchInput: function(event) {
@@ -107,8 +93,32 @@ Page({
 
     searchBook: function() {
         var str = this.data.searchValue
-        var value = app.inputStrHandle(str)
-        console.log(value)
+        var that = this;
+        wx.request({
+            url: app.globalData.URLPREFIX + 'rewards/getByCondition?word=' + str,
+            header: {
+                Cookie: app.globalData.cookie
+            },
+            method: 'GET',
+            success(res) {
+                if (res.data.code !== 0) {
+                    wx.showToast({
+                        title: '网络连接错误',
+                        icon: 'none'
+                    })
+                    return
+                }
+
+                for (var i of res.data.data) {
+                    i.name = i.bookName;
+                    i.picSrc = i.imagePath
+                }
+
+                that.setData({
+                    books: res.data.data
+                })
+            }
+        })
     },
 
     catchToSellBookTap: function(event) {
@@ -118,20 +128,20 @@ Page({
         book.imageURL = book.imagePath;
         book.remaining = 1;
         myRequest({
-            url:'sells/add',
-            data:book,
-            method:'POST'
-        }).then(res=>{
+            url: 'sells/add',
+            data: book,
+            method: 'POST'
+        }).then(res => {
             // console.log(res.data.code)
-            if(res.data.code === 0){
+            if (res.data.code === 0) {
                 wx.showToast({
                     title: '售卖成功',
                 })
-                setTimeout(()=>{
+                setTimeout(() => {
                     wx.switchTab({
                         url: '/pages/mall/mall',
                     })
-                },2000)
+                }, 2000)
             }
         })
     },

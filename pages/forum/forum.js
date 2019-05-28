@@ -11,19 +11,24 @@ Page({
         //         level: 1
         //     }
         // ]
+        inputText: ''
     },
 
-    onLoad: function() {
+    onLoad: function () {
         this.getAllPosts()
     },
 
-    onPullDownRefresh: function() {
+    onPullDownRefresh: function () {
         wx.stopPullDownRefresh()
 
         this.getAllPosts()
+
+        this.setData({
+            inputText: ''
+        })
     },
 
-    getAllPosts: function() {
+    getAllPosts: function () {
         var that = this;
         wx.request({
             url: app.globalData.URLPREFIX + 'posts/getAll',
@@ -32,6 +37,14 @@ Page({
             },
             method: 'GET',
             success(res) {
+                if (res.data.code !== 0) {
+                    wx.showToast({
+                        title: '网络连接错误',
+                        icon: 'none'
+                    })
+                    return
+                }
+
                 var forum = [{}]
                 for (var i = 0; i < res.data.data.length; i++) {
                     forum[i].id = res.data.data[i].id
@@ -41,6 +54,7 @@ Page({
                     forum[i].content = res.data.data[i].content
                     forum[i].level = res.data.data[i].level
                 }
+                console.log("forum count:" + forum.length)
                 that.setData({
                     forum: forum
                 })
@@ -48,19 +62,19 @@ Page({
         })
     },
 
-    searchInput: function(event) {
+    searchInput: function (event) {
         this.setData({
             searchValue: event.detail.value
         })
     },
 
-    searchComment: function() {
+    searchComment: function () {
         var str = this.data.searchValue
         var value = app.inputStrHandle(str)
         console.log(value)
     },
 
-    showForumDetail: function(event) {
+    showForumDetail: function (event) {
         var forumIndex = event.currentTarget.dataset.forumIndex
         var forumDetail = JSON.stringify(this.data.forum[forumIndex])
         wx.navigateTo({
@@ -68,7 +82,7 @@ Page({
         })
     },
 
-    addNewTopic: function(event) {
+    addNewTopic: function (event) {
         wx.navigateTo({
             url: '/pages/forum/newtopic/newtopic',
         })

@@ -244,7 +244,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    width: 112rpx;
+    width: 120rpx;
     height: 60rpx;
     background-color: #07a2a4;
 }

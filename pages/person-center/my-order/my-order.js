@@ -42,6 +42,14 @@ Page({
             },
             method: 'GET',
             success(res) {
+                if (res.data.code !== 0) {
+                    wx.showToast({
+                        title: '网络连接错误',
+                        icon: 'none'
+                    })
+                    return
+                }
+                
                 for (var i = 0; i < res.data.data.length; i++) {
                     res.data.data[i].picSrc = res.data.data[i].imageURL
                     res.data.data[i].name = res.data.data[i].bookName
