@@ -95,6 +95,10 @@ Page({
                                         wx.redirectTo({
                                             url: '/page/percen-center/my-order/my-order',
                                         })
+                                    }else{
+                                        wx.showToast({
+                                            title: '网络连接错误',
+                                        })
                                     }
                                 }
                             })
@@ -122,6 +126,15 @@ Page({
                                             url: '/pages/person-center/my-order/my-order',
                                         })
                                     }
+                                    wx.showToast({
+                                        title: '网络连接错误',
+                                    })
+                                },
+                                fail(res){
+                                    console.log(res);
+                                    wx.showToast({
+                                        title: '网络连接错误',
+                                    })
                                 }
                             })
                         }
@@ -144,6 +157,12 @@ Page({
                 Cookie: app.globalData.cookie
             },
             success(res) {
+                if (res.data.code !== 0) {
+                    wx.showToast({
+                        title: '网络连接错误',
+                    })
+                    return;
+                }
                 console.log(res);
                 for (var i of res.data.data) {
                     i.picSrc = i.imagePath;
@@ -157,6 +176,11 @@ Page({
                         orderInfoList: tmp
                     }) 
                 }
+            },
+            fail(res){
+                wx.showToast({
+                    title: '网络连接错误',
+                })
             }
         })
     },

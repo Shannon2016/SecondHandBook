@@ -46,6 +46,12 @@ Page({
             },
             success(res){
                 console.log(res);
+                if (res.data.code !== 0) {
+                    wx.showToast({
+                        title: '网络连接错误',
+                    })
+                    return;
+                }
                 for(var i of res.data.data){
                     i.picSrc = i.imagePath
                     i.name = i.bookName
@@ -53,9 +59,54 @@ Page({
                 that.setData({
                     books:res.data.data
                 })
+            },
+            fail(res){
+                console.log(res)
+                wx.showToast({
+                    title: '网络连接错误',
+                })
             }
         })
     },
+
+    onCancelReward:function(e){
+        var that = this;
+        wx.showModal({
+            title: '提示',
+            content: '确定取消悬赏？',
+            success(res){
+                if(res.confirm){
+                    console.log(e)
+                    var rewardId = that.data.books[parseInt(e.currentTarget.id)].id
+                    console.log(rewardId)
+                    wx.request({
+                        url: app.globalData.URLPREFIX + 'rewards/cancel',
+                        header:{
+                            Cookie:app.globalData.cookie
+                        },
+                        method:'DELETE',
+                        data:{
+                            rewardId:rewardId
+                        },
+                        success(res){
+                            console.log(res);
+                            if(res.data.code !== 0){
+                                wx.showToast({
+                                    title: '网络连接错误',
+                                })
+                                return;
+                            }
+                            that.getRewardList()
+                        }
+                    })
+
+                }else if(res.cancel){
+                    return;
+                }
+            }
+        })
+    },
+
     onShow:function(){
         this.getRewardList()
     },

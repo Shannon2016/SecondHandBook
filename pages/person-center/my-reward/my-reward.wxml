@@ -25,7 +25,7 @@
             <view>
                 <text class='book-del_reward-text'>我已有书</text>
                 <image src='/image/hand-point-right.png' class='book-del_reward-image'></image>
-                <button class='book-detail-sell'>
+                <button class='book-detail-sell' id="{{index}}" bindtap='onCancelReward'>
                     <text>取消悬赏</text>
                 </button>
             </view>

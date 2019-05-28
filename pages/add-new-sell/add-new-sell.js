@@ -187,11 +187,18 @@ Page({
                                     url: '/pages/person-center/my-sell/my-sell',
                                 })
                             }
+                            else{
+                                wx.showToast({
+                                    title: '网络连接错误',
+                                })
+                            }
                         }
                     })
                 },
                 fail(res){
-                    console.log(res);
+                    wx.showToast({
+                        title: '网络连接错误',
+                    })
                 }
             })
             

@@ -79,6 +79,12 @@ Page({
             },
             method: 'GET',
             success(res) {
+                if(res.data.code !== 0){
+                    wx.showToast({
+                        title: '网络连接错误',
+                    })
+                    return;
+                }
                 console.log(res)
                 for (var i = 0; i < res.data.data.length; i++) {
                     res.data.data[i].picSrc = res.data.data[i].imagePath
@@ -93,13 +99,13 @@ Page({
     },
 
     onLoad: function() {
-        var userInfo = wx.getStorageSync('userInfo')
-        console.log(userInfo)
-        if (!userInfo) {
-            wx.redirectTo({
-                url: '/pages/index/index',
-            })
-        }
+        // var userInfo = wx.getStorageSync('userInfo')
+        // console.log(userInfo)
+        // if (!userInfo) {
+        //     wx.redirectTo({
+        //         url: '/pages/index/index',
+        //     })
+        // }
     },
 
     onShow: function() {

@@ -66,12 +66,24 @@ Page({
             method:'GET',
             success(res){
                 console.log(res)
+                if (res.data.code !== 0) {
+                    wx.showToast({
+                        title: '网络连接错误',
+                    })
+                    return;
+                }
                 for(var i of res.data.data){
                     i.name = i.bookName;
                     i.picSrc = i.imagePath
                 }
                 that.setData({
                     books:res.data.data
+                })
+            },
+            fail(res){
+                console.log(res)
+                wx.showToast({
+                    title: '网络连接错误',
                 })
             }
         })

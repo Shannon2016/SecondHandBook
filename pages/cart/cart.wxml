@@ -3,7 +3,7 @@
     <image mode="{{topImg.mode}}" src="{{topImg.src}}" id="topImg" />
     <view style='position:absolute;top:286rpx;width:100%;'>
         <checkbox-group bindchange="checkboxChange">
-            <van-swipe-cell id="swipe-cell" right-width="{{ 65 }}" left-width="{{0.0001}}" async-close bind:close="onClose" wx:for="{{cartInfoList}}">
+            <van-swipe-cell id="{{index}}" right-width="{{ 65 }}" left-width="{{0.0001}}" async-close bind:close="onClose" wx:for="{{cartInfoList}}">
                 <van-cell-group>
                     <van-cell>
                     <view class="cartListItem">

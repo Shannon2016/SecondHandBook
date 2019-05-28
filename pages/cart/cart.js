@@ -16,21 +16,7 @@ Page({
         },
         cartInfoList: []
     },
-    onClose(event) {
-        const { position, instance } = event.detail;
-        switch (position) {
-            case 'cell':
-                instance.close();
-                break;
-            case 'right':
-                Dialog.confirm({
-                    message: '确定删除吗？'
-                }).then(() => {
-                    instance.close();
-                });
-                break;
-        }
-    },
+
     getCartInfoList: function() {
         var that = this;
         wx.request({
@@ -41,6 +27,12 @@ Page({
           },
           success(res) {
             console.log(res);
+            if (res.data.code !== 0) {
+                wx.showToast({
+                    title: '网络连接错误',
+                })
+                return;
+            }
             for(var i of res.data.data){
                 i.picSrc = i.imagePath;
             }
@@ -48,9 +40,59 @@ Page({
             that.setData({
                 cartInfoList: res.data.data
             })
+          },
+          fail(res){
+              wx.showToast({
+                  title: '网络连接错误',
+              })
           }
         })
 
+    },
+    onClose(event) {
+        var that = this;
+        const { position, instance } = event.detail;
+        switch (position) {
+            case 'cell':
+                instance.close();
+                break;
+            case 'right':
+                wx.showModal({
+                    title: '提示',
+                    content: '确认删除吗？',
+                    success(res) {
+                        if (res.confirm) {
+                            console.log(event)
+                            var bookId = that.data.cartInfoList[parseInt(event.currentTarget.id)].bookId
+                            wx.request({
+                                url: app.globalData.URLPREFIX + 'shoppingcart/remove',
+                                header:{
+                                    Cookie:app.globalData.cookie
+                                },
+                                method:'DELETE',
+                                data:{
+                                    bookId:bookId
+                                },
+                                success(res){
+                                    console.log(res);
+                                    if(res.data.code !== 0){
+                                        wx.showToast({
+                                            title: '网络连接错误',
+                                        })
+                                        return
+                                    }
+                                    instance.close();
+                                    that.getCartInfoList();
+                                }
+                            })
+                        }
+                        else if (res.cancel) {
+                            instance.close();
+                        }
+                    }
+                })
+                break;
+        }
     },
     getSum: function () {
         var tmp = 0;

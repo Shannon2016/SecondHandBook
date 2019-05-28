@@ -188,12 +188,19 @@ Page({
                                 wx.redirectTo({
                                     url: '/pages/person-center/my-reward/my-reward',
                                 })
+                            }else{
+                                wx.showToast({
+                                    title: '网络连接错误',
+                                })
                             }
                         }
                     })
                 },
                 fail(res) {
-                    console.log(res);
+                    console.log(res)
+                    wx.showToast({
+                        title: '网络连接错误',
+                    })
                 }
             })
         }
