@@ -23,7 +23,7 @@
             </view>
         </view>
         <view class='forum-detail-title fontTitle'>
-            <text>{{item.title}}</text>
+            {{item.title}}
         </view>
         <view class='forum-detail-date fontDate'>
             <text>{{item.date}}</text>
