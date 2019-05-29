@@ -42,6 +42,7 @@ Page({
             },
             method: 'GET',
             success(res) {
+                console.log(res)
                 if (res.data.code !== 0) {
                     wx.showToast({
                         title: '网络连接错误',
