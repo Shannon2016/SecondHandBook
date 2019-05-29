@@ -14,11 +14,11 @@ Page({
         inputText: ''
     },
 
-    onLoad: function () {
+    onLoad: function() {
         this.getAllPosts()
     },
 
-    onPullDownRefresh: function () {
+    onPullDownRefresh: function() {
         wx.stopPullDownRefresh()
 
         this.getAllPosts()
@@ -28,7 +28,7 @@ Page({
         })
     },
 
-    getAllPosts: function () {
+    getAllPosts: function() {
         var that = this;
         wx.request({
             url: app.globalData.URLPREFIX + 'posts/getAll',
@@ -45,21 +45,20 @@ Page({
                     return
                 }
 
-                console.log(res)
-                var forum = []
-                for (var i of res.data.data) {
-                    i.username = i.authorName
-                    i.date = i.timeStamp
+                var forum = [{}]
+                for (var i = 0; i < res.data.data.length; i++) {
+                    forum[i] = {
+                        id: res.data.data[i].id,
+                        title: res.data.data[i].title,
+                        username: res.data.data[i].authorName,
+                        date: res.data.data[i].timeStamp,
+                        content: res.data.data[i].content,
+                        level: res.data.data[i].level
+                    }
                     
-                    forum.push(i);
-                    // forum[i].id = res.data.data[i].id
-                    // forum[i].title = res.data.data[i].title
-                    // forum[i].username = res.data.data[i].authorName
-                    // forum[i].date = res.data.data[i].timeStamp
-                    // forum[i].content = res.data.data[i].content
-                    // forum[i].level = res.data.data[i].level
+                    forum[i].date = forum[i].date.substring(0,10) + ' ' + forum[i].date.substr(11,8)
                 }
-                console.log(forum)
+
                 that.setData({
                     forum: forum
                 })
@@ -67,19 +66,19 @@ Page({
         })
     },
 
-    searchInput: function (event) {
+    searchInput: function(event) {
         this.setData({
             searchValue: event.detail.value
         })
     },
 
-    searchComment: function () {
+    searchComment: function() {
         var str = this.data.searchValue
         var value = app.inputStrHandle(str)
         console.log(value)
     },
 
-    showForumDetail: function (event) {
+    showForumDetail: function(event) {
         var forumIndex = event.currentTarget.dataset.forumIndex
         var forumDetail = JSON.stringify(this.data.forum[forumIndex])
         wx.navigateTo({
@@ -87,7 +86,7 @@ Page({
         })
     },
 
-    addNewTopic: function (event) {
+    addNewTopic: function(event) {
         wx.navigateTo({
             url: '/pages/forum/newtopic/newtopic',
         })

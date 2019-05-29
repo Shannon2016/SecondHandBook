@@ -76,6 +76,8 @@ Page({
                 for (var i = 0; i < res.data.data.length; i++) {
                     res.data.data[i].username = res.data.data[i].authorName
                     res.data.data[i].date = res.data.data[i].timeStamp
+                    // 字符串去除T
+                    res.data.data[i].date = res.data.data[i].date.substring(0, 10) + ' ' + res.data.data[i].date.substr(11, 8)
                     res.data.data[i].content = res.data.data[i].content
                     res.data.data[i].level = res.data.data[i].level
                     if (res.data.data[i].username == subforum[0].username)
