@@ -26,7 +26,7 @@ Page({
         this.setData({
             forumDetail: forumDetail
         })
-
+        console.log(this.data.forumDetail)
         this.getAllComments()
     },
 
@@ -55,8 +55,9 @@ Page({
         subforum[0].content = this.data.forumDetail.content
         subforum[0].date = this.data.forumDetail.date
         subforum[0].level = this.data.forumDetail.level
+        subforum[0].imageURL = this.data.forumDetail.imageURL
         subforum[0].ifMyself = true
-
+        console.log(subforum[0])
         // 2. 对子评论赋值
         wx.request({
             url: app.globalData.URLPREFIX + 'comments/getByPost?postId=' + postId.toString(),
@@ -65,6 +66,7 @@ Page({
             },
             method: 'GET',
             success(res) {
+                console.log(res.data)
                 if (res.data.code !== 0) {
                     wx.showToast({
                         title: '网络连接错误',
@@ -90,6 +92,7 @@ Page({
                 that.setData({
                     subforum: subforum
                 })
+                console.log(that.data.subforum)
             }
         })
     },

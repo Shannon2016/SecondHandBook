@@ -25,7 +25,8 @@ Page({
         if (e.detail.userInfo) {
             //用户按了允许授权按钮
             this.setData({
-                motto:'登录中，请稍等'
+                motto:'登录中，请稍等',
+                ifAuthorize:true
             })
             new Promise((resolve, reject) => {
                 wx.getUserInfo({

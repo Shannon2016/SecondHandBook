@@ -37,6 +37,7 @@ Page({
             },
             method: 'GET',
             success(res) {
+                console.log(res.data.data)
                 if (res.data.code !== 0) {
                     wx.showToast({
                         title: '网络连接错误',
@@ -53,7 +54,8 @@ Page({
                         username: res.data.data[i].authorName,
                         date: res.data.data[i].timeStamp,
                         content: res.data.data[i].content,
-                        level: res.data.data[i].level
+                        level: res.data.data[i].level,
+                        imageURL: res.data.data[i].imageURL
                     }
                     
                     forum[i].date = forum[i].date.substring(0,10) + ' ' + forum[i].date.substr(11,8)
@@ -80,6 +82,7 @@ Page({
 
     showForumDetail: function(event) {
         var forumIndex = event.currentTarget.dataset.forumIndex
+        console.log(this.data.forum[forumIndex])
         var forumDetail = JSON.stringify(this.data.forum[forumIndex])
         wx.navigateTo({
             url: '/pages/forum/subforum/subforum?forumDetail=' + escape(forumDetail),

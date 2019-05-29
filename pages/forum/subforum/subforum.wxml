@@ -8,8 +8,8 @@
     </view>
     <view class='subforum-detail-item' wx:for-items='{{subforum}}' wx:key='item'>
         <view class='subforum-detail-username'>
-            <image src='/image/personal-center.png'></image>
-            <text class='fontNickname'>{{item.username}}</text>
+            <image src='{{item.imageURL}}' style='border-radius:50%;'></image>
+            <text class='fontNickname' style='margin-left:10rpx;'>{{item.username}}</text>
             <view class="subforum-detail-level">
                 <image src='/image/diamond.png'></image>
                 <text>{{item.level}}</text>
