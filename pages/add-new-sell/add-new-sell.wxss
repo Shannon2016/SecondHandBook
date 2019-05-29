@@ -111,7 +111,7 @@
 }
 
 .uploadFinishBtn {
-    background: rgb(75, 199, 168);
+    background: #07a2a4;
     color: #fff;
     display: flex;
     align-items: center;
@@ -139,7 +139,7 @@
 }
 
 .typeBtn:hover {
-    background: rgb(75, 199, 168);
+    background: #07a2a4;
     color: #fff;
     display: flex;
     align-items: center;
