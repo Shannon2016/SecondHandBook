@@ -1,140 +1,163 @@
 /* pages/Cart/Cart.wxss */
 
-#topImg{
-  height:300rpx;
-  width: 100%;
+#topImg {
+    height: 286rpx;
+    width: 100%;
+    position:fixed;
+    z-index: 1;
 }
 
-.cartListItem{
-  display: flex;
-  flex-direction:row;
-  width: 100%;
-  height:250rpx;
-  border-bottom: 2rpx solid #DCDFE6;
-  margin-bottom: 10rpx;
+.cartListItem {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 260rpx;
 }
 
-.checkBtnContainer{
-  width:10%;
-  height:100%;
-  /* background-color: #FF0000; */
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.checkBtnContainer {
+    width: 10%;
+    height: 100%;
+    /* background-color: #FF0000; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.picContainer{
-  width:30%;
-  height: 100%;
-  /* background-color: #00FF00; */
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.picContainer {
+    width: 30%;
+    height: 100%;
+    /* background-color: #00FF00; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.infoContainer{
-  width:60%;
-  height:100%;
-  /* background-color: #0000FF; */
-  display: flex;
-  flex-direction:column;
-  font-size: 30rpx!important;
-  padding-left: 30rpx;
-  position: relative;
+.infoContainer {
+    width: 60%;
+    height: 100%;
+    /* background-color: #0000FF; */
+    display: flex;
+    flex-direction: column;
+    font-size: 30rpx !important;
+    padding-left: 30rpx;
+    position: relative;
 }
 
-checkbox{
-  /* width:; ?????????????????????????????????????????*/
-}
 /*  重写 checkbox 样式  */
+
 /* 未选中的 背景样式 */
-checkbox .wx-checkbox-input{
-   border-radius: 50%;/* 圆角 */
-   width: 40rpx; /* 背景的宽 */
-   height: 40rpx; /* 背景的高 */
+
+checkbox .wx-checkbox-input {
+    border-radius: 50%; /* 圆角 */
+    width: 40rpx; /* 背景的宽 */
+    height: 40rpx; /* 背景的高 */
 }
+
 /* 选中后的 背景样式 （红色背景 无边框 可根据UI需求自己修改） */
-checkbox .wx-checkbox-input.wx-checkbox-input-checked{
-   border: none;
-   background: #FF9800;
+
+checkbox .wx-checkbox-input.wx-checkbox-input-checked {
+    border: none;
+    background: #ff9800;
 }
+
 /* 选中后的 对勾样式 （白色对勾 可根据UI需求自己修改） */
-checkbox .wx-checkbox-input.wx-checkbox-input-checked::before{
-   border-radius: 50%;/* 圆角 */
-   width: 40rpx;/* 选中后对勾大小，不要超过背景的尺寸 */
-   height: 40rpx;/* 选中后对勾大小，不要超过背景的尺寸 */
-   line-height: 40rpx;
-   text-align: center;
-   font-size:30rpx; /* 对勾大小 30rpx */
-   color:#fff; /* 对勾颜色 白色 */
-   background: transparent;
-   transform:translate(-50%, -50%) scale(1);
-   -webkit-transform:translate(-50%, -50%) scale(1);
+
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
+    border-radius: 50%; /* 圆角 */
+    width: 40rpx; /* 选中后对勾大小，不要超过背景的尺寸 */
+    height: 40rpx; /* 选中后对勾大小，不要超过背景的尺寸 */
+    line-height: 40rpx;
+    text-align: center;
+    font-size: 30rpx; /* 对勾大小 30rpx */
+    color: #fff; /* 对勾颜色 白色 */
+    background: transparent;
+    transform: translate(-50%, -50%) scale(1);
+    -webkit-transform: translate(-50%, -50%) scale(1);
 }
 
-.pictures{
-  height:calc(100% - 30rpx); 
-  width: 100%;
+.pictures {
+    height: calc(100% - 20rpx);
+    width: 100%;
 }
 
-.infoAuthorContainer{
-  display: flex;
-  flex-direction:row;
-  margin-top: 10rpx;
+.infoAuthorContainer {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10rpx;
 }
 
-.infoPressContainer{
-  display: flex;
-  flex-direction:row;
-  margin-top: 5rpx;
+.infoPressContainer {
+    display: flex;
+    flex-direction: row;
+    margin-top: 5rpx;
 }
 
-.infoPriceContainer{
-  display: flex;
-  flex-direction:row;
-  margin-bottom: 5rpx;
-  position: absolute;
-  bottom: 20rpx;
+.infoPriceContainer {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 5rpx;
+    position: absolute;
+    bottom: 20rpx;
 }
 
-.infoNameContainer{
-  margin-top: 16rpx;
+.infoNameContainer {
+    margin-top: 16rpx;
+    text-align: left;
 }
 
 /*bottomBar*/
-#bottomBar{
-  position:fixed; 
-  bottom:0; 
-  width:100%; 
-  height:100rpx; 
-  z-index:2; 
-  overflow:hidden; 
-  border: 2rpx solid #DCDFE6;
-  background-color: #F7F7F7;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+
+#bottomBar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 100rpx;
+    z-index: 2;
+    overflow: hidden;
+    border: 2rpx solid #dcdfe6;
+    background-color: #f7f7f7;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
-#totalPrice{
-  display: flex;
-  flex-direction: row;
-  position: absolute;
-  right: 320rpx;
+#totalPrice {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    right: 320rpx;
 }
 
-#confirm{
-  border: 1rpx solid #BBBBBB;
-  background-color: #FF0000;
-  border-radius: 0;
-  color: #FFFFFF;
-  font-weight: bolder;
-  height: 100rpx;
-  width: 280rpx;
-  font-size: 32rpx;
-  line-height: 100rpx;
+#confirm {
+    border: 1rpx solid #bbb;
+    background-color: #f00;
+    border-radius: 0;
+    color: #fff;
+    font-weight: bolder;
+    height: 100rpx;
+    width: 280rpx;
+    font-size: 32rpx;
+    line-height: 100rpx;
 }
-#checkAll{
-  position: absolute;
-  left:40rpx;
+
+#checkAll {
+    position: absolute;
+    left: 40rpx;
+}
+
+/*vant*/
+
+.van-cell{
+    padding:0 !important;
+}
+
+.rightBlock{
+    height:100%;
+    width:65px;
+    background-color:#FF0000; 
+    color:white;
+    text-align:center;
+    justify-content: center;
+    font-size: 36rpx;
+    line-height: 125px;
 }

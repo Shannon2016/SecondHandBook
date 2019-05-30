@@ -1,80 +1,69 @@
+const app = getApp();
 Page({
 
-    /**
-     * 页面的初始数据
-     */
     data: {
         userInfo: {},
-        orders: [{
-                picSrc: "/image/book1.png",
-                name: "共产党宣言",
-                consignee: "xxx",
-                adress: "xxxxxxx",
-                price: "15.00"
-            },
-            {
-                picSrc: "/image/book11.png",
-                name: "博弈论",
-                consignee: "xxx",
-                adress: "xxxxxxx",
-                price: "16.00"
-            },
-        ]
+        // orders: [{
+        //         picSrc: "/image/book1.png",
+        //         name: "共产党宣言",
+        //         consignee: "xxx",
+        //         adress: "xxxxxxx",
+        //         price: "15.00"
+        //     },
+        //     {
+        //         picSrc: "/image/book11.png",
+        //         name: "博弈论",
+        //         consignee: "xxx",
+        //         adress: "xxxxxxx",
+        //         price: "16.00"
+        //     },
+        // ]
     },
 
-    /**
-     * 生命周期函数--监听页面加载
-     */
-    onLoad: function(options) {
-
+    onLoad:function(){
+        this.getMyOrderList()
     },
-
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function() {
-
+    onShow: function(){
+        this.getMyOrderList();
     },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow: function() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide: function() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload: function() {
-
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
+    
     onPullDownRefresh: function() {
+        wx.stopPullDownRefresh()
 
+        this.getMyOrderList()
     },
 
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom: function() {
+    getMyOrderList:function(){
+        var that = this;
+        wx.request({
+            url: app.globalData.URLPREFIX + 'orders/getMy',
+            header: {
+                Cookie: app.globalData.cookie
+            },
+            method: 'GET',
+            success(res) {
+                console.log(res)
+                if (res.data.code !== 0) {
+                    wx.showToast({
+                        title: '网络连接错误',
+                        icon: 'none'
+                    })
+                    return
+                }
+                
+                for (var i = 0; i < res.data.data.length; i++) {
+                    res.data.data[i].picSrc = res.data.data[i].imageURL
+                    res.data.data[i].name = res.data.data[i].bookName
+                    res.data.data[i].consignee = res.data.data[i].buyerName
+                    res.data.data[i].price = res.data.data[i].cost
+                }
+                that.setData({
+                    orders: res.data.data
+                })
 
-    },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage: function() {
-
+                console.log("输出 res.data.data 信息")
+                console.log(res.data.data)
+            }
+        })
     }
 })

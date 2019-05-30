@@ -111,7 +111,7 @@
 }
 
 .uploadFinishBtn {
-    background: rgb(75, 199, 168);
+    background: #07a2a4;
     color: #fff;
     display: flex;
     align-items: center;
@@ -136,10 +136,11 @@
     padding: 0;
     text-align: center;
     font-size: 28rpx;
+    border-radius: 500rpx;
 }
 
-.typeBtn:hover {
-    background: rgb(75, 199, 168);
+/* .typeBtn:hover {
+    background: #07a2a4;
     color: #fff;
     display: flex;
     align-items: center;
@@ -150,7 +151,7 @@
     text-align: center;
     font-size: 30rpx;
     border-radius: 500rpx;
-}
+} */
 
 .boxStyle {
     width: 300rpx;
@@ -231,4 +232,20 @@
     font-size: 30rpx;
     background: #fff;
     color: rgb(34, 33, 33);
+}
+
+.to-left{
+    width: 40%;
+}
+
+.to-right{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 60%;
+}
+
+/*vant*/
+.van-button--small{
+    width:100%;
 }

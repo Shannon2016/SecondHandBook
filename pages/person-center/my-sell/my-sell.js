@@ -1,106 +1,56 @@
+const app = getApp();
 Page({
 
-  /**
-   * 页面的初始数据
-   */
-  data: {
-    books: [
-      {
-        picSrc: "/image/book1.png",
-        name: "共产党宣言",
-        author: "马克思 恩格斯",
-        press: "xxx",
-        price: "15.00",
-        state: "待售",
-        color: "#07a2a4"
-      },
-      {
-        picSrc: "/image/book11.png",
-        name: "博弈论",
-        author: "让·梯若尔",
-        press: "xxx",
-        price: "16.00",
-        state: "待售",
-        color: "#07a2a4"
-      },
-      {
-        picSrc: "/image/book18.png",
-        name: "围城",
-        author: "钱钟书",
-        press: "xxx",
-        price: "17.00",
-        state: "已售",
-        color: "#bbb"
-      },
-      {
-        picSrc: "/image/book4.png",
-        name: "中国哲学史",
-        author: "冯友兰",
-        press: "xxx",
-        price: "18.00",
-        state: "已售",
-        color: "#bbb"
-      },
-    ]
-  },
+    /**
+     * 页面的初始数据
+     */
+    data: {
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
+    },
 
-  },
+    onLoad: function() {
+        this.getMySellBookList()
+    },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
+    onPullDownRefresh: function() {
+        wx.stopPullDownRefresh()
 
-  },
+        this.getMySellBookList()
+    },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
+    getMySellBookList: function() {
+        var that = this;
+        wx.request({
+            url: app.globalData.URLPREFIX + 'sells/getMy',
+            header: {
+                Cookie: app.globalData.cookie
+            },
+            method: 'GET',
+            success(res) {
+                if (res.data.code !== 0) {
+                    wx.showToast({
+                        title: '网络连接错误',
+                        icon: 'none'
+                    })
+                    return
+                }
 
-  },
+                for (var i = 0; i < res.data.data.length; i++) {
+                    res.data.data[i].picSrc = res.data.data[i].imagePath
+                    console.log(res.data.data[i].picSrc)
+                    res.data.data[i].name = res.data.data[i].bookName
+                    res.data.data[i].level = res.data.data[i].depreciation
+                    res.data.data[i].id = res.data.data[i].Id
+                    // 缺少待售已售
+                }
+                that.setData({
+                    books: res.data.data
+                })
+            }
+        })
+    },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
-
-    catchAddNewSellTap:function(){
+    catchAddNewSellTap: function() {
         wx.navigateTo({
             url: '/pages/add-new-sell/add-new-sell',
         })

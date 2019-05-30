@@ -17,50 +17,98 @@ Page({
         })
     },
 
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow: function() {},
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide: function() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload: function() {
-
+    catchToCartTap: function() {
+        wx.switchTab({
+            url: '/pages/cart/cart',
+        })
     },
 
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh: function() {
-
+        wx.stopPullDownRefresh()
     },
 
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom: function() {
+    catchAddCartTap: function() {
+        var that = this
+        var app = getApp();
 
+        /**
+         * 获取当前购物车信息，判断是否已有此书籍，没有则添加
+         */
+        wx.request({
+            url: app.globalData.URLPREFIX + 'shoppingcart/getMy',
+            method: 'GET',
+            header: {
+                Cookie: app.globalData.cookie
+            },
+            success(res) {
+                if (res.data.code !== 0) {
+                    wx.showToast({
+                        title: '网络连接错误',
+                        icon: 'none'
+                    })
+                    return;
+                }
+
+                that.setData({
+                    bookList: res.data.data
+                })
+            },
+            fail(res) {
+                wx.showToast({
+                    title: '网络连接错误',
+                    icon: 'none'
+                })
+            }
+        })
+
+        var bookList = this.data.bookList
+        var bookId = this.data.bookDetail.id
+
+        if (bookList) {
+            for (var i = 0; i < bookList.length; i++) {
+                if (bookList[i].bookId === bookId) {
+                    wx.showToast({
+                        title: '购物车中已有',
+                    })
+                    return
+                }
+            }
+        }
+
+        wx.request({
+            url: app.globalData.URLPREFIX + 'shoppingcart/add',
+            header: {
+                Cookie: app.globalData.cookie
+            },
+            method: 'POST',
+            data: {
+                bookId: that.data.bookDetail.id,
+                number: 1
+            },
+            success(res) {
+                if (res.data.code !== 0) {
+                    wx.showToast({
+                        title: '已放入购物车',
+                    })
+                    return
+                }
+            },
+            fail(res) {
+                wx.showToast({
+                    title: '网络连接错误',
+                    icon: 'none'
+                })
+            }
+        })
     },
 
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage: function() {
-
+    catchBuyTap: function() {
+        var book = this.data.bookDetail;
+        wx.redirectTo({
+            url: '/pages/order/order?price=' + book.price + '&picSrc=' + book.picSrc + '&bookName=' + book.name + '&author=' + book.author + '&press=' + book.press + '&id=' + book.id
+        })
     }
 })

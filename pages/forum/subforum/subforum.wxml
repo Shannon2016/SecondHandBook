@@ -1,65 +1,40 @@
 <view class='topInfo'>
     <image src='/image/1.png'></image>
-</view >
+</view>
 
 <view style="position:absolute; top:290rpx;width:100%;">
-  <view class='topInfo-title'>
-  <text class='fontTitle'>我是标题我是标题</text>
-  </view>
-  <view class='subforum-detail-item' wx:for='{{subforum}}'>
-      <view class='subforum-detail-username'>
-          <image src='/image/personal-center.png'></image>
-          <text class='fontNickname'>{{item.username}}</text>
-          <view class="subforum-detail-level">
-          <image src='/image/diamond.png'></image>
-            <text>1</text>
-          </view>
-          <view wx:if="{{item.ifMyself}}" class="master"><text>楼主</text></view>
-      </view>
-      <view class='subforum-detail-content fontItemDetail'>
-          <text>{{item.content}}</text>
-      </view>
-      <view class='subforum-detail-date fontDate'>
-          <text>{{item.date}}</text>
-      </view>
-  </view>
-</view>
-    <!-->
-    <view class='landlord'>
-          <view class='landlord-detail-note'>
-              <view class='landlord-detail-username'>
-                  <image src='/image/personal-center.png'></image>
-                  <text>{{forumDetail.username}}</text>
-              </view>
-              <button class='landlord-button' disabled>
-                  <text>楼主</text> 
-              </button>
-          </view> 
-          <view class='landlord-detail-Info'>
-              <text>{{forumDetail.content}}</text>
-          </view>
-          <view class='landlord-detail-date'>
-              <text>{{forumDetail.date}}</text>
-          </view>
+    <view class='topInfo-title'>
+        <text class='fontTitle'>{{subforum[0].title}}</text>
     </view>
-</view>
-<-->
-<!-- 显示列表 -->
-<!-->
-<view class='temp1'>
-    <view class='subforum'>
-    <block wx:for='{{subforum}}'>
-        <view class='subforum-detail-item'>
-            <view class='subforum-detail-username'>
-                <image src='/image/personal-center.png'></image>
-                <text>{{item.username}}</text>
+    <view class='subforum-detail-item' wx:for-items='{{subforum}}' wx:key='item'>
+        <view class='subforum-detail-username'>
+            <image src='{{item.imageURL}}' style='border-radius:50%;'></image>
+            <text class='fontNickname' style='margin-left:10rpx;'>{{item.username}}</text>
+            <view class="subforum-detail-level">
+                <image src='/image/diamond.png'></image>
+                <text>{{item.level}}</text>
             </view>
-            <view class='subforum-detail-Info'>
-                <text>{{item.Info}}</text>
-            </view>
-            <view class='subforum-detail-date'>
-                <text>{{item.date}}</text>
+            <view wx:if="{{item.ifMyself}}" class="master">
+                <text>楼主</text>
             </view>
         </view>
-    </block></view>
-    <-->
+        <view class='subforum-detail-content fontItemDetail'>
+            {{item.content}}
+        </view>
+        <view class='subforum-detail-date fontDate'>
+            <text>{{item.date}}</text>
+        </view>
+    </view>
+    <view style='width:100%;height:110rpx;' />
+</view>
+
+<view class='add-comment-box'>
+    <view class='comment-input-box'>
+        <input placeholder='发表评论' catchconfirm='sendComment' bindinput='bindCommentInput' value='{{inputText}}'></input>
+    </view>
+    <view class='comment-send-box'>
+        <button catchtap='sendComment'>
+            <text>发送</text>
+        </button>
+    </view>
+</view>

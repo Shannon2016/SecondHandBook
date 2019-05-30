@@ -6,7 +6,7 @@
       <text class="fontTitle">姓名</text>
     </view>
     <view class="orderInfoItemInput">
-      <input />
+      <input bindinput="bindInputName" maxlength='30' placeholder='0~30字符'/>
     </view>
   </view>
   <view class="orderInfoItem">
@@ -14,7 +14,7 @@
       <text class="fontTitle">手机号</text>
     </view>
     <view class="orderInfoItemInput">
-      <input type="number" />
+      <input type="number" bindinput="bindInputPhone" placeholder='请输入手机号'/>
     </view>
   </view>
   <view class="orderInfoItem">
@@ -22,7 +22,7 @@
       <text class="fontTitle">地址</text>
     </view>
     <view class="orderInfoItemInput">
-      <input />
+      <input bindinput="bindInputAddress" maxlength='250' placeholder='0~250字符'/>
     </view>
   </view>
 </view>

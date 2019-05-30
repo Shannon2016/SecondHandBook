@@ -4,8 +4,8 @@
     <view class='search-box'>
         <view class='search-box-item'>
             <view class='search-item'>
-                <image src='/image/search.png'></image>
-                <input placeholder='关键词'></input>
+                <image src='/image/search.png' catchtap='searchBook'></image>
+                <input placeholder='关键词' bindinput='searchInput' catchconfirm='searchBook' value='{{inputText}}'></input>
             </view>
         </view>
     </view>
@@ -29,7 +29,7 @@
                 <text class='book-detail-price' decode='true'>{{"￥&nbsp;"+item.price}}</text>
             </view>
 
-            <button class='book-detail-sell'>
+            <button class='book-detail-sell' catchtap='catchToSellBookTap' data-index='{{index}}'>
                 <text>去卖此书</text>
             </button>
         </view>

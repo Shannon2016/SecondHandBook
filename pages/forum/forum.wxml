@@ -4,8 +4,8 @@
     <view class='search-box'>
         <view class='search-box-item'>
             <view class='search-item'>
-                <image src='/image/search.png'></image>
-                <input placeholder='搜索相关论坛'></input>
+                <image src='/image/search.png' catchtap='searchComment'></image>
+                <input placeholder='搜索相关论坛' bindinput='searchInput' catchconfirm='searchComment' value='{{inputText}}'></input>
             </view>
         </view>
     </view>
@@ -13,17 +13,17 @@
 
 <!-- 显示列表 -->
 <view class='forum'>
-    <view wx:for='{{forum}}' class='forum-detail-item' catchtap='showForumDetail' data-forum-index='{{index}}'>
+    <view wx:for-items='{{forum}}' wx:key='item' class='forum-detail-item' catchtap='showForumDetail' data-forum-index='{{index}}' wx:if='{{forum!=null}}'>
         <view class='forum-detail-username'>
-            <image src='/image/personal-center.png'></image>
-            <text class='fontNickname'>{{item.username}}</text>
+            <image src='{{item.imageURL}}' style='border-radius:50%;'></image>
+            <text class='fontNickname' style='margin-left:10rpx;'>{{item.username}}</text>
             <view class="forum-detail-level">
                 <image src='/image/diamond.png'></image>
-                <text>1</text>
+                <text>{{item.level}}</text>
             </view>
         </view>
         <view class='forum-detail-title fontTitle'>
-            <text>{{item.title}}</text>
+            {{item.title}}
         </view>
         <view class='forum-detail-date fontDate'>
             <text>{{item.date}}</text>

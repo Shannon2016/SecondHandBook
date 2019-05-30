@@ -1,3 +1,4 @@
+const app = getApp();
 Page({
     /**
      * 页面的初始数据
@@ -11,10 +12,17 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
-        var userInfo = wx.getStorageSync('userInfo')
+        var userInfo = app.globalData.userInfo
         this.setData({
             userInfo: userInfo
         })
+    },
+
+    /**
+     * 页面相关事件处理函数--监听用户下拉动作
+     */
+    onPullDownRefresh: function() {
+        wx.stopPullDownRefresh()
     },
 
     catchToMyOrderTap: function() {
@@ -23,13 +31,13 @@ Page({
         })
     },
 
-    catchToMyRewardTap: function () {
+    catchToMyRewardTap: function() {
         wx.navigateTo({
             url: '/pages/person-center/my-reward/my-reward',
         })
     },
 
-    catchToMySellTap: function () {
+    catchToMySellTap: function() {
         wx.navigateTo({
             url: '/pages/person-center/my-sell/my-sell',
         })

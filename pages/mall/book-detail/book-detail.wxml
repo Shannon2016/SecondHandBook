@@ -20,7 +20,7 @@
         <text>{{bookDetail.description}}</text>
     </view>
 
-    <view style='width:100%;height:120rpx;'/>
+    <view style='width:100%;height:120rpx;' />
 </view>
 
 
@@ -33,7 +33,7 @@
     <view class='buy-add' catchtap='catchAddCartTap'>
         <text class='buy-text'>加入购物车</text>
     </view>
-    <view class='buy-current' catchtap='catchBuy'>
+    <view class='buy-current' catchtap='catchBuyTap'>
         <text class='buy-text'>立即购买</text>
     </view>
 </view>
