@@ -75,7 +75,7 @@ Page({
                         console.log(that.data);
                         if(that.data.flag === 2){
                         for(var i of that.data.orderInfoList){
-                            // console.log(i);
+                            console.log(i);
                             wx.request({
                                 url: app.globalData.URLPREFIX + 'orders/addFromCart',
                                 method:'POST',
@@ -84,7 +84,7 @@ Page({
                                 },
                                 data:{
                                     number:i.number,
-                                    bookId: i.id,
+                                    bookId: i.bookId,
                                     buyerName:that.data.inputName,
                                     phoneNumber:that.data.inputPhone,
                                     address:that.data.inputAddress
@@ -93,7 +93,7 @@ Page({
                                     console.log(res)
                                     if(res.data.code === 0){
                                         wx.redirectTo({
-                                            url: '/page/percen-center/my-order/my-order',
+                                            url: '/pages/person-center/my-order/my-order',
                                         })
                                     }else{
                                         wx.showToast({
@@ -107,6 +107,7 @@ Page({
                     }
                     else if(that.data.flag === 1){
                         console.log(that.data.orderInfoList)
+                            console.log(that.data.orderInfoList[0].id)
                             wx.request({
                                 url: app.globalData.URLPREFIX + 'orders/addDirectly',
                                 method: 'POST',
@@ -114,7 +115,7 @@ Page({
                                     Cookie: app.globalData.cookie
                                 },
                                 data: {
-                                    number: that.data.orderInfoList[0].number,
+                                    number: 1,
                                     bookId: that.data.orderInfoList[0].id,
                                     buyerName: that.data.inputName,
                                     phoneNumber: that.data.inputPhone,
@@ -127,10 +128,12 @@ Page({
                                             url: '/pages/person-center/my-order/my-order',
                                         })
                                     }
+                                    else{
                                     wx.showToast({
                                         title: '网络连接错误',
                                         icon: 'none'
                                     })
+                                    }
                                 },
                                 fail(res){
                                     console.log(res);
