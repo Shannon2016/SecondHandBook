@@ -55,11 +55,12 @@ Page({
                 
                 wx.showToast({
                     title: '发表成功',
+                    duration: 500
                 })
 
                 setTimeout(() => {
                     wx.navigateBack()
-                }, 2000)
+                }, 800)
             },
             fail(res) {
                 wx.showToast({

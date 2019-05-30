@@ -80,7 +80,7 @@ Page({
             },
             method: 'GET',
             success(res) {
-                if(res.data.code !== 0){
+                if (res.data.code !== 0) {
                     wx.showToast({
                         title: '网络连接错误',
                         icon: 'none'
@@ -154,7 +154,7 @@ Page({
         var str = this.data.searchValue
         var that = this;
         wx.request({
-            url: app.globalData.URLPREFIX + 'sells/getByCondition?word=' + str,
+            url: app.globalData.URLPREFIX + 'sells/getByCondition?words=' + str,
             header: {
                 Cookie: app.globalData.cookie
             },

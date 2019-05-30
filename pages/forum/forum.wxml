@@ -13,7 +13,7 @@
 
 <!-- 显示列表 -->
 <view class='forum'>
-    <view wx:for-items='{{forum}}' wx:key='item' class='forum-detail-item' catchtap='showForumDetail' data-forum-index='{{index}}'>
+    <view wx:for-items='{{forum}}' wx:key='item' class='forum-detail-item' catchtap='showForumDetail' data-forum-index='{{index}}' wx:if='{{forum!=null}}'>
         <view class='forum-detail-username'>
             <image src='{{item.imageURL}}' style='border-radius:50%;'></image>
             <text class='fontNickname' style='margin-left:10rpx;'>{{item.username}}</text>

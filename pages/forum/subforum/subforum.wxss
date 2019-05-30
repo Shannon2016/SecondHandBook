@@ -158,9 +158,9 @@
 }
 
 .subforum-detail-content {
-    margin-top: 10rpx;
+    margin-top: 20rpx;
     width: 582rpx;
-    min-height: 210rpx;
+    min-height: 120rpx;
 }
 
 .subforum-detail-level {

@@ -107,7 +107,7 @@
 .forum-detail-title {
     margin-top: 20rpx;
     width: 582rpx;
-    min-height: 42rpx;
+    min-height: 120rpx;
 }
 
 .forum-detail-item {

@@ -133,7 +133,12 @@ Page({
                 wx.showToast({
                     title: '发送成功',
                 })
+
                 that.getAllComments()
+
+                that.setData({
+                    inputText: ''
+                })
             },
             fail(res) {
                 wx.showToast({
