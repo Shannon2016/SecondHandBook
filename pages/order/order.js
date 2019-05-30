@@ -11,30 +11,30 @@ Page({
         orderIndex: [],
         totalPrice: 0,
         orderInfoList: [],
-        inputName:'',
-        inputAddress:'',
-        inputPhone:'',
-        flag:-1 // 用于判断是从购物车下单还是直接购买下单
+        inputName: '',
+        inputAddress: '',
+        inputPhone: '',
+        flag: -1 // 用于判断是从购物车下单还是直接购买下单
     },
 
-    bindInputName: function (e) {
+    bindInputName: function(e) {
         this.setData({
             inputName: e.detail.value
         })
     },
-    bindInputPhone: function (e) {
+    bindInputPhone: function(e) {
         this.setData({
             inputPhone: e.detail.value
         })
     },
-    bindInputAddress: function (e) {
+    bindInputAddress: function(e) {
         this.setData({
             inputAddress: e.detail.value
         })
     },
 
-    judge: function(){
-        if (this.data.inputName.length > 30 || this.data.inputName.length < 1){
+    judge: function() {
+        if (this.data.inputName.length > 30 || this.data.inputName.length < 1) {
             wx.showToast({
                 title: "请正确填写姓名",
                 image: '../../image/tan.png',
@@ -52,7 +52,7 @@ Page({
             return false;
         }
 
-        if (this.data.inputAddress.length > 250 || this.data.inputAddress.length < 1){
+        if (this.data.inputAddress.length > 250 || this.data.inputAddress.length < 1) {
             wx.showToast({
                 title: "请正确填写地址",
                 image: '../../image/tan.png',
@@ -63,8 +63,8 @@ Page({
         return true;
     },
 
-    onConfirm: function () {
-        if(this.judge()){
+    onConfirm: function() {
+        if (this.judge()) {
             var that = this;
             console.log(that.data.orderInfoList);
             wx.showModal({
@@ -73,40 +73,39 @@ Page({
                 success(res) {
                     if (res.confirm) {
                         console.log(that.data);
-                        if(that.data.flag === 2){
-                        for(var i of that.data.orderInfoList){
-                            console.log(i);
-                            wx.request({
-                                url: app.globalData.URLPREFIX + 'orders/addFromCart',
-                                method:'POST',
-                                header:{
-                                    Cookie:app.globalData.cookie
-                                },
-                                data:{
-                                    number:i.number,
-                                    bookId: i.bookId,
-                                    buyerName:that.data.inputName,
-                                    phoneNumber:that.data.inputPhone,
-                                    address:that.data.inputAddress
-                                },
-                                success(res){
-                                    console.log(res)
-                                    if(res.data.code === 0){
-                                        wx.redirectTo({
-                                            url: '/pages/person-center/my-order/my-order',
-                                        })
-                                    }else{
-                                        wx.showToast({
-                                            title: '网络连接错误',
-                                            icon: 'none'
-                                        })
+                        if (that.data.flag === 2) {
+                            for (var i of that.data.orderInfoList) {
+                                console.log(i);
+                                wx.request({
+                                    url: app.globalData.URLPREFIX + 'orders/addFromCart',
+                                    method: 'POST',
+                                    header: {
+                                        Cookie: app.globalData.cookie
+                                    },
+                                    data: {
+                                        number: i.number,
+                                        bookId: i.bookId,
+                                        buyerName: that.data.inputName,
+                                        phoneNumber: that.data.inputPhone,
+                                        address: that.data.inputAddress
+                                    },
+                                    success(res) {
+                                        console.log(res)
+                                        if (res.data.code === 0) {
+                                            wx.redirectTo({
+                                                url: '/pages/person-center/my-order/my-order',
+                                            })
+                                        } else {
+                                            wx.showToast({
+                                                title: '网络连接错误',
+                                                icon: 'none'
+                                            })
+                                        }
                                     }
-                                }
-                            })
-                        }
-                    }
-                    else if(that.data.flag === 1){
-                        console.log(that.data.orderInfoList)
+                                })
+                            }
+                        } else if (that.data.flag === 1) {
+                            console.log(that.data.orderInfoList)
                             console.log(that.data.orderInfoList[0].id)
                             wx.request({
                                 url: app.globalData.URLPREFIX + 'orders/addDirectly',
@@ -127,15 +126,14 @@ Page({
                                         wx.redirectTo({
                                             url: '/pages/person-center/my-order/my-order',
                                         })
-                                    }
-                                    else{
-                                    wx.showToast({
-                                        title: '网络连接错误',
-                                        icon: 'none'
-                                    })
+                                    } else {
+                                        wx.showToast({
+                                            title: '网络连接错误',
+                                            icon: 'none'
+                                        })
                                     }
                                 },
-                                fail(res){
+                                fail(res) {
                                     console.log(res);
                                     wx.showToast({
                                         title: '网络连接错误',
@@ -144,8 +142,7 @@ Page({
                                 }
                             })
                         }
-                    } 
-                    else if (res.cancel) {
+                    } else if (res.cancel) {
                         console.log('用户点击取消')
                     }
                 }
@@ -175,16 +172,16 @@ Page({
                     i.picSrc = i.imagePath;
                 }
                 console.log(res.data.data);
-                for(i of that.data.orderIndex){
+                for (i of that.data.orderIndex) {
                     tmp.push(res.data.data[parseInt(i)])
                 }
-                if(tmp.length > 0){
+                if (tmp.length > 0) {
                     that.setData({
                         orderInfoList: tmp
-                    }) 
+                    })
                 }
             },
-            fail(res){
+            fail(res) {
                 wx.showToast({
                     title: '网络连接错误',
                     icon: 'none'
@@ -195,27 +192,26 @@ Page({
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function (options) {
+    onLoad: function(options) {
         if (options.bookName) {
             var tmp = [];
             options.number = 1;
             tmp.push(options)
             this.setData({
                 orderInfoList: tmp,
-                orderIndex:[],
-                totalPrice:parseFloat(options.price).toFixed(2),
-                flag :1 //直接下订单
+                orderIndex: [],
+                totalPrice: parseFloat(options.price).toFixed(2),
+                flag: 1 //直接下订单
             })
-        }
-        else{
+        } else {
             this.setData({
                 totalPrice: parseFloat(options.total).toFixed(2),
                 orderIndex: options.index.split(','),
-                flag:2 //购物车
+                flag: 2 //购物车
             })
         }
     },
-    onShow: function(options){
+    onShow: function(options) {
         this.getOrderInfoList();
         console.log(this.data.orderInfoList)
     },
@@ -223,7 +219,7 @@ Page({
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
-    onPullDownRefresh: function () {
+    onPullDownRefresh: function() {
         wx.stopPullDownRefresh()
     }
 })

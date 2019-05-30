@@ -22,22 +22,22 @@
     </view>
     <!--类型选项栏 -->
     <view class='container'>
-        <a class="typeBtn" data-classId="1" bindtap="getType">公务员</a>
+        <a class="typeBtn" data-classId="1" bindtap="getType" style='background-color:{{classifyStyle[1].bgColor}};color:{{classifyStyle[1].color}};font-size:{{classifyStyle[1].fontSize}};'>公务员</a>
         <view class="">|</view>
-        <a class="typeBtn" data-classId="2" bindtap="getType">考研</a>
+        <a class="typeBtn" data-classId="2" bindtap="getType" style='background-color:{{classifyStyle[2].bgColor}};color:{{classifyStyle[2].color}};font-size:{{classifyStyle[2].fontSize}};'>考研</a>
         <view class="">|</view>
-        <a class="typeBtn" data-classId="3" bindtap="getType">四六级</a>
+        <a class="typeBtn" data-classId="3" bindtap="getType" style='background-color:{{classifyStyle[3].bgColor}};color:{{classifyStyle[3].color}};font-size:{{classifyStyle[3].fontSize}};'>四六级</a>
         <view class="">|</view>
-        <a class="typeBtn" data-classId="4" bindtap="getType">考律师</a>
+        <a class="typeBtn" data-classId="4" bindtap="getType" style='background-color:{{classifyStyle[4].bgColor}};color:{{classifyStyle[4].color}};font-size:{{classifyStyle[4].fontSize}};'>考律师</a>
     </view>
     <view class='container'>
-        <a class="typeBtn" data-classId="5" bindtap="getType">基础教材</a>
+        <a class="typeBtn" data-classId="5" bindtap="getType" style='background-color:{{classifyStyle[5].bgColor}};color:{{classifyStyle[5].color}};font-size:{{classifyStyle[5].fontSize}};'>基础教材</a>
         <view class="">|</view>
-        <a class="typeBtn" data-classId="6" bindtap="getType">畅销书</a>
+        <a class="typeBtn" data-classId="6" bindtap="getType" style='background-color:{{classifyStyle[6].bgColor}};color:{{classifyStyle[6].color}};font-size:{{classifyStyle[6].fontSize}};'>畅销书</a>
         <view class="">|</view>
-        <a class="typeBtn" data-classId="7" bindtap="getType">会计</a>
+        <a class="typeBtn" data-classId="7" bindtap="getType" style='background-color:{{classifyStyle[7].bgColor}};color:{{classifyStyle[7].color}};font-size:{{classifyStyle[7].fontSize}};'>会计</a>
         <view class="">|</view>
-        <a class="typeBtn" data-classId="8" bindtap="getType">其他</a>
+        <a class="typeBtn" data-classId="8" bindtap="getType" style='background-color:{{classifyStyle[8].bgColor}};color:{{classifyStyle[8].color}};font-size:{{classifyStyle[8].fontSize}};'>其他</a>
     </view>
     <!--书名 -->
     <view class='inputArea'>

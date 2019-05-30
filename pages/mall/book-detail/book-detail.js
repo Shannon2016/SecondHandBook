@@ -10,14 +10,14 @@ Page({
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function (options) {
+    onLoad: function(options) {
         var bookDetail = JSON.parse(unescape(options.bookDetail))
         this.setData({
             bookDetail: bookDetail
         })
     },
 
-    catchToCartTap: function () {
+    catchToCartTap: function() {
         wx.switchTab({
             url: '/pages/cart/cart',
         })
@@ -26,14 +26,58 @@ Page({
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
-    onPullDownRefresh: function () {
+    onPullDownRefresh: function() {
         wx.stopPullDownRefresh()
     },
 
-    catchAddCartTap: function () {
-        //我又动手了
-        console.log(this.data.bookDetail)
+    catchAddCartTap: function() {
+        var that = this
         var app = getApp();
+
+        /**
+         * 获取当前购物车信息，判断是否已有此书籍，没有则添加
+         */
+        wx.request({
+            url: app.globalData.URLPREFIX + 'shoppingcart/getMy',
+            method: 'GET',
+            header: {
+                Cookie: app.globalData.cookie
+            },
+            success(res) {
+                if (res.data.code !== 0) {
+                    wx.showToast({
+                        title: '网络连接错误',
+                        icon: 'none'
+                    })
+                    return;
+                }
+
+                that.setData({
+                    bookList: res.data.data
+                })
+            },
+            fail(res) {
+                wx.showToast({
+                    title: '网络连接错误',
+                    icon: 'none'
+                })
+            }
+        })
+
+        var bookList = this.data.bookList
+        var bookId = this.data.bookDetail.id
+
+        if (bookList) {
+            for (var i = 0; i < bookList.length; i++) {
+                if (bookList[i].bookId === bookId) {
+                    wx.showToast({
+                        title: '购物车中已有',
+                    })
+                    return
+                }
+            }
+        }
+
         wx.request({
             url: app.globalData.URLPREFIX + 'shoppingcart/add',
             header: {
@@ -41,52 +85,30 @@ Page({
             },
             method: 'POST',
             data: {
-                bookId: this.data.bookDetail.id,
+                bookId: that.data.bookDetail.id,
                 number: 1
             },
             success(res) {
-                console.log(res);
                 if (res.data.code !== 0) {
                     wx.showToast({
-                        title: '网络连接错误',
-                        icon: 'none'
+                        title: '已放入购物车',
                     })
                     return
                 }
+            },
+            fail(res) {
+                wx.showToast({
+                    title: '网络连接错误',
+                    icon: 'none'
+                })
             }
         })
-
-        var bookList = wx.getStorageSync('bookList')
-        var bookId = this.data.bookDetail.id
-
-        if (bookList) {
-            var count = bookList.length
-
-            for (var i = 0; i < count; i++) {
-                if (bookList[i] == bookId) {
-                    wx.showToast({
-                        title: '购物车中已有',
-                    })
-                    return
-                }
-            }
-
-            bookList[count] = bookId
-        } else {
-            bookList = []
-            bookList[0] = bookId
-            wx.showToast({
-                title: '已加入购物车',
-            })
-        }
-
-        wx.setStorageSync('bookList', bookList)
     },
 
-    catchBuyTap: function () {
+    catchBuyTap: function() {
         var book = this.data.bookDetail;
         wx.redirectTo({
-            url: '/pages/order/order?price=' + book.price + '&picSrc='+ book.picSrc + '&bookName='+book.name+'&author='+book.author+'&press='+book.press+'&id='+book.id 
+            url: '/pages/order/order?price=' + book.price + '&picSrc=' + book.picSrc + '&bookName=' + book.name + '&author=' + book.author + '&press=' + book.press + '&id=' + book.id
         })
     }
 })

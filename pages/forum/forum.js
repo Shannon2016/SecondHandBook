@@ -18,6 +18,10 @@ Page({
         this.getAllPosts()
     },
 
+    onShow: function() {
+        this.onLoad()
+    },
+
     onPullDownRefresh: function() {
         wx.stopPullDownRefresh()
 
@@ -57,8 +61,8 @@ Page({
                         level: res.data.data[i].level,
                         imageURL: res.data.data[i].imageURL
                     }
-                    
-                    forum[i].date = forum[i].date.substring(0,10) + ' ' + forum[i].date.substr(11,8)
+
+                    forum[i].date = forum[i].date.substring(0, 10) + ' ' + forum[i].date.substr(11, 8)
                 }
 
                 if (JSON.stringify(forum[0]) == '{}')
@@ -109,7 +113,7 @@ Page({
 
                     forum[i].date = forum[i].date.substring(0, 10) + ' ' + forum[i].date.substr(11, 8)
                 }
-                
+
                 if (JSON.stringify(forum[0]) == '{}')
                     forum = null
 

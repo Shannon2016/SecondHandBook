@@ -7,6 +7,57 @@ Page({
      * 页面的初始数据
      */
     data: {
+        classifyStyle: [{
+                bgColor: '#fff',
+                color: '#606266',
+                fontSize: '28rpx'
+            },
+            {
+                bgColor: '#fff',
+                color: '#606266',
+                fontSize: '28rpx'
+            },
+            {
+                bgColor: '#fff',
+                color: '#606266',
+                fontSize: '28rpx'
+            },
+            {
+                bgColor: '#fff',
+                color: '#606266',
+                fontSize: '28rpx'
+            },
+            {
+                bgColor: '#fff',
+                color: '#606266',
+                fontSize: '28rpx'
+            },
+            {
+                bgColor: '#fff',
+                color: '#606266',
+                fontSize: '28rpx'
+            },
+            {
+                bgColor: '#fff',
+                color: '#606266',
+                fontSize: '28rpx'
+            },
+            {
+                bgColor: '#fff',
+                color: '#606266',
+                fontSize: '28rpx'
+            },
+            {
+                bgColor: '#fff',
+                color: '#606266',
+                fontSize: '28rpx'
+            },
+            {
+                bgColor: 'rgb(75, 199, 168)',
+                color: '#fff',
+                fontSize: '30rpx'
+            },
+        ],
         flag: 0,
         show: false,
         currentDate: new Date().getTime(),
@@ -32,19 +83,19 @@ Page({
         bookPrice: 0.00,
         bookDescription: "",
     },
-    confirmCloseTimePicker: function () {
+    confirmCloseTimePicker: function() {
         this.setData({
             show: false,
             flag: this.data.flag + 1
         })
     },
 
-    cancelCloseTimePicker: function () {
+    cancelCloseTimePicker: function() {
         this.setData({
             show: false
         })
     },
-    showTimePicker: function () {
+    showTimePicker: function() {
         this.setData({
             show: true
         })
@@ -53,10 +104,19 @@ Page({
     getType: function(e) {
         var that = this;
         var a = parseInt(e.target.dataset.classid)
+
+        var classifyStyle = this.data.classifyStyle
+        for (var i = 1; i < 9; i++)
+            classifyStyle[i] = classifyStyle[0]
+        classifyStyle[a] = classifyStyle[9]
+
+        this.setData({
+            classifyStyle: classifyStyle
+        })
+
         that.setData({
             bookType: a,
-        });
-        console.log(that.data.bookType);
+        })
     },
     //书的名字
     getName: function(e) {
@@ -150,8 +210,8 @@ Page({
         ISBN = that.data.bookISBN;
         price = that.data.bookPrice;
         description = that.data.bookDescription;
-        
-        if(this.judge()){
+
+        if (this.judge()) {
             wx.uploadFile({
                 url: app.globalData.URLPREFIX + 'files/upload',
                 filePath: picFilePath,
@@ -188,7 +248,7 @@ Page({
                                 wx.redirectTo({
                                     url: '/pages/person-center/my-reward/my-reward',
                                 })
-                            }else{
+                            } else {
                                 wx.showToast({
                                     title: '网络连接错误',
                                     icon: 'none'
@@ -252,7 +312,7 @@ Page({
             picFilePath: ""
         });
     },
-    judge: function () {
+    judge: function() {
         var that = this;
         //类型不能为空
         if (that.data.bookType <= 0) {
@@ -283,8 +343,7 @@ Page({
         }
 
         //出版日期不能为空
-        if (that.data.bookDate) {
-        } else {
+        if (that.data.bookDate) {} else {
             wx.showToast({
                 title: "日期不能为空",
                 image: '../../image/tan.png',
@@ -320,8 +379,7 @@ Page({
                 mask: false,
             });
             return false;
-        }
-        else if (that.data.bookISBN.length < 13) {
+        } else if (that.data.bookISBN.length < 13) {
             wx.showToast({
                 title: "图书号格式错误",
                 image: '../../image/tan.png',
