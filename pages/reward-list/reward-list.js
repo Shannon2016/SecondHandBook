@@ -82,6 +82,8 @@ Page({
     onPullDownRefresh: function() {
         wx.stopPullDownRefresh()
 
+        this.getRewardList()
+
         this.setData({
             inputText: ''
         })

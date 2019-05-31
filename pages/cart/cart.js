@@ -175,6 +175,8 @@ Page({
         this.setData({
             checkAllFlag:false,
             totalPrice:0,
+            checkFlag:false,
+            chooseItemIndex:[],
             checkFlag:false
         })
     },

@@ -158,6 +158,9 @@ Page({
     getDepreciation: function (e) {
         var that = this;
         var a = parseInt(e.detail.value);
+        that.setData({
+            bookDepreciation: a,
+        });
         console.log(that.data.bookDepreciation);
     },
     //书的ISBN
