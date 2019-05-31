@@ -9,6 +9,7 @@ Page({
     data: {
         chooseItemIndex: [],
         checkFlag: false,
+        checkAllFlag:false,
         totalPrice: 0,
         topImg: {
             mode: 'scaleToFill',
@@ -107,6 +108,21 @@ Page({
         this.setData({
             totalPrice: tmp
         })
+        if(this.data.chooseItemIndex.length === this.data.cartInfoList.length){
+            this.setData({
+                checkAllFlag:true
+            })
+        }
+        else{
+            this.setData({
+                checkAllFlag:false
+            })
+        }
+        if(this.data.chooseItemIndex.length === 0){
+            this.setData({
+                checkAllFlag:false
+            })
+        }
     },
     checkAll: function () {
         if (this.data.checkFlag === false) {
@@ -124,7 +140,8 @@ Page({
             this.setData({
                 checkFlag: false,
                 totalPrice: 0,
-                chooseItemIndex:[]
+                chooseItemIndex:[],
+                checkAllFlag:false
             })
         }
     },
@@ -155,6 +172,13 @@ Page({
 
     onShow:function(){
         this.getCartInfoList();
+        this.setData({
+            checkAllFlag:false,
+            totalPrice:0,
+            checkFlag:false,
+            chooseItemIndex:[],
+            checkFlag:false
+        })
     },
 
     /**

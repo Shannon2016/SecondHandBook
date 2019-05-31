@@ -42,7 +42,7 @@
     </view>
     <view id="bottomBar">
         <view id="checkAll">
-            <checkbox value="{{index}}" bindtap="checkAll"></checkbox>
+            <checkbox value="{{index}}" bindtap="checkAll" checked='{{checkAllFlag}}'></checkbox>
         </view>
         <view id="totalPrice" class="fontPrice">
             <view>
