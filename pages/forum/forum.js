@@ -61,8 +61,9 @@ Page({
                         level: res.data.data[i].level,
                         imageURL: res.data.data[i].imageURL
                     }
-                    
+
                     forum[i].date = forum[i].date.substring(0, 10) + ' ' + forum[i].date.substr(11, 8)
+                    forum[i].level = app.changeLevel(forum[i].level)
                 }
 
                 var tempforum = [{}]
@@ -121,6 +122,7 @@ Page({
                     }
 
                     forum[i].date = forum[i].date.substring(0, 10) + ' ' + forum[i].date.substr(11, 8)
+                    forum[i].level = app.changeLevel(forum[i].level)
                 }
 
                 if (JSON.stringify(forum[0]) == '{}')
