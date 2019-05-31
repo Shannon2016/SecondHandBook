@@ -153,15 +153,9 @@ Page({
         console.log(that.data.bookAuthor);
     },
     //书的新旧
-    getDepreciation: function(e) {
+    getDepreciation: function (e) {
         var that = this;
         var a = parseInt(e.detail.value);
-        if (a >= 1 && a <= 10)
-            that.setData({
-                bookDepreciation: a,
-            });
-        else
-            console.log("错误输入");
         console.log(that.data.bookDepreciation);
     },
     //书的ISBN
