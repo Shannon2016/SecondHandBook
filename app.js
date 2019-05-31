@@ -1,4 +1,5 @@
 //app.js
+//this is lylist test
 App({
   onLaunch: function () {
     // 展示本地存储能力
