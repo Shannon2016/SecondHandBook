@@ -89,6 +89,7 @@ Page({
                 number: 1
             },
             success(res) {
+                console.log(res)
                 if (res.data.code !== 0) {
                     wx.showToast({
                         title: '已放入购物车',

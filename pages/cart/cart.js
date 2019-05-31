@@ -155,6 +155,10 @@ Page({
 
     onShow:function(){
         this.getCartInfoList();
+        this.setData({
+            checkFlag:false,
+            totalPrice:0
+        })
     },
 
     /**
