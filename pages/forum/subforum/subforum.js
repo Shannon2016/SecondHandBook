@@ -81,7 +81,7 @@ Page({
                     // 字符串去除T
                     res.data.data[i].date = res.data.data[i].date.substring(0, 10) + ' ' + res.data.data[i].date.substr(11, 8)
                     res.data.data[i].content = res.data.data[i].content
-                    res.data.data[i].level = res.data.data[i].level
+                    res.data.data[i].level = app.changeLevel(res.data.data[i].level)
                     if (res.data.data[i].username == subforum[0].username)
                         res.data.data[i].ifMyself = true
                     else
@@ -111,6 +111,20 @@ Page({
      */
     sendComment: function() {
         var that = this
+
+        var input = that.data.commentValue
+        if (input != '') {
+
+        } else {
+            wx.showToast({
+                title: '评论为空',
+                icon: 'none',
+                mask: true,
+                duration: 2000
+            })
+            return
+        }
+
         wx.request({
             url: app.globalData.URLPREFIX + 'comments/add',
             header: {

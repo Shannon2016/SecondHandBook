@@ -34,6 +34,21 @@ Page({
 
     catchPublishTap: function() {
         var that = this
+
+        var input1 = that.data.titleValue
+        var input2 = that.data.contentValue
+        if (input1 != '' && input2 != '') {
+
+        } else {
+            wx.showToast({
+                title: '主题或内容为空',
+                icon: 'none',
+                mask: true,
+                duration: 2000
+            })
+            return
+        }
+
         wx.request({
             url: app.globalData.URLPREFIX + 'posts/add',
             header: {
@@ -52,7 +67,7 @@ Page({
                     })
                     return
                 }
-                
+
                 wx.showToast({
                     title: '发表成功',
                     duration: 500

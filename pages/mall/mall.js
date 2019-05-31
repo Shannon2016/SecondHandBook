@@ -193,18 +193,29 @@ Page({
      */
     showClassifyBook: function(event) {
         var type = parseInt(event.currentTarget.dataset.type)
+        var url = ''
 
         var classifyStyle = this.data.classifyStyle
+
+        if (classifyStyle[type] != classifyStyle[9]) {
+            classifyStyle[type] = classifyStyle[9]
+            url = app.globalData.URLPREFIX + 'sells/getByCondition?category=' + type.toString()
+        } else {
+            classifyStyle[type] = classifyStyle[0]
+            url = app.globalData.URLPREFIX + 'sells/getAll'
+        }
+
         for (var i = 1; i < 9; i++)
-            classifyStyle[i] = classifyStyle[0]
-        classifyStyle[type] = classifyStyle[9]
+            if (i != type)
+                classifyStyle[i] = classifyStyle[0]
+
         this.setData({
             classifyStyle: classifyStyle
         })
 
         var that = this;
         wx.request({
-            url: app.globalData.URLPREFIX + 'sells/getByCondition?category=' + type.toString(),
+            url: url,
             header: {
                 Cookie: app.globalData.cookie
             },
