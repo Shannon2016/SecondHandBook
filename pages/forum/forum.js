@@ -61,15 +61,24 @@ Page({
                         level: res.data.data[i].level,
                         imageURL: res.data.data[i].imageURL
                     }
-
+                    
                     forum[i].date = forum[i].date.substring(0, 10) + ' ' + forum[i].date.substr(11, 8)
                 }
 
-                if (JSON.stringify(forum[0]) == '{}')
+                var tempforum = [{}]
+                if (JSON.stringify(forum[0]) == '{}') {
                     forum = null
+                    tempforum = null
+                }
+                else {
+                    var length = forum.length
+                    for (var i = 0; i < length; i++) {
+                        tempforum[length - i - 1] = forum[i]
+                    }
+                }
 
                 that.setData({
-                    forum: forum
+                    forum: tempforum
                 })
             }
         })

@@ -111,6 +111,20 @@ Page({
      */
     sendComment: function() {
         var that = this
+
+        var input = that.data.commentValue
+        if (input != '') {
+
+        } else {
+            wx.showToast({
+                title: '评论为空',
+                icon: 'none',
+                mask: true,
+                duration: 2000
+            })
+            return
+        }
+
         wx.request({
             url: app.globalData.URLPREFIX + 'comments/add',
             header: {

@@ -52,49 +52,45 @@ Page({
                     return;
                 }
 
-                that.setData({
-                    bookList: res.data.data
-                })
-            },
-            fail(res) {
-                wx.showToast({
-                    title: '网络连接错误',
-                    icon: 'none'
-                })
-            }
-        })
+                var bookList = res.data.data
+                var bookId = that.data.bookDetail.id
 
-        var bookList = this.data.bookList
-        var bookId = this.data.bookDetail.id
-
-        if (bookList) {
-            for (var i = 0; i < bookList.length; i++) {
-                if (bookList[i].bookId === bookId) {
-                    wx.showToast({
-                        title: '购物车中已有',
-                    })
-                    return
+                if (bookList) {
+                    for (var i = 0; i < bookList.length; i++) {
+                        if (bookList[i].bookId === bookId) {
+                            wx.showToast({
+                                title: '购物车中已有',
+                            })
+                            return
+                        }
+                    }
                 }
-            }
-        }
 
-        wx.request({
-            url: app.globalData.URLPREFIX + 'shoppingcart/add',
-            header: {
-                Cookie: app.globalData.cookie
-            },
-            method: 'POST',
-            data: {
-                bookId: that.data.bookDetail.id,
-                number: 1
-            },
-            success(res) {
-                if (res.data.code !== 0) {
-                    wx.showToast({
-                        title: '已放入购物车',
-                    })
-                    return
-                }
+                wx.request({
+                    url: app.globalData.URLPREFIX + 'shoppingcart/add',
+                    header: {
+                        Cookie: app.globalData.cookie
+                    },
+                    method: 'POST',
+                    data: {
+                        bookId: that.data.bookDetail.id,
+                        number: 1
+                    },
+                    success(res) {
+                        if (res.data.code !== 0) {
+                            wx.showToast({
+                                title: '已放入购物车',
+                            })
+                            return
+                        }
+                    },
+                    fail(res) {
+                        wx.showToast({
+                            title: '网络连接错误',
+                            icon: 'none'
+                        })
+                    }
+                })
             },
             fail(res) {
                 wx.showToast({
