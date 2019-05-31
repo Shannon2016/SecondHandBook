@@ -1,105 +1,190 @@
 // pages/cart/cart.js
+const app = getApp();
 
 Page({
 
-  /**
-   * 页面的初始数据
-   */
-  data: {
-    topImg:{
-      mode:'scaleToFill',
-      src:'../../image/6.jpg'
+    /**
+     * 页面的初始数据
+     */
+    data: {
+        chooseItemIndex: [],
+        checkFlag: false,
+        checkAllFlag:false,
+        totalPrice: 0,
+        topImg: {
+            mode: 'scaleToFill',
+            src: '../../image/6.jpg'
+        },
+        cartInfoList: []
     },
-    cartInfoList:[{
-        picSrc: "../../image/book1.png",
-        bookName: "共产党宣言",
-        author:"cuteBug",
-        press:"BIT",
-        price:15.50
-      },{
-        picSrc: "../../image/book11.png",
-        bookName: "博弈论",
-        author: "cuteBug",
-        press: "BIT",
-        price: 16.00
-      },{
-        picSrc: "../../image/book18.png",
-        bookName: "围城",
-        author: "cuteBug",
-        press: "BIT",
-        price: 17.00
-      },{
-        picSrc: "../../image/book4.png",
-        bookName: "中国哲学史",
-        author: "cuteBug",
-        press: "BIT",
-        price: 18.70
-      }, {
-        picSrc: "../../image/book4.png",
-        bookName: "图书4",
-        author: "cuteBug",
-        press: "BIT",
-        price: 18.70
-      }
-    ]
-  },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  checkboxChange: function (e) {
-    console.log('checkbox发生change事件，携带value值为：', e.detail.value)
-  },
-  
-  onLoad: function (options) {
-      
-  },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
+    getCartInfoList: function() {
+        var that = this;
+        wx.request({
+          url: app.globalData.URLPREFIX + 'shoppingcart/getMy',
+          method:'GET',
+          header:{
+              Cookie:app.globalData.cookie
+          },
+          success(res) {
+            console.log(res);
+            if (res.data.code !== 0) {
+                wx.showToast({
+                    title: '网络连接错误',
+                    icon: 'none'
+                })
+                return;
+            }
+            for(var i of res.data.data){
+                i.picSrc = i.imagePath;
+            }
+            console.log(res.data.data);
+            that.setData({
+                cartInfoList: res.data.data
+            })
+          },
+          fail(res){
+              wx.showToast({
+                  title: '网络连接错误',
+                  icon: 'none'
+              })
+          }
+        })
 
-  },
+    },
+    onClose(event) {
+        var that = this;
+        const { position, instance } = event.detail;
+        switch (position) {
+            case 'cell':
+                instance.close();
+                break;
+            case 'right':
+                wx.showModal({
+                    title: '提示',
+                    content: '确认删除吗？',
+                    success(res) {
+                        if (res.confirm) {
+                            console.log(event)
+                            var bookId = that.data.cartInfoList[parseInt(event.currentTarget.id)].bookId
+                            wx.request({
+                                url: app.globalData.URLPREFIX + 'shoppingcart/remove',
+                                header:{
+                                    Cookie:app.globalData.cookie
+                                },
+                                method:'DELETE',
+                                data:{
+                                    bookId:bookId
+                                },
+                                success(res){
+                                    console.log(res);
+                                    if(res.data.code !== 0){
+                                        wx.showToast({
+                                            title: '网络连接错误',
+                                            icon: 'none'
+                                        })
+                                        return
+                                    }
+                                    instance.close();
+                                    that.getCartInfoList();
+                                }
+                            })
+                        }
+                        else if (res.cancel) {
+                            instance.close();
+                        }
+                    }
+                })
+                break;
+        }
+    },
+    getSum: function () {
+        var tmp = 0;
+        for (var i = 0; i < this.data.chooseItemIndex.length; i++) {
+            var index = parseInt(this.data.chooseItemIndex[i]);
+            tmp += this.data.cartInfoList[index].price;
+        }
+        tmp = tmp.toFixed(2)
+        this.setData({
+            totalPrice: tmp
+        })
+        if(this.data.chooseItemIndex.length === this.data.cartInfoList.length){
+            this.setData({
+                checkAllFlag:true
+            })
+        }
+        else{
+            this.setData({
+                checkAllFlag:false
+            })
+        }
+        if(this.data.chooseItemIndex.length === 0){
+            this.setData({
+                checkAllFlag:false
+            })
+        }
+    },
+    checkAll: function () {
+        if (this.data.checkFlag === false) {
+            var tmp=[]
+            for (var i in this.data.cartInfoList) {
+                tmp.push(i.toString());
+            }
+            this.setData({
+                checkFlag: true,
+                chooseItemIndex :tmp
+            })
+            console.log(1);
+            this.getSum();
+        } else {
+            this.setData({
+                checkFlag: false,
+                totalPrice: 0,
+                chooseItemIndex:[],
+                checkAllFlag:false
+            })
+        }
+    },
+    checkboxChange: function(e) {
+        this.setData({
+            chooseItemIndex: e.detail.value
+        })
+        this.getSum();
+    },
+    goOrder: function () {
+        if (this.data.chooseItemIndex.length > 0) {
+            var tmp = this.data.chooseItemIndex.join();
+            wx.navigateTo({
+                url: '../order/order?index=' + tmp + '&total=' + this.data.totalPrice.toString(),
+            })
+        } else {
+            wx.showToast({
+                title: '请选择您的图书',
+                icon: 'none',
+                duration: 2000
+            });
+            // wx.hideToast()
+        }
+    },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
+    onLoad: function(options) {
+    },
 
-  },
+    onShow:function(){
+        this.getCartInfoList();
+        this.setData({
+            checkAllFlag:false,
+            totalPrice:0,
+            checkFlag:false,
+            chooseItemIndex:[],
+            checkFlag:false
+        })
+    },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
+    /**
+     * 页面相关事件处理函数--监听用户下拉动作
+     */
+    onPullDownRefresh: function () {
+        wx.stopPullDownRefresh()
+    }
 })

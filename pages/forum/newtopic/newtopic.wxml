@@ -1,0 +1,19 @@
+<view class='topInfo'>
+    <image src='/image/1.png'></image>
+</view>
+
+<view class='newtopic'>
+    <view class='newtopic-topic'>
+        <text>主题</text>
+        <input placeholder='请输入主题' bindinput='bindTitleInput' maxlength='40' value='{{inputText1}}'></input>
+    </view>
+
+    <view class='newtopic-content'>
+        <text>内容</text>
+        <textarea placeholder='请输入内容' bindinput='bindContentInput' maxlength='1000' value='{{inputText2}}'></textarea>
+    </view>
+
+    <button class='newtopic-button' catchtap='catchPublishTap'>
+        <text>发表</text>
+    </button>
+</view>

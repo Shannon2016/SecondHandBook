@@ -1,0 +1,58 @@
+<!-- 搜索框部分 -->
+<view class='search'>
+    <image src='/image/2.jpg'></image>
+    <view class='search-box'>
+        <view class='search-box-item'>
+            <view class='search-item'>
+                <image src='/image/search.png' catchtap='searchBook'></image>
+                <input placeholder='搜索相关图书' bindinput='searchInput' catchconfirm='searchBook' value='{{inputText}}'></input>
+            </view>
+        </view>
+    </view>
+</view>
+
+<!-- 分类查询部分 -->
+<view class='classify'>
+    <view class='classify-title'>
+        <text>书单分类</text>
+    </view>
+    <view class='classify-detail'>
+        <view class='classify-detail-item'>
+            <text class='classify-type' catchtap='showClassifyBook' data-type='{{1}}' style='background-color:{{classifyStyle[1].bgColor}};color:{{classifyStyle[1].color}};font-size:{{classifyStyle[1].fontSize}};'>公务员</text>
+            <text>|</text>
+            <text class='classify-type' catchtap='showClassifyBook' data-type='{{2}}' style='background-color:{{classifyStyle[2].bgColor}};color:{{classifyStyle[2].color}};font-size:{{classifyStyle[2].fontSize}};'>考研</text>
+            <text>|</text>
+            <text class='classify-type' catchtap='showClassifyBook' data-type='{{3}}' style='background-color:{{classifyStyle[3].bgColor}};color:{{classifyStyle[3].color}};font-size:{{classifyStyle[3].fontSize}};'>四六级</text>
+            <text>|</text>
+            <text class='classify-type' catchtap='showClassifyBook' data-type='{{4}}' style='background-color:{{classifyStyle[4].bgColor}};color:{{classifyStyle[4].color}};font-size:{{classifyStyle[4].fontSize}};'>考律师</text>
+        </view>
+        <view class='classify-detail-item'>
+            <text class='classify-type' catchtap='showClassifyBook' data-type='{{5}}' style='background-color:{{classifyStyle[5].bgColor}};color:{{classifyStyle[5].color}};font-size:{{classifyStyle[5].fontSize}};'>基础教材</text>
+            <text>|</text>
+            <text class='classify-type' catchtap='showClassifyBook' data-type='{{6}}' style='background-color:{{classifyStyle[6].bgColor}};color:{{classifyStyle[6].color}};font-size:{{classifyStyle[6].fontSize}};'>畅销书</text>
+            <text>|</text>
+            <text class='classify-type' catchtap='showClassifyBook' data-type='{{7}}' style='background-color:{{classifyStyle[7].bgColor}};color:{{classifyStyle[7].color}};font-size:{{classifyStyle[7].fontSize}};'>会计</text>
+            <text>|</text>
+            <text class='classify-type' catchtap='showClassifyBook' data-type='{{8}}' style='background-color:{{classifyStyle[8].bgColor}};color:{{classifyStyle[8].color}};font-size:{{classifyStyle[8].fontSize}};'>其它</text>
+        </view>
+    </view>
+</view>
+
+<!-- 显示列表 -->
+<view class='books'>
+    <block wx:for-items='{{books}}' wx:key='item'>
+        <view class='book-detail' catchtap='showBookDetail' data-book-index='{{index}}'>
+            <view class='book-detail-picture'>
+                <image src='{{item.picSrc}}' lazy-load='true'></image>
+            </view>
+
+            <view class='book-detail-item'>
+                <text class='book-detail-name'>{{item.name}}</text>
+                <view class='book-detail-info'>
+                    <text>{{"作者："+item.author}}</text>
+                </view>
+                <text class='book-detail-price' decode='true'>{{"￥&nbsp;"+item.price}}</text>
+            </view>
+        </view>
+    </block>
+</view>

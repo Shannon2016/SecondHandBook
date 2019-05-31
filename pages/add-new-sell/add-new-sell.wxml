@@ -1,0 +1,103 @@
+<view class="gallery">
+    <view class='item-ot'>
+        <view class="item">
+
+            <!-- 添加按钮 -->
+            <view class="addIcon" bindtap="chooseImage" wx:if="{{imgBoolean}}">
+                <view class=''>点击添加图片描述</view>
+            </view>
+
+            <!-- 上传的图 -->
+            <view class='itemImg'>
+                <!--图片-->
+                <image src="{{item}}" data-src="{{item}}" bindtap="previewImage" mode="aspectFill" />
+
+                <!--图片上的删除按钮 -->
+                <view class="delete" bindtap="deleteImg" data-index="{{index}}">X</view>
+            </view>
+        </view>
+    </view>
+    <view class='uploadFinish'>
+        <text class='fontTile'>图书分类</text>
+    </view>
+    <!--类型选项栏 -->
+    <view class='container'>
+        <a class="typeBtn" data-classId="1" bindtap="getType" style='background-color:{{classifyStyle[1].bgColor}};color:{{classifyStyle[1].color}};font-size:{{classifyStyle[1].fontSize}};'>公务员</a>
+        <view class="">|</view>
+        <a class="typeBtn" data-classId="2" bindtap="getType" style='background-color:{{classifyStyle[2].bgColor}};color:{{classifyStyle[2].color}};font-size:{{classifyStyle[2].fontSize}};'>考研</a>
+        <view class="">|</view>
+        <a class="typeBtn" data-classId="3" bindtap="getType" style='background-color:{{classifyStyle[3].bgColor}};color:{{classifyStyle[3].color}};font-size:{{classifyStyle[3].fontSize}};'>四六级</a>
+        <view class="">|</view>
+        <a class="typeBtn" data-classId="4" bindtap="getType" style='background-color:{{classifyStyle[4].bgColor}};color:{{classifyStyle[4].color}};font-size:{{classifyStyle[4].fontSize}};'>考律师</a>
+    </view>
+    <view class='container'>
+        <a class="typeBtn" data-classId="5" bindtap="getType" style='background-color:{{classifyStyle[5].bgColor}};color:{{classifyStyle[5].color}};font-size:{{classifyStyle[5].fontSize}};'>基础教材</a>
+        <view class="">|</view>
+        <a class="typeBtn" data-classId="6" bindtap="getType" style='background-color:{{classifyStyle[6].bgColor}};color:{{classifyStyle[6].color}};font-size:{{classifyStyle[6].fontSize}};'>畅销书</a>
+        <view class="">|</view>
+        <a class="typeBtn" data-classId="7" bindtap="getType" style='background-color:{{classifyStyle[7].bgColor}};color:{{classifyStyle[7].color}};font-size:{{classifyStyle[7].fontSize}};'>会计</a>
+        <view class="">|</view>
+        <a class="typeBtn" data-classId="8" bindtap="getType" style='background-color:{{classifyStyle[8].bgColor}};color:{{classifyStyle[8].color}};font-size:{{classifyStyle[8].fontSize}};'>其他</a>
+    </view>
+    <!--书名 -->
+    <view class='inputArea'>
+        <view class='fontTile to-left'>售卖图书名</view>
+        <input class='input to-right' maxlength="20" bindinput='getName'/>
+    </view>
+    <!--出版社 -->
+    <view class='inputArea'>
+        <view class='fontTile to-left'>出版社</view>
+        <input class='input to-right' maxlength="20" bindinput='getPress'/>
+    </view>
+    <!--出版日期-->
+    <view class='inputArea'>
+        <view class='fontTile to-left'>出版日期</view>
+        <!-- <input class='input to-right' maxlength="10" bindinput='getBookDate' placeholder="格式：2000-01-01"/> -->
+        <van-button size="small" plain bind:click='showTimePicker' style='width:60%'>{{flag<1?'选择日期':bookDate}}</van-button>
+        <van-popup show="{{ show }}" bind:close="closeTimePicker"
+        position='bottom'>
+            <van-datetime-picker
+            type="date"
+            min-date='{{0}}'
+            bind:input="getBookDate"
+            value="{{ currentDate }}"
+            formatter="{{ formatter }}"
+            bind:cancel='cancelCloseTimePicker'
+            bind:confirm='confirmCloseTimePicker'
+            />
+        </van-popup>
+        
+    </view>
+    <!--作者-->
+    <view class='inputArea'>
+        <view class='fontTile to-left'>作者</view>
+        <input class='input to-right' maxlength="20" bindinput='getAuthor'/>
+    </view>
+    <!--图书新旧-->
+    <view class='inputArea'>
+        <view class='fontTile to-left'>图书新旧</view>
+        <view class='to-right'>
+            <input class='miniInput' maxlength="2" type='number' bindinput='getDepreciation' placeholder="1~10"></input>
+            <text class='fontTile' style='margin-left:20rpx;'>成新</text>
+        </view>
+    </view>
+    <!--ISN图书号-->
+    <view class='inputArea'>
+        <view class='fontTile to-left'>ISBN图书号</view>
+        <input class='input to-right' maxlength="13" type='number' bindinput='getISBN' placeholder="ISBN-13位书号"/>
+    </view>
+    <!--预期价格-->
+    <view class='inputArea'>
+        <view class='fontTile to-left'>预期价格</view>
+        <input class='input to-right' type='digit' bindinput='getPrice' maxlength="5"/>
+    </view>
+    <!--详情描述-->
+    <view class='inputArea'>
+        <view class='fontTile to-left'>详情描述</view>
+        <textarea class='largeInput to-right' bindinput='getDescription'/>
+    </view>
+    <!-- 提交按钮 -->
+    <view class='uploadFinish'>
+        <button class="uploadFinishBtn" bindtap='addNewSell'>确认售卖</button>
+    </view>
+</view>
