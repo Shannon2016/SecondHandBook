@@ -81,6 +81,8 @@ Page({
      */
     onPullDownRefresh: function() {
         wx.stopPullDownRefresh()
+        
+        this.getRewardList()
 
         this.getRewardList()
 
