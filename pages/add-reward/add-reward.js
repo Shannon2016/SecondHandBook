@@ -136,7 +136,7 @@ Page({
         });
         console.log(that.data.bookPress);
     },
-    //书的出版日期
+    //书的出版日期 
     getBookDate: function(event) {
         console.log(event)
         var date = new Date(event.detail)
