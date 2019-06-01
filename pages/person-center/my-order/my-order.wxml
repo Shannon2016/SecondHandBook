@@ -12,12 +12,13 @@
             </view>
 
             <view class='order-detail-item'>
-                <text class='order-detail-name fontTitle'>{{item.name}}</text>
-                <view class='order-detail-info fontItemDetail'>
-                    <text>{{"收货人："+item.consignee}}</text>
-                    <text>{{"收获地址："+item.address}}</text>
+                <view class='order-detail-name fontTitle'>{{item.name}}</view>
+                <view class='order-detail-info fontItemDetail'>{{"收货人:  "+item.consignee}}</view>
+                <view class='order-detail-info fontItemDetail'>{{"收获地址:  "+item.address}}</view>
+                <view class='order-detail-price fontPrice'>
+                    <text decode="{{true}}" style='font-size:30rpx;'>实付价格:&nbsp;￥</text>
+                    <text >{{item.price}}</text>
                 </view>
-                <text class='order-detail-price fontPrice' decode='true'>{{"实付价格:&nbsp;"+item.price}}</text>
             </view>
 
         </view>
