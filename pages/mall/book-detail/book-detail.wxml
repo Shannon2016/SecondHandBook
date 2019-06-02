@@ -16,6 +16,49 @@
         <text>商品详情</text>
     </view>
 
+    <view class='detail-description-table'>
+        <view class='detail-description-table-tr'>
+            <view class='detail-description-table-td-name'>
+                作者
+            </view>
+            <view class='detail-description-table-td-content'>
+                {{bookDetail.author}}
+            </view>
+        </view>
+        <view class='detail-description-table-tr'>
+            <view class='detail-description-table-td-name'>
+                出版社
+            </view>
+            <view class='detail-description-table-td-content'>
+                {{bookDetail.press}}
+            </view>
+        </view>
+        <view class='detail-description-table-tr'>
+            <view class='detail-description-table-td-name'>
+                出版时间
+            </view>
+            <view class='detail-description-table-td-content'>
+                {{bookDetail.pulishedDate}}
+            </view>
+        </view>
+        <view class='detail-description-table-tr'>
+            <view class='detail-description-table-td-name'>
+                ISBN
+            </view>
+            <view class='detail-description-table-td-content'>
+                {{bookDetail.isbn}}
+            </view>
+        </view>
+        <view class='detail-description-table-tr'>
+            <view class='detail-description-table-td-name'>
+                分类
+            </view>
+            <view class='detail-description-table-td-content'>
+                {{bookDetail.type}}
+            </view>
+        </view>
+    </view>
+
     <view class='detail-description'>
         <text>{{bookDetail.description}}</text>
     </view>

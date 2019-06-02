@@ -4,7 +4,8 @@ Page({
      * 页面的初始数据
      */
     data: {
-        level: ["一", "二", "三", "四", "五", "六", "七", "八", "九", "十"]
+        level: ["一", "二", "三", "四", "五", "六", "七", "八", "九", "十"],
+        type: ["公务员", "考研", "四六级", "考律师", "基础教材", "畅销书", "会计", "其它"]
     },
 
     /**
@@ -12,6 +13,8 @@ Page({
      */
     onLoad: function(options) {
         var bookDetail = JSON.parse(unescape(options.bookDetail))
+        bookDetail.pulishedDate = bookDetail.pulishedDate.substring(0, 10)
+        bookDetail.type = this.data.type[bookDetail.category - 1]
         this.setData({
             bookDetail: bookDetail
         })
