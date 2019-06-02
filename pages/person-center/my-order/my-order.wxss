@@ -33,6 +33,7 @@
     min-height: 260rpx;
     margin-bottom: 10rpx;
     border-bottom: 2rpx solid #dcdfe6;
+    padding-right: 10rpx;
 }
 
 .order-detail-picture {
@@ -56,6 +57,7 @@
     min-height: 100%;
     margin-left: 20rpx;
     width: 70%;
+    padding-right: 15rpx;
 }
 
 .order-detail-name {

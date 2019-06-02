@@ -94,10 +94,10 @@
     <!--详情描述-->
     <view class='inputArea'>
         <view class='fontTile to-left'>详情描述</view>
-        <textarea class='largeInput to-right' bindinput='getDescription' />
+        <textarea wx:if="{{!show}}" class='largeInput to-right' value='{{bookDescription}}' bindinput='getDescription' />
     </view>
     <!-- 提交按钮 -->
-    <view class='uploadFinish'>
+    <view class='uploadFinish' style='margin-bottom:30rpx;'>
         <a class="uploadFinishBtn" bindtap='addReward'>发布悬赏</a>
     </view>
 </view>

@@ -9,6 +9,7 @@
     align-items: center;
     padding: 0 30rpx;
     box-sizing: border-box;
+    margin-bottom: 10rpx;
 }
 
 .inputArea {
@@ -134,7 +135,7 @@
     align-items: center;
     justify-content: center;
     width: 25%;
-    height: 70rpx;
+    height: 50rpx;
     padding: 0;
     text-align: center;
     font-size: 28rpx;
