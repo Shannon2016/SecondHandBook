@@ -87,6 +87,11 @@ Page({
                                     }
                                     instance.close();
                                     that.getCartInfoList();
+                                    var index = that.data.chooseItemIndex.indexOf(event.currentTarget.id)
+                                    if(index > -1){
+                                        that.data.chooseItemIndex.splice(index,1)
+                                    }
+                                    console.log(that.data.chooseItemIndex)
                                     that.getSum();
                                 }
                             })
