@@ -18,7 +18,7 @@
                 <text>楼主</text>
             </view>
         </view>
-        <view class='subforum-detail-content fontItemDetail'>
+        <view class='subforum-detail-content fontItemDetail' decode='{{true}}' style='white-space:pre-line'>
             {{item.content}}
         </view>
         <view class='subforum-detail-date fontDate'>
