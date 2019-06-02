@@ -153,7 +153,7 @@ Page({
         console.log(that.data.bookAuthor);
     },
     //书的新旧
-    getDepreciation: function(e) {
+    getDepreciation: function (e) {
         var that = this;
         var a = parseInt(e.detail.value);
         that.setData({

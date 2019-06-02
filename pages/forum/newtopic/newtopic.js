@@ -35,10 +35,11 @@ Page({
     catchPublishTap: function() {
         var that = this
 
-        var input1 = that.data.inputText1
-        var input2 = that.data.inputText2
-        if (input1 != '' && input2 != '') { }
-        else {
+        var input1 = that.data.titleValue
+        var input2 = that.data.contentValue
+        if (input1 != '' && input2 != '') {
+
+        } else {
             wx.showToast({
                 title: '主题或内容为空',
                 icon: 'none',
@@ -66,7 +67,7 @@ Page({
                     })
                     return
                 }
-                
+
                 wx.showToast({
                     title: '发表成功',
                     duration: 500

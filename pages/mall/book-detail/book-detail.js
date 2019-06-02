@@ -4,7 +4,8 @@ Page({
      * 页面的初始数据
      */
     data: {
-        level: ["一", "二", "三", "四", "五", "六", "七", "八", "九", "十"]
+        level: ["一", "二", "三", "四", "五", "六", "七", "八", "九", "十"],
+        type: ["公务员", "考研", "四六级", "考律师", "基础教材", "畅销书", "会计", "其它"]
     },
 
     /**
@@ -12,6 +13,8 @@ Page({
      */
     onLoad: function(options) {
         var bookDetail = JSON.parse(unescape(options.bookDetail))
+        bookDetail.pulishedDate = bookDetail.pulishedDate.substring(0, 10)
+        bookDetail.type = this.data.type[bookDetail.category - 1]
         this.setData({
             bookDetail: bookDetail
         })
@@ -51,49 +54,45 @@ Page({
                     return;
                 }
 
-                that.setData({
-                    bookList: res.data.data
-                })
-            },
-            fail(res) {
-                wx.showToast({
-                    title: '网络连接错误',
-                    icon: 'none'
-                })
-            }
-        })
+                var bookList = res.data.data
+                var bookId = that.data.bookDetail.id
 
-        var bookList = this.data.bookList
-        var bookId = this.data.bookDetail.id
-
-        if (bookList) {
-            for (var i = 0; i < bookList.length; i++) {
-                if (bookList[i].bookId === bookId) {
-                    wx.showToast({
-                        title: '购物车中已有',
-                    })
-                    return
+                if (bookList) {
+                    for (var i = 0; i < bookList.length; i++) {
+                        if (bookList[i].bookId === bookId) {
+                            wx.showToast({
+                                title: '购物车中已有',
+                            })
+                            return
+                        }
+                    }
                 }
-            }
-        }
 
-        wx.request({
-            url: app.globalData.URLPREFIX + 'shoppingcart/add',
-            header: {
-                Cookie: app.globalData.cookie
-            },
-            method: 'POST',
-            data: {
-                bookId: that.data.bookDetail.id,
-                number: 1
-            },
-            success(res) {
-                if (res.data.code !== 0) {
-                    wx.showToast({
-                        title: '已放入购物车',
-                    })
-                    return
-                }
+                wx.request({
+                    url: app.globalData.URLPREFIX + 'shoppingcart/add',
+                    header: {
+                        Cookie: app.globalData.cookie
+                    },
+                    method: 'POST',
+                    data: {
+                        bookId: that.data.bookDetail.id,
+                        number: 1
+                    },
+                    success(res) {
+                        if (res.data.code !== 0) {
+                            wx.showToast({
+                                title: '已放入购物车',
+                            })
+                            return
+                        }
+                    },
+                    fail(res) {
+                        wx.showToast({
+                            title: '网络连接错误',
+                            icon: 'none'
+                        })
+                    }
+                })
             },
             fail(res) {
                 wx.showToast({
