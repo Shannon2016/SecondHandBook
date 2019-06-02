@@ -87,6 +87,7 @@ Page({
                                     }
                                     instance.close();
                                     that.getCartInfoList();
+                                    that.getSum();
                                 }
                             })
                         }
