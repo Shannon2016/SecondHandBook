@@ -94,7 +94,7 @@
     <!--详情描述-->
     <view class='inputArea'>
         <view class='fontTile to-left'>详情描述</view>
-        <textarea class='largeInput to-right' bindinput='getDescription'/>
+        <textarea wx:if="{{!show}}" value='{{bookDescription}}' class='largeInput to-right' bindinput='getDescription'/>
     </view>
     <!-- 提交按钮 -->
     <view class='uploadFinish'>

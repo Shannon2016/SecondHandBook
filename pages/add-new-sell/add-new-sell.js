@@ -156,12 +156,9 @@ Page({
     getDepreciation: function(e) {
         var that = this;
         var a = parseInt(e.detail.value);
-        if (a >= 1 && a <= 10)
-            that.setData({
-                bookDepreciation: a,
-            });
-        else
-            console.log("错误输入");
+        that.setData({
+          bookDepreciation: a,
+        });
         console.log(that.data.bookDepreciation);
     },
     //书的ISBN
@@ -315,6 +312,24 @@ Page({
     //判断输入是否正确
     judge: function() {
         var that = this;
+      //图片不为空
+      if (that.data.picFilePath.length < 1) {
+        wx.showToast({
+          title: "请添加描述图片",
+          image: '../../image/tan.png',
+          mask: false,
+        });
+        return false;
+      }
+      //描述不能为空
+      if (that.data.bookDescription.length < 1) {
+        wx.showToast({
+          title: "请添加详细描述",
+          image: '../../image/tan.png',
+          mask: false,
+        });
+        return false;
+      }
         //类型不能为空
         if (that.data.bookType <= 0) {
             wx.showToast({
@@ -344,13 +359,14 @@ Page({
         }
 
         //出版日期不能为空
-        if (that.data.bookDate) {} else {
-            wx.showToast({
-                title: "日期不能为空",
-                image: '../../image/tan.png',
-                mask: false,
-            });
-        }
+      if (that.data.bookDate.length <= 0 || that.data.flag < 1) {
+        wx.showToast({
+          title: "日期不能为空",
+          image: '../../image/tan.png',
+          mask: false,
+        });
+        return false;
+      }
 
 
         //作者不能为空
