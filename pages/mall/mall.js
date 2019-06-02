@@ -62,7 +62,7 @@ Page({
                 fontSize: '28rpx'
             },
             {
-                bgColor: 'rgb(75, 199, 168)',
+                bgColor: '#07a2a4',
                 color: '#fff',
                 fontSize: '30rpx'
             },
