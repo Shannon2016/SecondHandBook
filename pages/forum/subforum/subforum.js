@@ -113,9 +113,10 @@ Page({
         var that = this
 
         var input = that.data.commentValue
-        if (input != '') {
-
-        } else {
+        if (input == null || input.match(/^[ ]*$/)) {
+            this.setData({
+                inputText: ''
+            })
             wx.showToast({
                 title: '评论为空',
                 icon: 'none',

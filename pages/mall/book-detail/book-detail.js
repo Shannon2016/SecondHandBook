@@ -79,11 +79,15 @@ Page({
                         number: 1
                     },
                     success(res) {
-                        if (res.data.code !== 0) {
+                        if (res.data.code === 0) {
                             wx.showToast({
                                 title: '已放入购物车',
+                                success(res){
+                                    wx.switchTab({
+                                        url: '/pages/mall/mall',
+                                    })
+                                }
                             })
-                            return
                         }
                     },
                     fail(res) {

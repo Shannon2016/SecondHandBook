@@ -225,7 +225,7 @@
     height: 100%;
 }
 
-.comment-input-box input {
+.comment-input-box textarea {
     width: 560rpx;
     height: 64rpx;
     font-size: 28rpx;

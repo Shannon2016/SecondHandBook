@@ -30,7 +30,7 @@
 
 <view class='add-comment-box'>
     <view class='comment-input-box'>
-        <input placeholder='发表评论' catchconfirm='sendComment' bindinput='bindCommentInput' value='{{inputText}}'></input>
+        <textarea placeholder='发表评论' catchconfirm='sendComment' bindinput='bindCommentInput' value='{{inputText}}'></textarea>
     </view>
     <view class='comment-send-box'>
         <button catchtap='sendComment'>

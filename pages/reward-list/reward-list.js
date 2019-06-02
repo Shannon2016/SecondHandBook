@@ -100,6 +100,14 @@ Page({
     searchBook: function() {
         var str = this.data.searchValue
         var that = this;
+
+        if (str == null || str.match(/^[ ]*$/)) {
+            this.setData({
+                inputText: ''
+            })
+            return
+        }
+
         wx.request({
             url: app.globalData.URLPREFIX + 'rewards/getByCondition?word=' + str,
             header: {
