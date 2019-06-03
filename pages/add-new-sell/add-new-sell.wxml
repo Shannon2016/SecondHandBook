@@ -94,10 +94,10 @@
     <!--详情描述-->
     <view class='inputArea'>
         <view class='fontTile to-left'>详情描述</view>
-        <textarea class='largeInput to-right' bindinput='getDescription'/>
+        <textarea wx:if="{{!show}}" value='{{bookDescription}}' class='largeInput to-right' bindinput='getDescription'/>
     </view>
     <!-- 提交按钮 -->
-    <view class='uploadFinish'>
+    <view class='uploadFinish' style='margin-bottom:30rpx;'>
         <button class="uploadFinishBtn" bindtap='addNewSell'>确认售卖</button>
     </view>
 </view>

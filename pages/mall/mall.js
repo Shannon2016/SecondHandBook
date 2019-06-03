@@ -62,7 +62,7 @@ Page({
                 fontSize: '28rpx'
             },
             {
-                bgColor: 'rgb(75, 199, 168)',
+                bgColor: '#07a2a4',
                 color: '#fff',
                 fontSize: '30rpx'
             },
@@ -120,8 +120,18 @@ Page({
     },
 
     onShow: function() {
+        var classifyStyle = this.data.classifyStyle
+        for (var i = 1; i < 9; i++)
+            classifyStyle[i] = classifyStyle[0]
+        this.setData({
+            classifyStyle: classifyStyle
+        })
+
         this.getBookList()
 
+        this.setData({
+            inputText: ''
+        })
     },
 
     /**
@@ -153,6 +163,14 @@ Page({
     searchBook: function() {
         var str = this.data.searchValue
         var that = this;
+
+        if (str == null || str.match(/^[ ]*$/)) {
+            this.setData({
+                inputText: ''
+            })
+            return
+        }
+
         wx.request({
             url: app.globalData.URLPREFIX + 'sells/getByCondition?words=' + str,
             header: {

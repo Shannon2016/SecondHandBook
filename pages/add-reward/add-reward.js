@@ -53,7 +53,7 @@ Page({
                 fontSize: '28rpx'
             },
             {
-                bgColor: 'rgb(75, 199, 168)',
+                bgColor: '#0CB7B9',
                 color: '#fff',
                 fontSize: '30rpx'
             },
@@ -140,9 +140,9 @@ Page({
     getBookDate: function(event) {
         console.log(event)
         var date = new Date(event.detail)
-        this.setData({
+          this.setData({
             bookDate: (date.getYear() + 1900) + '-' + (date.getMonth() + 1) + '-' + date.getDate()
-        });
+          });
         console.log(this.data.bookDate);
     },
     //书的作者
@@ -154,8 +154,8 @@ Page({
         });
         console.log(that.data.bookAuthor);
     },
-    //书的新旧
-    getDepreciation: function (e) {
+    //书的新旧  
+    getDepreciation: function(e) {
         var that = this;
         var a = parseInt(e.detail.value);
         that.setData({
@@ -311,6 +311,25 @@ Page({
     },
     judge: function() {
         var that = this;
+        //图片不为空
+        if(that.data.picFilePath.length < 1 )
+        {
+          wx.showToast({
+            title: "请添加描述图片",
+            image: '../../image/tan.png',
+            mask: false,
+          });
+          return false;
+        }
+        //描述不能为空
+      if (that.data.bookDescription.length < 1) {
+        wx.showToast({
+          title: "请添加详细描述",
+          image: '../../image/tan.png',
+          mask: false,
+        });
+        return false;
+      }
         //类型不能为空
         if (that.data.bookType <= 0) {
             wx.showToast({
@@ -340,12 +359,14 @@ Page({
         }
 
         //出版日期不能为空
-        if (that.data.bookDate) {} else {
+        if (that.data.bookDate.length<=0 || that.data.flag<1) 
+        {
             wx.showToast({
                 title: "日期不能为空",
                 image: '../../image/tan.png',
                 mask: false,
             });
+            return false;
         }
 
 

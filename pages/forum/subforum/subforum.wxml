@@ -18,7 +18,7 @@
                 <text>楼主</text>
             </view>
         </view>
-        <view class='subforum-detail-content fontItemDetail'>
+        <view class='subforum-detail-content fontItemDetail' decode='{{true}}' style='white-space:pre-line'>
             {{item.content}}
         </view>
         <view class='subforum-detail-date fontDate'>
@@ -30,7 +30,7 @@
 
 <view class='add-comment-box'>
     <view class='comment-input-box'>
-        <input placeholder='发表评论' catchconfirm='sendComment' bindinput='bindCommentInput' value='{{inputText}}'></input>
+        <textarea placeholder='发表评论' catchconfirm='sendComment' bindinput='bindCommentInput' value='{{inputText}}' fixed='true'></textarea>
     </view>
     <view class='comment-send-box'>
         <button catchtap='sendComment'>
