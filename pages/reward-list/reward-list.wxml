@@ -1,6 +1,6 @@
 <!-- 搜索框部分 -->
 <view class='search'>
-    <image src='/image/3.jpg'></image>
+    <image src='/image/topImg3.png'></image>
     <view class='search-box'>
         <view class='search-box-item'>
             <view class='search-item'>

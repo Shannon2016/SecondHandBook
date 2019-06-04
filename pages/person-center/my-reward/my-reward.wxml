@@ -1,7 +1,7 @@
 <!--pages/my-reward/my-reward.wxml-->
 <!-- 背景图片 -->
 <view class='background'>
-    <image src='/image/4.jpg'></image>
+    <image src='/image/topImg4.png'></image>
 
 </view>
 

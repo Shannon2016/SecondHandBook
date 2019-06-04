@@ -1,5 +1,5 @@
 <view class='topInfo'>
-    <image src='/image/1.png'></image>
+    <image src='/image/topImg1.png'></image>
 </view>
 
 <view class='newtopic'>

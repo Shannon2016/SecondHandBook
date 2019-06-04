@@ -1,6 +1,6 @@
 <!-- 顶部背景图 -->
 <view class='top-picture'>
-    <image src='/image/4.jpg'></image>
+    <image src='/image/topImg4.png'></image>
 </view>
 
 <!-- 显示列表 -->

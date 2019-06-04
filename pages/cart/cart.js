@@ -13,7 +13,7 @@ Page({
         totalPrice: 0,
         topImg: {
             mode: 'scaleToFill',
-            src: '../../image/6.jpg'
+            src: '../../image/topImg6.png'
         },
         cartInfoList: []
     },
